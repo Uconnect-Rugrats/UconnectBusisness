@@ -7,11 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
-=======
     <orderEntry type="module" module-name="UconnectCrosscutting1" />
     <orderEntry type="module" module-name="UconnectDTO1" />
     <orderEntry type="module" module-name="UconnectEntities1" />
->>>>>>> 2a9d3da1240a9d4753cc396888a9a50796ec7174
+    <orderEntry type="module" module-name="UconnectData1" />
   </component>
 </module>
