@@ -8,6 +8,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.HistorialChatGrupoEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class HistorialChatGrupoBusinessImpl implements HistorialChatGrupoBusiness {
     DAOFactory daoFactory;
@@ -22,16 +23,15 @@ public final class HistorialChatGrupoBusinessImpl implements HistorialChatGrupoB
     }
 
     @Override
-    public List<HistorialChatGrupoDomain> Listar(HistorialChatGrupoDomain domain) {
+    public List<HistorialChatGrupoDomain> listar(HistorialChatGrupoDomain domain) {
         final HistorialChatGrupoEntity entity = HistorialChatGrupoAssembler.getInstance().toEntityFromDomain(domain);
         final List<HistorialChatGrupoEntity> resultado = daoFactory.getHistorialChatGrupoDAO().read(entity);
         return null;
     }
 
     @Override
-    public void eliminar(HistorialChatGrupoDomain domain) {
-        final HistorialChatGrupoEntity entity = HistorialChatGrupoAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getHistorialChatGrupoDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getHistorialChatGrupoDAO().delete(domain);
     }
 
     @Override

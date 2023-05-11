@@ -9,6 +9,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.RespuestaReportePublicacionEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class RespuestaReportePublicacionBusinessImpl implements RespuestaReportePublicacionBusiness {
     DAOFactory daoFactory;
@@ -36,9 +37,8 @@ public final class RespuestaReportePublicacionBusinessImpl implements RespuestaR
     }
 
     @Override
-    public void eliminar(RespuestaReportePublicacionDomain domain) {
-        final RespuestaReportePublicacionEntity entity = RespuestaReportePublicacionAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getRespuestaReportePublicacionDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getRespuestaReportePublicacionDAO().delete(domain);
     }
 
     @Override

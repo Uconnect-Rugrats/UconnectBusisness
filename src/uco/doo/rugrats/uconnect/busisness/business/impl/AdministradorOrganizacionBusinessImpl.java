@@ -10,6 +10,7 @@ import uco.doo.rugrats.uconnect.entities.AdministradorOrganizacionEntity;
 
 
 import java.util.List;
+import java.util.UUID;
 
 public final class AdministradorOrganizacionBusinessImpl implements AdministradorOrganizacionBusiness {
     DAOFactory daoFactory;
@@ -36,9 +37,8 @@ public final class AdministradorOrganizacionBusinessImpl implements Administrado
     }
 
     @Override
-    public void eliminar(AdministradorOrganizacionDomain domain) {
-        final AdministradorOrganizacionEntity entity = AdministradorOrganizacionAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getAdministradorOrganizacionDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getAdministradorOrganizacionDAO().delete(domain);
     }
 
     @Override

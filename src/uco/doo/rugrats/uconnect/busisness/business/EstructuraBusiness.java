@@ -4,6 +4,7 @@ import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.EstructuraDomain;
 
 import java.util.List;
+import java.util.UUID;
 
 
 public interface EstructuraBusiness {
@@ -11,6 +12,6 @@ public interface EstructuraBusiness {
     void cambiarNombre(EstructuraDomain domain);
     void cambiarEstado(EstructuraDomain domain);
     List<EstructuraDomain> consultar(EstructuraDomain domain);
-    void eliminar(EstructuraDomain domain);
+    void eliminar(UUID domain);
     EstadoDomain obtenerEstadoReal();
 }

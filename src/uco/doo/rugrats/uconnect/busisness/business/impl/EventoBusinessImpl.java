@@ -8,6 +8,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.EventoEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class EventoBusinessImpl implements EventoBusiness {
     DAOFactory daoFactory;
@@ -41,9 +42,8 @@ public final class EventoBusinessImpl implements EventoBusiness {
     }
 
     @Override
-    public void eliminar(EventoDomain domain) {
-        final EventoEntity entity = EventoAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getEventoDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getEventoDAO().delete(domain);
     }
 
     @Override

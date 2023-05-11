@@ -4,6 +4,7 @@ import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.GrupoDomain;
 
 import java.util.List;
+import java.util.UUID;
 
 
 public interface GrupoBusiness {
@@ -11,6 +12,6 @@ public interface GrupoBusiness {
     void editar(GrupoDomain domain);
     void cambiarEstado(GrupoDomain domain);
     List<GrupoDomain> buscar(GrupoDomain domain);
-    void eliminar(GrupoDomain domain);
+    void eliminar(UUID domain);
     EstadoDomain obtenerEstadoReal();
 }

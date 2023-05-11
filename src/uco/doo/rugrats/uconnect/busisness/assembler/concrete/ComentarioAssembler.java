@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.ComentarioDomain;
 import uco.doo.rugrats.uconnect.dto.ComentarioDTO;
 import uco.doo.rugrats.uconnect.entities.ComentarioEntity;
 
+import java.util.List;
+
 public final class ComentarioAssembler implements Assembler<ComentarioDomain, ComentarioDTO, ComentarioEntity> {
     public static final ComentarioAssembler INSTANCE = new ComentarioAssembler();
     public static ComentarioAssembler getInstance() { return INSTANCE; }
@@ -39,4 +41,19 @@ public final class ComentarioAssembler implements Assembler<ComentarioDomain, Co
                 ComentarioAssembler.getInstance().toDomainFromEntity(entity.getComentarioPadre()),entity.getFechaPublicacion(),ParticipanteGrupoAssembler.getInstance().toDomainFromEntity(entity.getAutor()),
                 entity.getContenido(),EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
     }
+
+    @Override
+    public List<ComentarioDomain> toDomainFromEntityList(List<ComentarioEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<ComentarioDomain> toDomainFromDTOList(List<ComentarioDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<ComentarioDTO> toDTOFromDomainList(List<ComentarioDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
 }

@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.EstructuraDomain;
 import uco.doo.rugrats.uconnect.dto.EstructuraDTO;
 import uco.doo.rugrats.uconnect.entities.EstructuraEntity;
 
+import java.util.List;
+
 public final class EstructuraAssembler implements Assembler<EstructuraDomain, EstructuraDTO, EstructuraEntity> {
     public static final EstructuraAssembler INSTANCE = new EstructuraAssembler();
     public static EstructuraAssembler getInstance() { return INSTANCE; }
@@ -35,4 +37,19 @@ public final class EstructuraAssembler implements Assembler<EstructuraDomain, Es
         return new EstructuraDomain(entity.getIdentificador(),OrganizacionAssembler.getInstance().toDomainFromEntity(entity.getOrganizacion()),
                 EstructuraAssembler.getInstance().toDomainFromEntity(entity.getEstructuraPadre()), entity.getNombre(),EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
     }
+
+    @Override
+    public List<EstructuraDomain> toDomainFromEntityList(List<EstructuraEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<EstructuraDomain> toDomainFromDTOList(List<EstructuraDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<EstructuraDTO> toDTOFromDomainList(List<EstructuraDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
 }

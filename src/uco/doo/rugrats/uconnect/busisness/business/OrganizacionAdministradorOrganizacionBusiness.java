@@ -5,11 +5,12 @@ import uco.doo.rugrats.uconnect.busisness.domain.OrganizacionAdministradorOrgani
 
 
 import java.util.List;
+import java.util.UUID;
 
 
 public interface OrganizacionAdministradorOrganizacionBusiness {
     void asignarOrganizacion(OrganizacionAdministradorOrganizacionDomain domain);
     List<OrganizacionAdministradorOrganizacionDomain> consultar(OrganizacionAdministradorOrganizacionDomain domain);
-    void eliminar(OrganizacionAdministradorOrganizacionDomain domain);
+    void eliminar(UUID domain);
     EstadoDomain obtenerEstadoReal();
 }

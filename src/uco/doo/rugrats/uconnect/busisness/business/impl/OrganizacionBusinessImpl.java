@@ -7,6 +7,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.OrganizacionEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class OrganizacionBusinessImpl implements OrganizacionBusiness {
     DAOFactory daoFactory;
@@ -40,8 +41,7 @@ public final class OrganizacionBusinessImpl implements OrganizacionBusiness {
     }
 
     @Override
-    public void eliminar(OrganizacionDomain domain) {
-        final OrganizacionEntity entity = OrganizacionAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getOrganizacionDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getOrganizacionDAO().delete(domain);
     }
 }

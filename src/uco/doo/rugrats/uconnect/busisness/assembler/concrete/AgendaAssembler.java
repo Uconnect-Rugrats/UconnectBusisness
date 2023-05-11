@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.AgendaDomain;
 import uco.doo.rugrats.uconnect.dto.AgendaDTO;
 import uco.doo.rugrats.uconnect.entities.AgendaEntity;
 
+import java.util.List;
+
 public final class AgendaAssembler implements Assembler<AgendaDomain, AgendaDTO, AgendaEntity> {
     public static final AgendaAssembler INSTANCE = new AgendaAssembler();
     public static AgendaAssembler getInstance() { return INSTANCE; }
@@ -34,5 +36,21 @@ public final class AgendaAssembler implements Assembler<AgendaDomain, AgendaDTO,
     public AgendaDomain toDomainFromEntity(AgendaEntity entity) {
         return new AgendaDomain(entity.getIdentificador(),GrupoAssembler.getInstance().toDomainFromEntity(entity.getGrupo()),
                 entity.getFechaInicio(),entity.getFechaFin(),EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+    }
+
+    @Override
+    public List<AgendaDomain> toDomainFromEntityList(List<AgendaEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<AgendaDomain> toDomainFromDTOList(List<AgendaDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<AgendaDTO> toDTOFromDomainList(List<AgendaDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
     }
 }

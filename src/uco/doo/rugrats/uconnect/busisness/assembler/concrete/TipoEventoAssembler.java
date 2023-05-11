@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.TipoEventoDomain;
 import uco.doo.rugrats.uconnect.dto.TipoEventoDTO;
 import uco.doo.rugrats.uconnect.entities.TipoEventoEntity;
 
+import java.util.List;
+
 public final class TipoEventoAssembler implements Assembler<TipoEventoDomain, TipoEventoDTO, TipoEventoEntity> {
     public static final TipoEventoAssembler INSTANCE = new TipoEventoAssembler();
     public static TipoEventoAssembler getInstance() { return INSTANCE; }
@@ -30,4 +32,19 @@ public final class TipoEventoAssembler implements Assembler<TipoEventoDomain, Ti
     public TipoEventoDomain toDomainFromEntity(TipoEventoEntity entity) {
         return new TipoEventoDomain(entity.getIdentificador(),entity.getNombre(),entity.getDescripcion());
     }
+
+    @Override
+    public List<TipoEventoDomain> toDomainFromEntityList(List<TipoEventoEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<TipoEventoDomain> toDomainFromDTOList(List<TipoEventoDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<TipoEventoDTO> toDTOFromDomainList(List<TipoEventoDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
 }

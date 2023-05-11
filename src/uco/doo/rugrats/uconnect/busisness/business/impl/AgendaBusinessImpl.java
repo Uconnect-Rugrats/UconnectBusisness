@@ -8,6 +8,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.AgendaEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class AgendaBusinessImpl implements AgendaBusiness {
     DAOFactory daoFactory;
@@ -46,9 +47,8 @@ public final class AgendaBusinessImpl implements AgendaBusiness {
     }
 
     @Override
-    public void eliminar(AgendaDomain domain) {
-        final AgendaEntity entity = AgendaAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getAgenda().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getAgenda().delete(domain);
     }
 
     @Override

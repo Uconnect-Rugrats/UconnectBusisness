@@ -8,6 +8,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.EstructuraEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class EstructuraBusinessImpl implements EstructuraBusiness {
     DAOFactory daoFactory;
@@ -41,9 +42,8 @@ public final class EstructuraBusinessImpl implements EstructuraBusiness {
     }
 
     @Override
-    public void eliminar(EstructuraDomain domain) {
-        final EstructuraEntity entity = EstructuraAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getEstructuraDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getEstructuraDAO().delete(domain);
     }
 
     @Override

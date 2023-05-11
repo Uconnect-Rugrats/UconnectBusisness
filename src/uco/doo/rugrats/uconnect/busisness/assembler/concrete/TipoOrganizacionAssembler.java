@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.TipoOrganizacionDomain;
 import uco.doo.rugrats.uconnect.dto.TipoOrganizacionDTO;
 import uco.doo.rugrats.uconnect.entities.TipoOrganizacionEntity;
 
+import java.util.List;
+
 public final class TipoOrganizacionAssembler implements Assembler<TipoOrganizacionDomain, TipoOrganizacionDTO, TipoOrganizacionEntity> {
     public static final TipoOrganizacionAssembler INSTANCE = new TipoOrganizacionAssembler();
     public static TipoOrganizacionAssembler getInstance() { return INSTANCE; }
@@ -30,4 +32,18 @@ public final class TipoOrganizacionAssembler implements Assembler<TipoOrganizaci
     public TipoOrganizacionDomain toDomainFromEntity(TipoOrganizacionEntity entity) {
         return new TipoOrganizacionDomain(entity.getIdentificador(),entity.getNombre(),entity.getDescripcion());
     }
+
+    @Override
+    public List<TipoOrganizacionDomain> toDomainFromEntityList(List<TipoOrganizacionEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+    }
+
+    @Override
+    public List<TipoOrganizacionDomain> toDomainFromDTOList(List<TipoOrganizacionDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<TipoOrganizacionDTO> toDTOFromDomainList(List<TipoOrganizacionDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
 }

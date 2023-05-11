@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.HistorialChatGrupoDomain;
 import uco.doo.rugrats.uconnect.dto.HistorialChatGrupoDTO;
 import uco.doo.rugrats.uconnect.entities.HistorialChatGrupoEntity;
 
+import java.util.List;
+
 public final class HistorialChatGrupoAssembler implements Assembler<HistorialChatGrupoDomain, HistorialChatGrupoDTO, HistorialChatGrupoEntity> {
     public static final HistorialChatGrupoAssembler INSTANCE = new HistorialChatGrupoAssembler();
     public static HistorialChatGrupoAssembler getInstance() { return INSTANCE; }
@@ -34,5 +36,21 @@ public final class HistorialChatGrupoAssembler implements Assembler<HistorialCha
     public HistorialChatGrupoDomain toDomainFromEntity(HistorialChatGrupoEntity entity) {
         return new HistorialChatGrupoDomain(entity.getIdentificador(),ChatAssembler.getInstance().toDomainFromEntity(entity.getChat()),
                 ParticipanteGrupoAssembler.getInstance().toDomainFromEntity(entity.getParticipante()),entity.getFechaIngreso() );
+    }
+
+    @Override
+    public List<HistorialChatGrupoDomain> toDomainFromEntityList(List<HistorialChatGrupoEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<HistorialChatGrupoDomain> toDomainFromDTOList(List<HistorialChatGrupoDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<HistorialChatGrupoDTO> toDTOFromDomainList(List<HistorialChatGrupoDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
     }
 }

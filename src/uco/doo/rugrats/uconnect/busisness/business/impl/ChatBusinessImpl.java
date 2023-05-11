@@ -8,6 +8,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.ChatEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class ChatBusinessImpl implements ChatBusiness {
     DAOFactory daoFactory;
@@ -35,9 +36,8 @@ public final class ChatBusinessImpl implements ChatBusiness {
     }
 
     @Override
-    public void eliminar(ChatDomain domain) {
-        final ChatEntity entity = ChatAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getChatDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getChatDAO().delete(domain);
     }
 
     @Override

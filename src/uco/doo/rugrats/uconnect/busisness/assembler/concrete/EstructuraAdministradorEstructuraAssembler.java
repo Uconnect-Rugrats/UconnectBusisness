@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.EstructuraAdministradorEstructu
 import uco.doo.rugrats.uconnect.dto.EstructuraAdministradorEstructuraDTO;
 import uco.doo.rugrats.uconnect.entities.EstructuraAdministradorEstructuraEntity;
 
+import java.util.List;
+
 public final class EstructuraAdministradorEstructuraAssembler implements Assembler<EstructuraAdministradorEstructuraDomain, EstructuraAdministradorEstructuraDTO, EstructuraAdministradorEstructuraEntity> {
     public static final EstructuraAdministradorEstructuraAssembler INSTANCE = new EstructuraAdministradorEstructuraAssembler();
     public static EstructuraAdministradorEstructuraAssembler getInstance() { return INSTANCE; }
@@ -35,4 +37,19 @@ public final class EstructuraAdministradorEstructuraAssembler implements Assembl
         return new EstructuraAdministradorEstructuraDomain(entity.getIdentificador(),AdministradorEstructuraAssembler.getInstance().toDomainFromEntity(entity.getAdministrador()),
                 EstructuraAssembler.getInstance().toDomainFromEntity(entity.getEstructura()), EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
     }
+
+    @Override
+    public List<EstructuraAdministradorEstructuraDomain> toDomainFromEntityList(List<EstructuraAdministradorEstructuraEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<EstructuraAdministradorEstructuraDomain> toDomainFromDTOList(List<EstructuraAdministradorEstructuraDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<EstructuraAdministradorEstructuraDTO> toDTOFromDomainList(List<EstructuraAdministradorEstructuraDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
 }

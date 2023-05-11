@@ -7,6 +7,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.PersonaEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class PersonaBusinessImpl implements PersonaBusiness {
     DAOFactory daoFactory;
@@ -40,8 +41,7 @@ public final class PersonaBusinessImpl implements PersonaBusiness {
     }
 
     @Override
-    public void eliminar(PersonaDomain domain) {
-        final PersonaEntity entity = PersonaAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getPersonaDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getPersonaDAO().delete(domain);
     }
 }

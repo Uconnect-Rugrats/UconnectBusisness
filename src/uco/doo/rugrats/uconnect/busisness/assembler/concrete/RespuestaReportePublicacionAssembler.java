@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.RespuestaReportePublicacionDoma
 import uco.doo.rugrats.uconnect.dto.RespuestaReportePublicacionDTO;
 import uco.doo.rugrats.uconnect.entities.RespuestaReportePublicacionEntity;
 
+import java.util.List;
+
 public final class RespuestaReportePublicacionAssembler implements Assembler<RespuestaReportePublicacionDomain, RespuestaReportePublicacionDTO, RespuestaReportePublicacionEntity> {
     public static final RespuestaReportePublicacionAssembler INSTANCE = new RespuestaReportePublicacionAssembler();
     public static RespuestaReportePublicacionAssembler getInstance() { return INSTANCE; }
@@ -36,4 +38,19 @@ public final class RespuestaReportePublicacionAssembler implements Assembler<Res
         return new RespuestaReportePublicacionDomain(entity.getIdentificador(),entity.getFechaRespuesta(),ReportePublicacionAssembler.getInstance().toDomainFromEntity(entity.getReporte()),
                 EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()),entity.getExplicacionVeredicto(),EstructuraAdministradorEstructuraAssembler.getInstance().toDomainFromEntity(entity.getAdministrador()) );
     }
+
+    @Override
+    public List<RespuestaReportePublicacionDomain> toDomainFromEntityList(List<RespuestaReportePublicacionEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<RespuestaReportePublicacionDomain> toDomainFromDTOList(List<RespuestaReportePublicacionDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<RespuestaReportePublicacionDTO> toDTOFromDomainList(List<RespuestaReportePublicacionDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
 }

@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.ChatDomain;
 import uco.doo.rugrats.uconnect.dto.ChatDTO;
 import uco.doo.rugrats.uconnect.entities.ChatEntity;
 
+import java.util.List;
+
 public final class ChatAssembler implements Assembler<ChatDomain, ChatDTO, ChatEntity> {
     public static final ChatAssembler INSTANCE = new ChatAssembler();
     public static ChatAssembler getInstance() { return INSTANCE; }
@@ -35,4 +37,19 @@ public final class ChatAssembler implements Assembler<ChatDomain, ChatDTO, ChatE
         return new ChatDomain(entity.getIdentificador(),GrupoAssembler.getInstance().toDomainFromEntity(entity.getGrupo()),
                 EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
     }
+
+    @Override
+    public List<ChatDomain> toDomainFromEntityList(List<ChatEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<ChatDomain> toDomainFromDTOList(List<ChatDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<ChatDTO> toDTOFromDomainList(List<ChatDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
 }

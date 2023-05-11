@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.GrupoDomain;
 import uco.doo.rugrats.uconnect.dto.GrupoDTO;
 import uco.doo.rugrats.uconnect.entities.GrupoEntity;
 
+import java.util.List;
+
 public final class GrupoAssembler implements Assembler<GrupoDomain, GrupoDTO, GrupoEntity> {
     public static final GrupoAssembler INSTANCE = new GrupoAssembler();
     public static GrupoAssembler getInstance() { return INSTANCE; }
@@ -34,4 +36,19 @@ public final class GrupoAssembler implements Assembler<GrupoDomain, GrupoDTO, Gr
         return new GrupoDomain(entity.getIdentificador(),EstructuraAssembler.getInstance().toDomainFromEntity(entity.getEstructura()),
                 entity.getNombre(),EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
     }
+
+    @Override
+    public List<GrupoDomain> toDomainFromEntityList(List<GrupoEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<GrupoDomain> toDomainFromDTOList(List<GrupoDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<GrupoDTO> toDTOFromDomainList(List<GrupoDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
 }

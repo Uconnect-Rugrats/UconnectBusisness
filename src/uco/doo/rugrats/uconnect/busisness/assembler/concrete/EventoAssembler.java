@@ -6,6 +6,8 @@ import uco.doo.rugrats.uconnect.dto.EstructuraAdministradorEstructuraDTO;
 import uco.doo.rugrats.uconnect.dto.EventoDTO;
 import uco.doo.rugrats.uconnect.entities.EventoEntity;
 
+import java.util.List;
+
 public final class EventoAssembler implements Assembler<EventoDomain, EventoDTO, EventoEntity> {
     public static final EventoAssembler INSTANCE = new EventoAssembler();
     public static EventoAssembler getInstance() { return INSTANCE; }
@@ -41,4 +43,19 @@ public final class EventoAssembler implements Assembler<EventoDomain, EventoDTO,
                 entity.getDescripcion(),entity.getLugar(),EstructuraAdministradorEstructuraAssembler.getInstance().toDomainFromEntity(entity.getOrganizador()),
                 TipoEventoAssembler.getInstance().toDomainFromEntity(entity.getTipo()), entity.getFechaEjecucion(),EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
     }
+
+    @Override
+    public List<EventoDomain> toDomainFromEntityList(List<EventoEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<EventoDomain> toDomainFromDTOList(List<EventoDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<EventoDTO> toDTOFromDomainList(List<EventoDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
 }

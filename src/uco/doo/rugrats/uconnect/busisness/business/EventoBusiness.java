@@ -5,6 +5,7 @@ import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.EventoDomain;
 
 import java.util.List;
+import java.util.UUID;
 
 
 public interface EventoBusiness {
@@ -12,6 +13,6 @@ public interface EventoBusiness {
     void editar(EventoDomain domain);
     void cambiarEstado(EventoDomain domain);
     List<EventoDomain> abrir(EventoDomain domain);
-    void eliminar(EventoDomain domain);
+    void eliminar(UUID domain);
     EstadoDomain obtenerEstadoReal();
 }

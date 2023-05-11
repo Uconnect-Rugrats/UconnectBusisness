@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.ParticipanteDomain;
 import uco.doo.rugrats.uconnect.dto.ParticipanteDTO;
 import uco.doo.rugrats.uconnect.entities.ParticipanteEntity;
 
+import java.util.List;
+
 public final class ParticipanteAssembler implements Assembler<ParticipanteDomain, ParticipanteDTO, ParticipanteEntity> {
     public static final ParticipanteAssembler INSTANCE = new ParticipanteAssembler();
     public static ParticipanteAssembler getInstance() { return INSTANCE; }
@@ -34,5 +36,21 @@ public final class ParticipanteAssembler implements Assembler<ParticipanteDomain
     public ParticipanteDomain toDomainFromEntity(ParticipanteEntity entity) {
         return new ParticipanteDomain(entity.getIdentificador(),PersonaAssembler.getInstance().toDomainFromEntity(entity.getPersona()),
                 EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+    }
+
+    @Override
+    public List<ParticipanteDomain> toDomainFromEntityList(List<ParticipanteEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<ParticipanteDomain> toDomainFromDTOList(List<ParticipanteDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<ParticipanteDTO> toDTOFromDomainList(List<ParticipanteDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
     }
 }

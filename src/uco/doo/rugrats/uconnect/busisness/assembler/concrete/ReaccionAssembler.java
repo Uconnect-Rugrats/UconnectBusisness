@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.ReaccionDomain;
 import uco.doo.rugrats.uconnect.dto.ReaccionDTO;
 import uco.doo.rugrats.uconnect.entities.ReaccionEntity;
 
+import java.util.List;
+
 public final class ReaccionAssembler implements Assembler<ReaccionDomain, ReaccionDTO, ReaccionEntity> {
     public static final ReaccionAssembler INSTANCE = new ReaccionAssembler();
     public static ReaccionAssembler getInstance() { return INSTANCE; }
@@ -35,5 +37,21 @@ public final class ReaccionAssembler implements Assembler<ReaccionDomain, Reacci
     public ReaccionDomain toDomainFromEntity(ReaccionEntity entity) {
         return new ReaccionDomain(entity.getIdentificador(),PublicacionAssembler.getInstance().toDomainFromEntity(entity.getPublicacion()),ParticipanteGrupoAssembler.getInstance().toDomainFromEntity(entity.getAutor()),
                 entity.getFechaReaccion(),TipoReaccionAssembler.getInstance().toDomainFromEntity(entity.getTipo()), EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+    }
+
+    @Override
+    public List<ReaccionDomain> toDomainFromEntityList(List<ReaccionEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<ReaccionDomain> toDomainFromDTOList(List<ReaccionDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<ReaccionDTO> toDTOFromDomainList(List<ReaccionDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
     }
 }

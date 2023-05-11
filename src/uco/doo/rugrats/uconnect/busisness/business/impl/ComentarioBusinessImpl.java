@@ -8,6 +8,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.ComentarioEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class ComentarioBusinessImpl implements ComentarioBusiness {
     DAOFactory daoFactory;
@@ -37,9 +38,8 @@ public final class ComentarioBusinessImpl implements ComentarioBusiness {
     }
 
     @Override
-    public void eliminar(ComentarioDomain domain) {
-        final ComentarioEntity entity = ComentarioAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getComentarioDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getComentarioDAO().delete(domain);
     }
 
     @Override

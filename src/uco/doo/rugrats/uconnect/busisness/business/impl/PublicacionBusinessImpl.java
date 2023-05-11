@@ -8,6 +8,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.PublicacionEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class PublicacionBusinessImpl implements PublicacionBusiness {
     DAOFactory daoFactory;
@@ -40,9 +41,8 @@ public final class PublicacionBusinessImpl implements PublicacionBusiness {
     }
 
     @Override
-    public void eliminar(PublicacionDomain domain) {
-        final PublicacionEntity entity = PublicacionAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getPublicacionDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getPublicacionDAO().delete(domain);
     }
 
     @Override

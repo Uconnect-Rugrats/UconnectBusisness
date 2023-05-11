@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.OrganizacionDomain;
 import uco.doo.rugrats.uconnect.dto.OrganizacionDTO;
 import uco.doo.rugrats.uconnect.entities.OrganizacionEntity;
 
+import java.util.List;
+
 public final class OrganizacionAssembler implements Assembler<OrganizacionDomain, OrganizacionDTO, OrganizacionEntity> {
     public static final OrganizacionAssembler INSTANCE = new OrganizacionAssembler();
     public static OrganizacionAssembler getInstance() { return INSTANCE; }
@@ -34,4 +36,19 @@ public final class OrganizacionAssembler implements Assembler<OrganizacionDomain
         return new OrganizacionDomain(entity.getIdentificador(),entity.getNombre(),entity.getDescripcion(),TipoOrganizacionAssembler.getInstance().toDomainFromEntity(entity.getTipo()),
                 EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
     }
+
+    @Override
+    public List<OrganizacionDomain> toDomainFromEntityList(List<OrganizacionEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<OrganizacionDomain> toDomainFromDTOList(List<OrganizacionDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<OrganizacionDTO> toDTOFromDomainList(List<OrganizacionDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
 }

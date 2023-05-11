@@ -5,6 +5,8 @@ import uco.doo.rugrats.uconnect.busisness.domain.CausaReporteDomain;
 import uco.doo.rugrats.uconnect.dto.CausaReporteDTO;
 import uco.doo.rugrats.uconnect.entities.CausaReporteEntity;
 
+import java.util.List;
+
 public final class CausaReporteAssembler implements Assembler<CausaReporteDomain, CausaReporteDTO, CausaReporteEntity> {
 
     public static final CausaReporteAssembler INSTANCE = new CausaReporteAssembler();
@@ -30,5 +32,21 @@ public final class CausaReporteAssembler implements Assembler<CausaReporteDomain
     @Override
     public CausaReporteDomain toDomainFromEntity(CausaReporteEntity entity) {
         return new CausaReporteDomain(entity.getIdentificador(),entity.getNombre(),entity.getDescripcion());
+    }
+
+    @Override
+    public List<CausaReporteDomain> toDomainFromEntityList(List<CausaReporteEntity> entityList) {
+        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+
+    }
+
+    @Override
+    public List<CausaReporteDomain> toDomainFromDTOList(List<CausaReporteDTO> dtoList) {
+        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+    }
+
+    @Override
+    public List<CausaReporteDTO> toDTOFromDomainList(List<CausaReporteDomain> domainList) {
+        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
     }
 }

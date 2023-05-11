@@ -8,6 +8,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.MensajeEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class MensajeBusinessImpl implements MensajeBusiness {
     DAOFactory daoFactory;
@@ -35,9 +36,8 @@ public final class MensajeBusinessImpl implements MensajeBusiness {
     }
 
     @Override
-    public void eliminar(MensajeDomain domain) {
-        final MensajeEntity entity = MensajeAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getMensajeDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getMensajeDAO().delete(domain);
     }
 
     @Override

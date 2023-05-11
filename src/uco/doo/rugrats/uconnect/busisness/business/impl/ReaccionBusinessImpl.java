@@ -8,6 +8,7 @@ import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.ReaccionEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public final class ReaccionBusinessImpl implements ReaccionBusiness {
     DAOFactory daoFactory;
@@ -29,9 +30,8 @@ public final class ReaccionBusinessImpl implements ReaccionBusiness {
     }
 
     @Override
-    public void eliminar(ReaccionDomain domain) {
-        final ReaccionEntity entity = ReaccionAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getReaccionDAO().delete(entity);
+    public void eliminar(UUID domain) {
+        daoFactory.getReaccionDAO().delete(domain);
     }
 
     @Override
