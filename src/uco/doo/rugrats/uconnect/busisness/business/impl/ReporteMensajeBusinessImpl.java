@@ -29,9 +29,11 @@ public final class ReporteMensajeBusinessImpl implements ReporteMensajeBusiness 
 
     @Override
     public List<ReporteMensajeDomain> abrir(ReporteMensajeDomain domain) {
-        final ReporteMensajeEntity entity = ReporteMensajeAssembler.getInstance().toEntityFromDomain(domain);
-        final List<ReporteMensajeEntity> resultado = daoFactory.getReporteMensajeDAO().read(entity);
-        return null;
+    	final ReporteMensajeEntity entity = ReporteMensajeAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<ReporteMensajeEntity> resultEntityList = daoFactory.getReporteMensajeDAO().read(entity);
+
+		return ReporteMensajeAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

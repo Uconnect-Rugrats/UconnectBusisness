@@ -29,9 +29,11 @@ public final class ReporteComentarioBusinessImpl implements ReporteComentarioBus
 
     @Override
     public List<ReporteComentarioDomain> abrir(ReporteComentarioDomain domain) {
-        final ReporteComentarioEntity entity = ReporteComentarioAssembler.getInstance().toEntityFromDomain(domain);
-        final List<ReporteComentarioEntity> resultado = daoFactory.getReporteComentarioDAO().read(entity);
-        return null;
+    	final ReporteComentarioEntity entity = ReporteComentarioAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<ReporteComentarioEntity> resultEntityList = daoFactory.getReporteComentarioDAO().read(entity);
+
+		return ReporteComentarioAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

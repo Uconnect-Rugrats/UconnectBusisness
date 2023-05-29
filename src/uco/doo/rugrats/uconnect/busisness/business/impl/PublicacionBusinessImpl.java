@@ -30,9 +30,11 @@ public final class PublicacionBusinessImpl implements PublicacionBusiness {
 
     @Override
     public List<PublicacionDomain> listar(PublicacionDomain domain) {
-        final PublicacionEntity entity = PublicacionAssembler.getInstance().toEntityFromDomain(domain);
-        final List<PublicacionEntity> resultado = daoFactory.getPublicacionDAO().read(entity);
-        return null;
+    	final PublicacionEntity entity = PublicacionAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<PublicacionEntity> resultEntityList = daoFactory.getPublicacionDAO().read(entity);
+
+		return PublicacionAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

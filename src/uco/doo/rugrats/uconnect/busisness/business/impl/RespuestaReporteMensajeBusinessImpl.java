@@ -30,9 +30,11 @@ public final class RespuestaReporteMensajeBusinessImpl implements RespuestaRepor
 
     @Override
     public List<RespuestaReporteMensajeDomain> abrir(RespuestaReporteMensajeDomain domain) {
-        final RespuestaReporteMensajeEntity entity = RespuestaReporteMensajeAssembler.getInstance().toEntityFromDomain(domain);
-        final List<RespuestaReporteMensajeEntity> resultado = daoFactory.getRespuestaReporteMensajeDAO().read(entity);
-        return null;
+    	final RespuestaReporteMensajeEntity entity = RespuestaReporteMensajeAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<RespuestaReporteMensajeEntity> resultEntityList = daoFactory.getRespuestaReporteMensajeDAO().read(entity);
+
+		return RespuestaReporteMensajeAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

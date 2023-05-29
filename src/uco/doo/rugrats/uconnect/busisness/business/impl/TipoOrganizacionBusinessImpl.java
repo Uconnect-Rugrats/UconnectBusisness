@@ -16,8 +16,10 @@ public final class TipoOrganizacionBusinessImpl implements TipoOrganizacionBusin
 
     @Override
     public List<TipoOrganizacionDomain> consultar(TipoOrganizacionDomain domain) {
-        final TipoOrganizacionEntity entity = TipoOrganizacionAssembler.getInstance().toEntityFromDomain(domain);
-        final List<TipoOrganizacionEntity> resultado = daoFactory.getTipoOrganizacionDAO().read(entity);
-        return null;
+    	final TipoOrganizacionEntity entity = TipoOrganizacionAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<TipoOrganizacionEntity> resultEntityList = daoFactory.getTipoOrganizacionDAO().read(entity);
+
+		return TipoOrganizacionAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 }

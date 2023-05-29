@@ -30,9 +30,11 @@ public final class ParticipanteBusinessImpl implements ParticipanteBusiness {
 
     @Override
     public List<ParticipanteDomain> consultar(ParticipanteDomain domain) {
-        final ParticipanteEntity entity = ParticipanteAssembler.getInstance().toEntityFromDomain(domain);
-        final List<ParticipanteEntity> resultado = daoFactory.getParticipanteDAO().read(entity);
-        return null;
+    	final ParticipanteEntity entity = ParticipanteAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<ParticipanteEntity> resultEntityList = daoFactory.getParticipanteDAO().read(entity);
+
+		return ParticipanteAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

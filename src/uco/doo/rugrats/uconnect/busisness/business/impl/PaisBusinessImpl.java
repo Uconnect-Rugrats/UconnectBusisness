@@ -16,8 +16,10 @@ public final class PaisBusinessImpl implements PaisBusiness {
 
     @Override
     public List<PaisDomain> consultar(PaisDomain domain) {
-        final PaisEntity entity = PaisAssembler.getInstance().toEntityFromDomain(domain);
-        final List<PaisEntity> resultado = daoFactory.getPaisDAO().read(entity);
-        return null;
+    	final PaisEntity entity = PaisAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<PaisEntity> resultEntityList = daoFactory.getPaisDAO().read(entity);
+
+		return PaisAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 }

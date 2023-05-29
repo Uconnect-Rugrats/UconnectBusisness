@@ -8,16 +8,20 @@ import uco.doo.rugrats.uconnect.entities.EstadoEntity;
 
 import java.util.List;
 
-public final class EstadoBusinessImpl implements EstadoBusiness {
-    DAOFactory daoFactory;
-    public EstadoBusinessImpl(final DAOFactory daoFactory) {
-        this.daoFactory = daoFactory;
-    }
+public class EstadoBusinessImpl implements EstadoBusiness {
+	DAOFactory daoFactory;
+	
+	public EstadoBusinessImpl (final DAOFactory daoFactory) {
+		this.daoFactory = daoFactory;
+	}
 
-    @Override
-    public List<EstadoDomain> consultar(EstadoDomain domain) {
-        final EstadoEntity entity = EstadoAssembler.getInstance().toEntityFromDomain(domain);
-        final List<EstadoEntity> resultado = daoFactory.getEstadoDAO().read(entity);
-        return null;
-    }
+	@Override
+	public List<EstadoDomain> consultar(EstadoDomain domain) {
+		final EstadoEntity entity = EstadoAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<EstadoEntity> resultEntityList = daoFactory.getEstadoDAO().read(entity);
+
+		return EstadoAssembler.getInstance().toDomainFromEntityList(resultEntityList);
+	}
+
 }

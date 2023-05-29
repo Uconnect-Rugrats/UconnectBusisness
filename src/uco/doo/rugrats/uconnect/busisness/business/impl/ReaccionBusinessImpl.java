@@ -6,6 +6,7 @@ import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.ReaccionDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.ReaccionEntity;
+import uco.doo.rugrats.uconnect.utils.UtilUUID;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,15 +19,28 @@ public final class ReaccionBusinessImpl implements ReaccionBusiness {
 
     @Override
     public void reaccionar(ReaccionDomain domain) {
-        final ReaccionEntity entity = ReaccionAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getReaccionDAO().create(entity);
+    	UUID identificador;
+		ReaccionEntity entityTmp;
+		 List<ReaccionEntity> result;
+		
+		do {
+			identificador = UtilUUID.generateNewUUID();
+			entityTmp = ReaccionEntity.create().setIdentificador(identificador);
+			result = daoFactory.getReaccionDAO().read(entityTmp);
+		}while(!result.isEmpty());
+		
+		final var domainToCreate = new ReaccionDomain(identificador, domain.getPublicacion(), domain.getAutor(), domain.getFechaReaccion(), domain.getTipo(), domain.getEstado());
+		final ReaccionEntity entity = ReaccionAssembler.getInstance().toEntityFromDomain(domainToCreate);
+		daoFactory.getReaccionDAO().create(entity);	
     }
 
     @Override
     public List<ReaccionDomain> mostrar(ReaccionDomain domain) {
-        final ReaccionEntity entity = ReaccionAssembler.getInstance().toEntityFromDomain(domain);
-        final List<ReaccionEntity> resultado = daoFactory.getReaccionDAO().read(entity);
-        return null;
+    	final ReaccionEntity entity = ReaccionAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<ReaccionEntity> resultEntityList = daoFactory.getReaccionDAO().read(entity);
+
+		return ReaccionAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

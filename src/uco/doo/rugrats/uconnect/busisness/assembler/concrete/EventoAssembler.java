@@ -2,7 +2,6 @@ package uco.doo.rugrats.uconnect.busisness.assembler.concrete;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.Assembler;
 import uco.doo.rugrats.uconnect.busisness.domain.EventoDomain;
-import uco.doo.rugrats.uconnect.dto.EstructuraAdministradorEstructuraDTO;
 import uco.doo.rugrats.uconnect.dto.EventoDTO;
 import uco.doo.rugrats.uconnect.entities.EventoEntity;
 

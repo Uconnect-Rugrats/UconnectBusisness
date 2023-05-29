@@ -30,9 +30,11 @@ public final class MensajeBusinessImpl implements MensajeBusiness {
 
     @Override
     public List<MensajeDomain> cargar(MensajeDomain domain) {
-        final MensajeEntity entity = MensajeAssembler.getInstance().toEntityFromDomain(domain);
-        final List<MensajeEntity> resultado = daoFactory.getMensajeDAO().read(entity);
-        return null;
+    	final MensajeEntity entity = MensajeAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<MensajeEntity> resultEntityList = daoFactory.getMensajeDAO().read(entity);
+
+		return MensajeAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

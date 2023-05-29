@@ -16,8 +16,10 @@ public final class TipoIdentificacionBusinessImpl implements TipoIdentificacionB
 
     @Override
     public List<TipoIdentificacionDomain> consultar(TipoIdentificacionDomain domain) {
-        final TipoIdentificacionEntity entity = TipoIdentificacionAssembler.getInstance().toEntityFromDomain(domain);
-        final List<TipoIdentificacionEntity> resultado = daoFactory.getTipoIdentificacionDAO().read(entity);
-        return null;
+    	final TipoIdentificacionEntity entity = TipoIdentificacionAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<TipoIdentificacionEntity> resultEntityList = daoFactory.getTipoIdentificacionDAO().read(entity);
+
+		return TipoIdentificacionAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 }

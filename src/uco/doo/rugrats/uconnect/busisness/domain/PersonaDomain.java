@@ -59,7 +59,7 @@ public final class PersonaDomain {
     }
 
     private void setNumeroIdentificacion(final String numeroIdentificacion) {
-        this.numeroIdentificacion = UtilText.numericIsValid(UtilText.applyTrim(numeroIdentificacion)) ? UtilText.applyTrim(numeroIdentificacion) : UtilText.getDefaultNumeric();
+        this.numeroIdentificacion = UtilText.getUtilText().numericIsValid(UtilText.applyTrim(numeroIdentificacion)) ? UtilText.applyTrim(numeroIdentificacion) : UtilText.getDefaultNumeric();
     }
 
     private void setPrimerNombre(String primerNombre) {
@@ -79,7 +79,7 @@ public final class PersonaDomain {
     }
 
     private void setCorreo(final String correo) {
-        this.correo = UtilText.emailIsvalid(UtilText.applyTrim(correo)) ? UtilText.applyTrim(correo) : UtilText.getDefaultEmailAdress();
+        this.correo = UtilText.getUtilText().emailIsvalid(UtilText.applyTrim(correo)) ? UtilText.applyTrim(correo) : UtilText.getDefaultEmailAdress();
     }
 
     private void setPaisTelefono(final PaisDomain paisTelefono) {
@@ -87,7 +87,7 @@ public final class PersonaDomain {
     }
 
     private void setNumeroTelefono(final String numeroTelefono) {
-        this.numeroTelefono = UtilText.numericIsValid(UtilText.applyTrim(numeroTelefono)) ? UtilText.applyTrim(numeroTelefono) : UtilText.getDefaultNumeric();
+        this.numeroTelefono = UtilText.getUtilText().numericIsValid(UtilText.applyTrim(numeroTelefono)) ? UtilText.applyTrim(numeroTelefono) : UtilText.getDefaultNumeric();
     }
 
     private void setEstado(final EstadoDomain estado) {

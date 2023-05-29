@@ -29,9 +29,11 @@ public final class ReportePublicacionBusinessImpl implements ReportePublicacionB
 
     @Override
     public List<ReportePublicacionDomain> abrir(ReportePublicacionDomain domain) {
-        final ReportePublicacionEntity entity = ReportePublicacionAssembler.getInstance().toEntityFromDomain(domain);
-        final List<ReportePublicacionEntity> resultado = daoFactory.getReportePublicacionDAO().read(entity);
-        return null;
+    	final ReportePublicacionEntity entity = ReportePublicacionAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<ReportePublicacionEntity> resultEntityList = daoFactory.getReportePublicacionDAO().read(entity);
+
+		return ReportePublicacionAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

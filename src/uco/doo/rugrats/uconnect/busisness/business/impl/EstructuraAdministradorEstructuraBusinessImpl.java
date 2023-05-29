@@ -24,9 +24,11 @@ public final class EstructuraAdministradorEstructuraBusinessImpl implements Estr
 
     @Override
     public List<EstructuraAdministradorEstructuraDomain> consultar(EstructuraAdministradorEstructuraDomain domain) {
-        final EstructuraAdministradorEstructuraEntity entity = EstructuraAdministradorEstructuraAssembler.getInstance().toEntityFromDomain(domain);
-        final List<EstructuraAdministradorEstructuraEntity> resultado = daoFactory.getEstructuraAdministradorEstructuraDAO().read(entity);
-        return null;
+    	final EstructuraAdministradorEstructuraEntity entity = EstructuraAdministradorEstructuraAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<EstructuraAdministradorEstructuraEntity> resultEntityList = daoFactory.getEstructuraAdministradorEstructuraDAO().read(entity);
+
+		return EstructuraAdministradorEstructuraAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

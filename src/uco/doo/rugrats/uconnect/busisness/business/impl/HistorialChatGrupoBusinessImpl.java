@@ -24,9 +24,11 @@ public final class HistorialChatGrupoBusinessImpl implements HistorialChatGrupoB
 
     @Override
     public List<HistorialChatGrupoDomain> listar(HistorialChatGrupoDomain domain) {
-        final HistorialChatGrupoEntity entity = HistorialChatGrupoAssembler.getInstance().toEntityFromDomain(domain);
-        final List<HistorialChatGrupoEntity> resultado = daoFactory.getHistorialChatGrupoDAO().read(entity);
-        return null;
+    	final HistorialChatGrupoEntity entity = HistorialChatGrupoAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<HistorialChatGrupoEntity> resultEntityList = daoFactory.getHistorialChatGrupoDAO().read(entity);
+
+		return HistorialChatGrupoAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

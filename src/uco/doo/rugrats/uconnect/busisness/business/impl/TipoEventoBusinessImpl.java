@@ -17,8 +17,10 @@ public final class TipoEventoBusinessImpl implements TipoEventoBusiness {
 
     @Override
     public List<TipoEventoDomain> consultar(TipoEventoDomain domain) {
-        final TipoEventoEntity entity = TipoEventoAssembler.getInstance().toEntityFromDomain(domain);
-        final List<TipoEventoEntity> resultado = daoFactory.getTipoEventoDAO().read(entity);
-        return null;
+    	final TipoEventoEntity entity = TipoEventoAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<TipoEventoEntity> resultEntityList = daoFactory.getTipoEventoDAO().read(entity);
+
+		return TipoEventoAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 }

@@ -6,7 +6,6 @@ import uco.doo.rugrats.uconnect.busisness.domain.AdministradorEstructuraDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.AdministradorEstructuraEntity;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -30,9 +29,11 @@ public final class AdministradorEstructuraBusinessImpl implements AdministradorE
 
     @Override
     public List<AdministradorEstructuraDomain> consultar(AdministradorEstructuraDomain domain) {
-        final AdministradorEstructuraEntity entity = AdministradorEstructuraAssembler.getInstance().toEntityFromDomain(domain);
-        final List<AdministradorEstructuraEntity> resultado = daoFactory.getAdministradorEstructuraDAO().read(entity);
-        return null;
+    	final AdministradorEstructuraEntity entity = AdministradorEstructuraAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<AdministradorEstructuraEntity> resultEntityList = daoFactory.getAdministradorEstructuraDAO().read(entity);
+
+		return AdministradorEstructuraAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

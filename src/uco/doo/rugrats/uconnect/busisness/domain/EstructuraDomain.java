@@ -1,5 +1,6 @@
 package uco.doo.rugrats.uconnect.busisness.domain;
 
+import uco.doo.rugrats.uconnect.utils.UtilBoolean;
 import uco.doo.rugrats.uconnect.utils.UtilObject;
 import uco.doo.rugrats.uconnect.utils.UtilText;
 import uco.doo.rugrats.uconnect.utils.UtilUUID;
@@ -12,30 +13,41 @@ public final class EstructuraDomain {
     private EstructuraDomain estructuraPadre;
     private String nombre;
     private EstadoDomain estado;
+    private boolean tienePadre;
+    private static final String UUID_PADRE = "";
 
+    private static final EstructuraDomain PADRE = new EstructuraDomain(UtilUUID.generateUUIDFromString(UUID_PADRE),OrganizacionDomain.getDefaultObject(),null,UtilText.getDefaultValue(),EstadoDomain.getDefaultObject(),UtilBoolean.getDefaultValue());
     public static final EstructuraDomain DEFAULT_OBJECT = new EstructuraDomain();
 
-    public EstructuraDomain(final UUID identificador, final OrganizacionDomain organizacion, final EstructuraDomain estructuraPadre, final String nombre, final EstadoDomain estado) {
+    public EstructuraDomain(final UUID identificador, final OrganizacionDomain organizacion, final EstructuraDomain estructuraPadre, final String nombre, final EstadoDomain estado,boolean tienePadre) {
         super();
         setIdentificador(identificador);
         setOrganizacion(organizacion);
         setEstructuraPadre(estructuraPadre);
         setNombre(nombre);
         setEstado(estado);
-
+        setTienePadre(tienePadre);
     }
 
     private EstructuraDomain() {
         super();
         setIdentificador(UtilUUID.getDefaultValue());
         setOrganizacion(OrganizacionDomain.getDefaultObject());
-        setEstructuraPadre(EstructuraDomain.getDefaultObject());
+        setEstructuraPadre(PADRE);
         setNombre(UtilText.getDefaultValue());
         setEstado(EstadoDomain.getDefaultObject());
-
+        setTienePadre(UtilBoolean.getDefaultValue());
     }
+    
+    public final boolean isTienePadre() {
+		return tienePadre;
+	}
 
-    private void setIdentificador(final UUID identificador) {
+	public final void setTienePadre(boolean tienePadre) {
+		this.tienePadre = UtilBoolean.getDefault(tienePadre);
+	}
+
+	private void setIdentificador(final UUID identificador) {
         this.identificador = UtilUUID.getDefault(identificador);
     }
 
@@ -44,7 +56,11 @@ public final class EstructuraDomain {
     }
 
     private void setEstructuraPadre(final EstructuraDomain estructuraPadre) {
-        this.estructuraPadre = UtilObject.getDefault(estructuraPadre, EstructuraDomain.getDefaultObject());
+    	if(isTienePadre()) {
+            this.estructuraPadre = UtilObject.getDefault(estructuraPadre, EstructuraDomain.getDefaultObject());
+    	}else {
+            this.estructuraPadre = PADRE;
+    	}
     }
 
     private void setNombre(final String nombre) {

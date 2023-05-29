@@ -15,8 +15,10 @@ public final class CausaReporteBusinessImpl implements CausaReporteBusiness {
     }
     @Override
     public List<CausaReporteDomain> consultar(CausaReporteDomain domain) {
-        final CausaReporteEntity entity = CausaReporteAssembler.getInstance().toEntityFromDomain(domain);
-        final List<CausaReporteEntity> resultado = daoFactory.getCausaReporteDAO().read(entity);
-        return null;
+    	final CausaReporteEntity entity = CausaReporteAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<CausaReporteEntity> resultEntityList = daoFactory.getCausaReporteDAO().read(entity);
+
+		return CausaReporteAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 }

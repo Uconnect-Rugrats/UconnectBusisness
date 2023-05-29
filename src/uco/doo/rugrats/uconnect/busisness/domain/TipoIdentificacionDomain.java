@@ -34,7 +34,7 @@ public final class TipoIdentificacionDomain {
     }
 
     private void setIndicador(final String indicador) {
-        this.indicador = UtilText.numericIsValid(UtilText.applyTrim(indicador)) ? UtilText.applyTrim(indicador) : UtilText.getDefaultNumeric();
+        this.indicador = UtilText.getUtilText().numericIsValid(UtilText.applyTrim(indicador)) ? UtilText.applyTrim(indicador) : UtilText.getDefaultNumeric();
     }
 
     public String getNombre() {

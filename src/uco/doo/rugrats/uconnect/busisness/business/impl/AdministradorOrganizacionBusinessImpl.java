@@ -31,9 +31,12 @@ public final class AdministradorOrganizacionBusinessImpl implements Administrado
 
     @Override
     public List<AdministradorOrganizacionDomain> consultar(AdministradorOrganizacionDomain domain) {
-        final AdministradorOrganizacionEntity entity = AdministradorOrganizacionAssembler.getInstance().toEntityFromDomain(domain);
-        final List<AdministradorOrganizacionEntity> resultado = daoFactory.getAdministradorOrganizacionDAO().read(entity);
-        return null;
+    	final AdministradorOrganizacionEntity entity = AdministradorOrganizacionAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<AdministradorOrganizacionEntity> resultEntityList = daoFactory.getAdministradorOrganizacionDAO().read(entity);
+
+		return AdministradorOrganizacionAssembler.getInstance().toDomainFromEntityList(resultEntityList);
+   
     }
 
     @Override

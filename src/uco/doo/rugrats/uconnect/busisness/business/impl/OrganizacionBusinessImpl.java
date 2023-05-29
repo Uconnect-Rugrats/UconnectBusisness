@@ -35,9 +35,11 @@ public final class OrganizacionBusinessImpl implements OrganizacionBusiness {
 
     @Override
     public List<OrganizacionDomain> consultar(OrganizacionDomain domain) {
-        final OrganizacionEntity entity = OrganizacionAssembler.getInstance().toEntityFromDomain(domain);
-        final List<OrganizacionEntity> resultado = daoFactory.getOrganizacionDAO().read(entity);
-        return null;
+    	final OrganizacionEntity entity = OrganizacionAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<OrganizacionEntity> resultEntityList = daoFactory.getOrganizacionDAO().read(entity);
+
+		return OrganizacionAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

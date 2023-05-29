@@ -30,9 +30,11 @@ public final class ChatBusinessImpl implements ChatBusiness {
 
     @Override
     public List<ChatDomain> consultar(ChatDomain domain) {
-        final ChatEntity entity = ChatAssembler.getInstance().toEntityFromDomain(domain);
-        final List<ChatEntity> resultado = daoFactory.getChatDAO().read(entity);
-        return null;
+    	final ChatEntity entity = ChatAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<ChatEntity> resultEntityList = daoFactory.getChatDAO().read(entity);
+
+		return ChatAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

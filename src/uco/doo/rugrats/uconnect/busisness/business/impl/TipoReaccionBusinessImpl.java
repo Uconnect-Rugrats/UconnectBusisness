@@ -16,8 +16,10 @@ public final class TipoReaccionBusinessImpl implements TipoReaccionBusiness {
 
     @Override
     public List<TipoReaccionDomain> consultar(TipoReaccionDomain domain) {
-        final TipoReaccionEntity entity = TipoReaccionAssembler.getInstance().toEntityFromDomain(domain);
-        final List<TipoReaccionEntity> resultado = daoFactory.getTipoReaccionDAO().read(entity);
-        return null;
+    	final TipoReaccionEntity entity = TipoReaccionAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<TipoReaccionEntity> resultEntityList = daoFactory.getTipoReaccionDAO().read(entity);
+
+		return TipoReaccionAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 }

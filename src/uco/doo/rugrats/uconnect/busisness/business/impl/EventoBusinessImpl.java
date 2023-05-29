@@ -36,9 +36,11 @@ public final class EventoBusinessImpl implements EventoBusiness {
 
     @Override
     public List<EventoDomain> abrir(EventoDomain domain) {
-        final EventoEntity entity = EventoAssembler.getInstance().toEntityFromDomain(domain);
-        final List<EventoEntity> resultado = daoFactory.getEventoDAO().read(entity);
-        return null;
+    	final EventoEntity entity = EventoAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<EventoEntity> resultEntityList = daoFactory.getEventoDAO().read(entity);
+
+		return EventoAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

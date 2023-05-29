@@ -36,9 +36,11 @@ public final class GrupoBusinessImpl implements GrupoBusiness {
 
     @Override
     public List<GrupoDomain> buscar(GrupoDomain domain) {
-        final GrupoEntity entity = GrupoAssembler.getInstance().toEntityFromDomain(domain);
-        final List<GrupoEntity> resultado = daoFactory.getGrupoDAO().read(entity);
-        return null;
+    	final GrupoEntity entity = GrupoAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<GrupoEntity> resultEntityList = daoFactory.getGrupoDAO().read(entity);
+
+		return GrupoAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

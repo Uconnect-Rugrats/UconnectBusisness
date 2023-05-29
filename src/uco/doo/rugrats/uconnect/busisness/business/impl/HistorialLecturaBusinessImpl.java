@@ -28,9 +28,11 @@ public final class HistorialLecturaBusinessImpl implements HistorialLecturaBusin
 
     @Override
     public List<HistorialLecturaDomain> mostrarInformacionMensaje(HistorialLecturaDomain domain) {
-        final HistorialLecturaEntity entity = HistorialLecturaAssembler.getInstance().toEntityFromDomain(domain);
-        final List<HistorialLecturaEntity> resultado = daoFactory.getHistorialLecturaDAO().read(entity);
-        return null;
+    	final HistorialLecturaEntity entity = HistorialLecturaAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<HistorialLecturaEntity> resultEntityList = daoFactory.getHistorialLecturaDAO().read(entity);
+
+		return HistorialLecturaAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

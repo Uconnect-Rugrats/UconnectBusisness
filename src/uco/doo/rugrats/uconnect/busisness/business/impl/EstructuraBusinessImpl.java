@@ -36,9 +36,11 @@ public final class EstructuraBusinessImpl implements EstructuraBusiness {
 
     @Override
     public List<EstructuraDomain> consultar(EstructuraDomain domain) {
-        final EstructuraEntity entity = EstructuraAssembler.getInstance().toEntityFromDomain(domain);
-        final List<EstructuraEntity> resultado = daoFactory.getEstructuraDAO().read(entity);
-        return null;
+    	final EstructuraEntity entity = EstructuraAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<EstructuraEntity> resultEntityList = daoFactory.getEstructuraDAO().read(entity);
+
+		return EstructuraAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override

@@ -19,26 +19,29 @@ public final class AgendaBusinessImpl implements AgendaBusiness {
     @Override
     public void crear(AgendaDomain domain) {
         final AgendaEntity entity = AgendaAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getAgenda().create(entity);
+        daoFactory.getAgendaDAO().create(entity);
     }
 
     @Override
     public void modificarFechaFinalizacion(AgendaDomain domain) {
         final AgendaEntity entity = AgendaAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getAgenda().update(entity);
+        daoFactory.getAgendaDAO().update(entity);
     }
 
     @Override
     public void cambiarEstado(AgendaDomain domain) {
         final AgendaEntity entity = AgendaAssembler.getInstance().toEntityFromDomain(domain);
-        daoFactory.getAgenda().update(entity);
+        daoFactory.getAgendaDAO().update(entity);
     }
 
     @Override
     public List<AgendaDomain> consultar(AgendaDomain domain) {
-        final AgendaEntity entity = AgendaAssembler.getInstance().toEntityFromDomain(domain);
-        final List<AgendaEntity> resultado = daoFactory.getAgenda().read(entity);
-        return null;
+    	final AgendaEntity entity = AgendaAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<AgendaEntity> resultEntityList = daoFactory.getAgendaDAO().read(entity);
+
+		return AgendaAssembler.getInstance().toDomainFromEntityList(resultEntityList);
+   
     }
 
     @Override
@@ -48,7 +51,7 @@ public final class AgendaBusinessImpl implements AgendaBusiness {
 
     @Override
     public void eliminar(UUID domain) {
-        daoFactory.getAgenda().delete(domain);
+        daoFactory.getAgendaDAO().delete(domain);
     }
 
     @Override

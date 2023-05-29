@@ -1,5 +1,6 @@
 package uco.doo.rugrats.uconnect.busisness.domain;
 
+import uco.doo.rugrats.uconnect.utils.UtilBoolean;
 import uco.doo.rugrats.uconnect.utils.UtilDate;
 import uco.doo.rugrats.uconnect.utils.UtilObject;
 import uco.doo.rugrats.uconnect.utils.UtilText;
@@ -16,22 +17,25 @@ public final class ComentarioDomain {
     private ParticipanteGrupoDomain autor;
     private String contenido;
     private EstadoDomain estado;
+    private boolean tienePadre;
+    private static final String UUID_PADRE = "";
+
+    private static final ComentarioDomain PADRE = new ComentarioDomain(UtilUUID.generateUUIDFromString(UUID_PADRE),PublicacionDomain.getDefaultObject(),null,UtilDate.getDefaultValue(),ParticipanteGrupoDomain.getDefaultObject(),UtilText.getDefaultValue(),EstadoDomain.getDefaultObject(),UtilBoolean.getDefaultValue());
 
     public static final ComentarioDomain DEFAULT_OBJECT = new ComentarioDomain();
 
     private ComentarioDomain() {
-        super();
         setIdentificador(UtilUUID.getDefaultValue());
         setPublicacion(PublicacionDomain.getDefaultObject());
-        setComentarioPadre(null); // PROBLEMA
+        setComentarioPadre(PADRE); 
         setFechaPublicacion(UtilDate.getDefaultValue());
         setAutor(ParticipanteGrupoDomain.getDefaultObject());
         setContenido(UtilText.getDefaultValue());
         setEstado(EstadoDomain.getDefaultObject());
+        setTienePadre(UtilBoolean.getDefaultValue());
     }
 
-    public ComentarioDomain(final UUID identificador, final PublicacionDomain publicacion, final ComentarioDomain comentarioPadre, final LocalDateTime fechaPublicacion, final ParticipanteGrupoDomain autor, final String contenido, final EstadoDomain estado) {
-        super();
+    public ComentarioDomain( UUID identificador, PublicacionDomain publicacion, ComentarioDomain comentarioPadre, LocalDateTime fechaPublicacion, ParticipanteGrupoDomain autor,String contenido, EstadoDomain estado, boolean tienePadre) {
         setIdentificador(identificador);
         setPublicacion(publicacion);
         setComentarioPadre(comentarioPadre);
@@ -39,9 +43,19 @@ public final class ComentarioDomain {
         setAutor(autor);
         setContenido(contenido);
         setEstado(estado);
+        setTienePadre(tienePadre);
     }
+    
 
-    private void setIdentificador(final UUID identificador) {
+    public final boolean isTienePadre() {
+		return tienePadre;
+	}
+
+	public final void setTienePadre(boolean tienePadre) {
+		this.tienePadre = UtilBoolean.getDefault(tienePadre);
+	}
+
+	private void setIdentificador(final UUID identificador) {
         this.identificador = UtilUUID.getDefault(identificador);
     }
 
@@ -50,7 +64,11 @@ public final class ComentarioDomain {
     }
 
     private void setComentarioPadre(final ComentarioDomain comentarioPadre) {
-        this.comentarioPadre = UtilObject.getDefault(comentarioPadre, ComentarioDomain.getDefaultObject());
+    	if(isTienePadre()) {
+            this.comentarioPadre = UtilObject.getDefault(comentarioPadre, ComentarioDomain.getDefaultObject());
+    	}else {
+            this.comentarioPadre = PADRE;
+    	}
     }
 
     private void setFechaPublicacion(final LocalDateTime fechaPublicacion) {

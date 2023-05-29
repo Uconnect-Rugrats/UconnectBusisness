@@ -16,8 +16,10 @@ public final class TipoEstadoBusinessImpl implements TipoEstadoBusiness {
 
     @Override
     public List<TipoEstadoDomain> consultar(TipoEstadoDomain domain) {
-        final TipoEstadoEntity entity = TipoEstadoAssembler.getInstance().toEntityFromDomain(domain);
-        final List<TipoEstadoEntity> resultado = daoFactory.getTipoEstadoDAO().read(entity);
-        return null;
+    	final TipoEstadoEntity entity = TipoEstadoAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<TipoEstadoEntity> resultEntityList = daoFactory.getTipoEstadoDAO().read(entity);
+
+		return TipoEstadoAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 }

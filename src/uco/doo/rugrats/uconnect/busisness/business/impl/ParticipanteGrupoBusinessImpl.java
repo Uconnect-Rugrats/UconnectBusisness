@@ -24,9 +24,11 @@ public final class ParticipanteGrupoBusinessImpl implements ParticipanteGrupoBus
 
     @Override
     public List<ParticipanteGrupoDomain> consultar(ParticipanteGrupoDomain domain) {
-        final ParticipanteGrupoEntity entity = ParticipanteGrupoAssembler.getInstance().toEntityFromDomain(domain);
-        final List<ParticipanteGrupoEntity> resultado = daoFactory.getParticipanteGrupoDAO().read(entity);
-        return null;
+    	final ParticipanteGrupoEntity entity = ParticipanteGrupoAssembler.getInstance().toEntityFromDomain(domain);
+
+		final List<ParticipanteGrupoEntity> resultEntityList = daoFactory.getParticipanteGrupoDAO().read(entity);
+
+		return ParticipanteGrupoAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
     @Override
