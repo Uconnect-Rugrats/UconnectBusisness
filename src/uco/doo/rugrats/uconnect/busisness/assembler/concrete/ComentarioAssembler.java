@@ -39,7 +39,7 @@ public final class ComentarioAssembler implements Assembler<ComentarioDomain, Co
     @Override
     public ComentarioDomain toDomainFromEntity(ComentarioEntity entity) {
         return new ComentarioDomain(entity.getIdentificador(), PublicacionAssembler.getInstance().toDomainFromEntity(entity.getPublicacion()),
-        		!UtilObject.isNull(entity.getComentarioPadre())? ComentarioAssembler.getInstance().toDomainFromEntity(entity.getComentarioPadre()):null,entity.getFechaPublicacion(),ParticipanteGrupoAssembler.getInstance().toDomainFromEntity(entity.getAutor()),
+        		!UtilObject.isNull(entity.getComentarioPadre())? ComentarioAssembler.getInstance().toDomainFromEntity(entity.getComentarioPadre()):null,entity.getFechaComentario(),ParticipanteGrupoAssembler.getInstance().toDomainFromEntity(entity.getAutor()),
                 entity.getContenido(),EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()),entity.isTienePadre());
     }
 
