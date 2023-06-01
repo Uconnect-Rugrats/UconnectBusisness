@@ -40,7 +40,7 @@ public final class ComentarioBusinessImpl implements ComentarioBusiness {
     public void cambiarEstado(ComentarioDomain domain) {
 		final ComentarioEntity entity = ComentarioAssembler.getInstance().toEntityFromDomain(domain);
 		var entitiesToCompare = daoFactory.getComentarioDAO().read(entity);
-    	if(!(!entitiesToCompare.isEmpty() ? entitiesToCompare.get(0).getEstado().getNombre().equalsIgnoreCase(entity.getEstado().getNombre()):true)){
+    	if(entitiesToCompare.isEmpty() ? false: !entitiesToCompare.get(0).getEstado().getNombre().equalsIgnoreCase(entity.getEstado().getNombre())){
             daoFactory.getComentarioDAO().update(entity);
     	}  
     }

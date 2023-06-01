@@ -114,4 +114,29 @@ public final class ReaccionFacadeImpl implements ReaccionFacade {
 			daoFactory.closeConnection();
 		}
 	}
+
+	@Override
+	public void cambiarReaccion(ReaccionDTO dto) {
+		try {
+			daoFactory.initTransaction();
+			final ReaccionDomain domain = ReaccionAssembler.getInstance().toDomainFromDTO(dto);
+
+			business.cambiarReaccion(domain);
+
+			daoFactory.commitTransaction();
+
+		} catch (final UconnectException exception) {
+			daoFactory.rollbackTransaction();
+			throw exception;
+		} catch (final Exception exception) {
+			daoFactory.rollbackTransaction();
+			var userMessage = UconnectBusinessMessages.Facade.ReaccionFacadeImplMessages.USER_MESSAGE_MODIFY;
+			var technicalMessage = UconnectBusinessMessages.Facade.ReaccionFacadeImplMessages.TECHNICAL_MESSAGE_MODIFY;
+
+			throw UconnectBusisnessException.create(technicalMessage, userMessage, exception);
+		} finally {
+			daoFactory.closeConnection();
+		}
+	
+	}
 }

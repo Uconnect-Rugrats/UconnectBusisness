@@ -52,4 +52,14 @@ public final class ReaccionBusinessImpl implements ReaccionBusiness {
     public EstadoDomain obtenerEstadoReal() {
         return null;
     }
+
+	@Override
+	public void cambiarReaccion(ReaccionDomain domain) {
+		final ReaccionEntity entity = ReaccionAssembler.getInstance().toEntityFromDomain(domain);
+		var entitiesToCompare = daoFactory.getReaccionDAO().read(entity);
+    	if(entitiesToCompare.isEmpty() ? false: !entitiesToCompare.get(0).getTipo().getNombre().equalsIgnoreCase(entity.getTipo().getNombre())){
+            daoFactory.getReaccionDAO().update(entity);
+    	} 
+		
+	}
 }
