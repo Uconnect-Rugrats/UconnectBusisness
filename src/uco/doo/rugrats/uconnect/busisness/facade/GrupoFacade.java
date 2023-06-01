@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.facade;
 
-import uco.doo.rugrats.uconnect.busisness.domain.GrupoDomain;
 import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.dto.GrupoDTO;
 

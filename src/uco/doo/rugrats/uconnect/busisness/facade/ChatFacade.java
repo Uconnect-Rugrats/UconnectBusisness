@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.facade;
 
-import uco.doo.rugrats.uconnect.busisness.domain.ChatDomain;
 import uco.doo.rugrats.uconnect.dto.ChatDTO;
 import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 
