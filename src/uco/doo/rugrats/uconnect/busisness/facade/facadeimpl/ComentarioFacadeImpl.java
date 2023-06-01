@@ -139,4 +139,12 @@ public final class ComentarioFacadeImpl implements ComentarioFacade {
 			daoFactory.closeConnection();
 		}
 	}
+	public static void main(String[] args) {
+		var daoFactory = DAOFactory.getFactory(Factory.POSTGRESQL);
+
+		ComentarioBusiness business = new ComentarioBusinessImpl(daoFactory);
+
+		ComentarioDomain dto = ComentarioDomain.getDefaultObject();
+		var result = business.consultar(dto);
+	}
 }
