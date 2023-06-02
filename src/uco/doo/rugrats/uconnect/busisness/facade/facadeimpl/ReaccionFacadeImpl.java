@@ -137,6 +137,5 @@ public final class ReaccionFacadeImpl implements ReaccionFacade {
 		} finally {
 			daoFactory.closeConnection();
 		}
-	
 	}
 }
