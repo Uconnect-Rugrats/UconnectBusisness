@@ -11,7 +11,7 @@ public final class AdministradorOrganizacionDomain {
 
     public static final AdministradorOrganizacionDomain DEFAULT_OBJECT = new AdministradorOrganizacionDomain();
     private AdministradorOrganizacionDomain(){
-        super();
+		super();
         setIdentificador(UtilUUID.getDefaultValue());
         setPersona(PersonaDomain.getDefaultObject());
     }

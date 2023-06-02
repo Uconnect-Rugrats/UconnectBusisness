@@ -41,16 +41,11 @@ public final class RespuestaReportePublicacionAssembler implements Assembler<Res
 
     @Override
     public List<RespuestaReportePublicacionDomain> toDomainFromEntityList(List<RespuestaReportePublicacionEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+        return entityList.stream().map(this::toDomainFromEntity).toList();
 
-    }
-
-    @Override
-    public List<RespuestaReportePublicacionDomain> toDomainFromDTOList(List<RespuestaReportePublicacionDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
     }
 
     @Override
     public List<RespuestaReportePublicacionDTO> toDTOFromDomainList(List<RespuestaReportePublicacionDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
+		return domainList.stream().map(this::toDTOFromDomain).toList();    }
 }

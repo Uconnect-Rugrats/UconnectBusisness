@@ -65,10 +65,9 @@ public final class ComentarioFacadeImpl implements ComentarioFacade {
 			throw exception;
 		} catch (final Exception exception) {
 			daoFactory.rollbackTransaction();
-			var userMessage = UconnectBusinessMessages.Facade.ComentarioFacadeImplMessages.USER_MESSAGE_MODIFY;
-			var technicalMessage = UconnectBusinessMessages.Facade.ComentarioFacadeImplMessages.TECHNICAL_MESSAGE_MODIFY;
-
-			throw UconnectBusisnessException.create(technicalMessage, userMessage, exception);
+			throw UconnectBusisnessException.create(
+					UconnectBusinessMessages.Facade.ComentarioFacadeImplMessages.TECHNICAL_MESSAGE_MODIFY,
+					UconnectBusinessMessages.Facade.ComentarioFacadeImplMessages.USER_MESSAGE_MODIFY, exception);
 		} finally {
 			daoFactory.closeConnection();
 		}
@@ -80,7 +79,7 @@ public final class ComentarioFacadeImpl implements ComentarioFacade {
 			daoFactory.initTransaction();
 			final ComentarioDomain domainList = ComentarioAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<ComentarioDomain> lista = business.consultar(domainList);
+			final List<ComentarioDomain> lista = business.consultar(domainList);
 
 			return ComentarioAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -123,7 +122,7 @@ public final class ComentarioFacadeImpl implements ComentarioFacade {
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

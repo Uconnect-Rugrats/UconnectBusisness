@@ -7,8 +7,11 @@ import java.util.List;
 import java.util.UUID;
 
 public interface HistorialChatGrupoFacade {
-    void generar(HistorialChatGrupoDTO dto);
-    List<HistorialChatGrupoDTO> listar(HistorialChatGrupoDTO dto);
-    void eliminar(UUID dto);
-    EstadoDTO obtenerEstadoReal();
+	void generar(HistorialChatGrupoDTO dto);
+
+	List<HistorialChatGrupoDTO> listar(HistorialChatGrupoDTO dto);
+
+	void eliminar(UUID dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

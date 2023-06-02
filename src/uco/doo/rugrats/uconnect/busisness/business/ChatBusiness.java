@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ChatBusiness {
-    void crear(ChatDomain domain);
-    void cambiarEstado(ChatDomain domain);
-    List<ChatDomain> consultar(ChatDomain domain);
-    void eliminar(UUID domain);
-    EstadoDomain obtenerEstadoReal();
+	void crear(ChatDomain domain);
+
+	void cambiarEstado(ChatDomain domain);
+
+	List<ChatDomain> consultar(ChatDomain domain);
+
+	void eliminar(UUID domain);
+
+	EstadoDomain obtenerEstadoReal();
 }

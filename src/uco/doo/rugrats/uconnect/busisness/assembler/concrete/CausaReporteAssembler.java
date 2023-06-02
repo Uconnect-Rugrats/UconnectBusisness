@@ -36,17 +36,12 @@ public final class CausaReporteAssembler implements Assembler<CausaReporteDomain
 
     @Override
     public List<CausaReporteDomain> toDomainFromEntityList(List<CausaReporteEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+        return entityList.stream().map(this::toDomainFromEntity).toList();
 
-    }
-
-    @Override
-    public List<CausaReporteDomain> toDomainFromDTOList(List<CausaReporteDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
     }
 
     @Override
     public List<CausaReporteDTO> toDTOFromDomainList(List<CausaReporteDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
+		return domainList.stream().map(this::toDTOFromDomain).toList();
     }
 }

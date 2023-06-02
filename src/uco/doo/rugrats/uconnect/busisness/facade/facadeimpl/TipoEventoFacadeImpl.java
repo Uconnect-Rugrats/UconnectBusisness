@@ -29,7 +29,7 @@ public final class TipoEventoFacadeImpl implements TipoEventoFacade {
 			daoFactory.initTransaction();
 			final TipoEventoDomain domainList = TipoEventoAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<TipoEventoDomain> lista = business.consultar(domainList);
+			final List<TipoEventoDomain> lista = business.consultar(domainList);
 
 			return TipoEventoAssembler.getInstance().toDTOFromDomainList(lista);
 

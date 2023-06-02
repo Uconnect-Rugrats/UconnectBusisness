@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ComentarioBusiness {
-    void comentar(ComentarioDomain domain);
-    void cambiarEstado(ComentarioDomain domain);
-    List<ComentarioDomain> consultar(ComentarioDomain domain);
-    void eliminar(UUID domain);
-    EstadoDomain obtenerEstadoReal();
+	void comentar(ComentarioDomain domain);
+
+	void cambiarEstado(ComentarioDomain domain);
+
+	List<ComentarioDomain> consultar(ComentarioDomain domain);
+
+	void eliminar(UUID domain);
+
+	EstadoDomain obtenerEstadoReal();
 }

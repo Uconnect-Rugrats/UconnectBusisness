@@ -33,8 +33,8 @@ public final class EventoDomain {
         setEstado(EstadoDomain.getDefaultObject());
     }
 
-    public EventoDomain(final UUID identificador, final AgendaDomain agenda, final String nombre, final String descripcion, String lugar, final EstructuraAdministradorEstructuraDomain organizador, final TipoEventoDomain tipo, final LocalDateTime fechaEjecucion, final EstadoDomain estado) {
-        super();
+    public EventoDomain(UUID identificador, AgendaDomain agenda, String nombre, String descripcion, String lugar, EstructuraAdministradorEstructuraDomain organizador, TipoEventoDomain tipo, LocalDateTime fechaEjecucion, EstadoDomain estado) {
+		super();
         setIdentificador(identificador);
         setAgenda(agenda);
         setNombre(nombre);

@@ -29,7 +29,7 @@ public final class TipoEstadoFacadeImpl implements TipoEstadoFacade {
 			daoFactory.initTransaction();
 			final TipoEstadoDomain domainList = TipoEstadoAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<TipoEstadoDomain> lista = business.consultar(domainList);
+			final List<TipoEstadoDomain> lista = business.consultar(domainList);
 
 			return TipoEstadoAssembler.getInstance().toDTOFromDomainList(lista);
 

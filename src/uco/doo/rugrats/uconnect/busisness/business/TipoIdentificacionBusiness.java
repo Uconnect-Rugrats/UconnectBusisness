@@ -5,5 +5,5 @@ import uco.doo.rugrats.uconnect.busisness.domain.TipoIdentificacionDomain;
 import java.util.List;
 
 public interface TipoIdentificacionBusiness {
-    List<TipoIdentificacionDomain> consultar(TipoIdentificacionDomain domain);
+	List<TipoIdentificacionDomain> consultar(TipoIdentificacionDomain domain);
 }

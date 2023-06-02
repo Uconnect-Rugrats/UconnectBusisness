@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ReaccionBusiness {
-    void reaccionar(ReaccionDomain domain);
-    List<ReaccionDomain> mostrar(ReaccionDomain domain);
-    void cambiarReaccion(ReaccionDomain domain);
-    void eliminar(UUID domain);
-    EstadoDomain obtenerEstadoReal();
+	void reaccionar(ReaccionDomain domain);
+
+	List<ReaccionDomain> mostrar(ReaccionDomain domain);
+
+	void cambiarReaccion(ReaccionDomain domain);
+
+	void eliminar(UUID domain);
+
+	EstadoDomain obtenerEstadoReal();
 }

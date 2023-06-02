@@ -5,5 +5,5 @@ import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import java.util.List;
 
 public interface EstadoFacade {
-    List<EstadoDTO> consultar(EstadoDTO dto);
+	List<EstadoDTO> consultar(EstadoDTO dto);
 }

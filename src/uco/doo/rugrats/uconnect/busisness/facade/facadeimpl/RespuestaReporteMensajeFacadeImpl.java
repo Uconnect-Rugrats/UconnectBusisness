@@ -83,7 +83,7 @@ public final class RespuestaReporteMensajeFacadeImpl implements RespuestaReporte
 			final RespuestaReporteMensajeDomain domainList = RespuestaReporteMensajeAssembler.getInstance()
 					.toDomainFromDTO(dto);
 
-			List<RespuestaReporteMensajeDomain> lista = business.abrir(domainList);
+			final List<RespuestaReporteMensajeDomain> lista = business.abrir(domainList);
 
 			return RespuestaReporteMensajeAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -128,7 +128,7 @@ public final class RespuestaReporteMensajeFacadeImpl implements RespuestaReporte
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

@@ -7,10 +7,15 @@ import java.util.List;
 import java.util.UUID;
 
 public interface EstructuraFacade {
-    void crearNueva(EstructuraDTO dto);
-    void cambiarNombre(EstructuraDTO dto);
-    void cambiarEstado(EstructuraDTO dto);
-    List<EstructuraDTO> consultar(EstructuraDTO dto);
-    void eliminar(UUID dto);
-    EstadoDTO obtenerEstadoReal();
+	void crearNueva(EstructuraDTO dto);
+
+	void cambiarNombre(EstructuraDTO dto);
+
+	void cambiarEstado(EstructuraDTO dto);
+
+	List<EstructuraDTO> consultar(EstructuraDTO dto);
+
+	void eliminar(UUID dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

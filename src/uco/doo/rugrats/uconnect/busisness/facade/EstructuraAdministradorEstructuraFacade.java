@@ -7,8 +7,11 @@ import java.util.List;
 import java.util.UUID;
 
 public interface EstructuraAdministradorEstructuraFacade {
-    void asignarEstructura(EstructuraAdministradorEstructuraDTO dto);
-    List<EstructuraAdministradorEstructuraDTO> consultar(EstructuraAdministradorEstructuraDTO dto);
-    void eliminar(UUID dto);
-    EstadoDTO obtenerEstadoReal();
+	void asignarEstructura(EstructuraAdministradorEstructuraDTO dto);
+
+	List<EstructuraAdministradorEstructuraDTO> consultar(EstructuraAdministradorEstructuraDTO dto);
+
+	void eliminar(UUID dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

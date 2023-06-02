@@ -55,7 +55,7 @@ public final class ReaccionFacadeImpl implements ReaccionFacade {
 			daoFactory.initTransaction();
 			final ReaccionDomain domainList = ReaccionAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<ReaccionDomain> lista = business.mostrar(domainList);
+			final List<ReaccionDomain> lista = business.mostrar(domainList);
 
 			return ReaccionAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -98,7 +98,7 @@ public final class ReaccionFacadeImpl implements ReaccionFacade {
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 
@@ -130,10 +130,9 @@ public final class ReaccionFacadeImpl implements ReaccionFacade {
 			throw exception;
 		} catch (final Exception exception) {
 			daoFactory.rollbackTransaction();
-			var userMessage = UconnectBusinessMessages.Facade.ReaccionFacadeImplMessages.USER_MESSAGE_MODIFY;
-			var technicalMessage = UconnectBusinessMessages.Facade.ReaccionFacadeImplMessages.TECHNICAL_MESSAGE_MODIFY;
-
-			throw UconnectBusisnessException.create(technicalMessage, userMessage, exception);
+			throw UconnectBusisnessException.create(
+					UconnectBusinessMessages.Facade.ReaccionFacadeImplMessages.TECHNICAL_MESSAGE_MODIFY,
+					UconnectBusinessMessages.Facade.ReaccionFacadeImplMessages.USER_MESSAGE_MODIFY, exception);
 		} finally {
 			daoFactory.closeConnection();
 		}

@@ -6,52 +6,54 @@ import uco.doo.rugrats.uconnect.utils.UtilUUID;
 import java.util.UUID;
 
 public final class PaisDomain {
-    private UUID identificador;
-    private String nombre;
-    private String indicador;
+	private UUID identificador;
+	private String nombre;
+	private String indicador;
 
-    public static final PaisDomain DEFAULT_OBJECT = new PaisDomain();
+	public static final PaisDomain DEFAULT_OBJECT = new PaisDomain();
 
-    private PaisDomain(){
-        super();
-        setIdentificador(UtilUUID.getDefaultValue());
-        setNombre(UtilText.getDefaultValue());
-        setIndicador(UtilText.getDefaultNumeric());
-    }
+	private PaisDomain() {
+		super();
+		setIdentificador(UtilUUID.getDefaultValue());
+		setNombre(UtilText.getDefaultValue());
+		setIndicador(UtilText.getDefaultNumeric());
+	}
 
-    public PaisDomain(UUID identificador, String nombre, String indicador){
-        super();
-        setIdentificador(identificador);
-        setNombre(nombre);
-        setIndicador(indicador);
-    }
+	public PaisDomain(UUID identificador, String nombre, String indicador) {
+		super();
+		setIdentificador(identificador);
+		setNombre(nombre);
+		setIndicador(indicador);
+	}
 
-    private void setIdentificador(final UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-    }
+	private void setIdentificador(final UUID identificador) {
+		this.identificador = UtilUUID.getDefault(identificador);
+	}
 
-    private void setNombre(final String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-    }
+	private void setNombre(final String nombre) {
+		this.nombre = UtilText.applyTrim(nombre);
+	}
 
-    private void setIndicador(final String indicador) {
-        this.indicador = UtilText.getUtilText().numericIsValid(UtilText.applyTrim(indicador)) ? UtilText.applyTrim(indicador) : UtilText.getDefaultNumeric();
-    }
+	private void setIndicador(final String indicador) {
+		this.indicador = UtilText.getUtilText().numericIsValid(UtilText.applyTrim(indicador))
+				? UtilText.applyTrim(indicador)
+				: UtilText.getDefaultNumeric();
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public UUID getIdentificador() {
-        return identificador;
-    }
+	public UUID getIdentificador() {
+		return identificador;
+	}
 
-    public String getIndicador() {
-        return indicador;
-    }
+	public String getIndicador() {
+		return indicador;
+	}
 
-    public static PaisDomain getDefaultObject(){
-        return DEFAULT_OBJECT;
-    }
+	public static PaisDomain getDefaultObject() {
+		return DEFAULT_OBJECT;
+	}
 
 }

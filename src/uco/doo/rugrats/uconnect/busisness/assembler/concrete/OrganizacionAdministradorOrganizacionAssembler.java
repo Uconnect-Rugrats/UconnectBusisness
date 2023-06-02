@@ -41,16 +41,11 @@ public final class OrganizacionAdministradorOrganizacionAssembler implements Ass
 
     @Override
     public List<OrganizacionAdministradorOrganizacionDomain> toDomainFromEntityList(List<OrganizacionAdministradorOrganizacionEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+        return entityList.stream().map(this::toDomainFromEntity).toList();
 
-    }
-
-    @Override
-    public List<OrganizacionAdministradorOrganizacionDomain> toDomainFromDTOList(List<OrganizacionAdministradorOrganizacionDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
     }
 
     @Override
     public List<OrganizacionAdministradorOrganizacionDTO> toDTOFromDomainList(List<OrganizacionAdministradorOrganizacionDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
+		return domainList.stream().map(this::toDTOFromDomain).toList();    }
 }

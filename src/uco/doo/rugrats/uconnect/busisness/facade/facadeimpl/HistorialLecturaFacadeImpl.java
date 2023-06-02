@@ -77,7 +77,7 @@ public final class HistorialLecturaFacadeImpl implements HistorialLecturaFacade 
 			daoFactory.initTransaction();
 			final HistorialLecturaDomain domainList = HistorialLecturaAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<HistorialLecturaDomain> lista = business.mostrarInformacionMensaje(domainList);
+			final List<HistorialLecturaDomain> lista = business.mostrarInformacionMensaje(domainList);
 
 			return HistorialLecturaAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -98,7 +98,7 @@ public final class HistorialLecturaFacadeImpl implements HistorialLecturaFacade 
     public EstadoDTO obtenerEstadoReal() {
         try {
             daoFactory.initTransaction();
-            EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+            final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
             daoFactory.commitTransaction();
             return dto;
 

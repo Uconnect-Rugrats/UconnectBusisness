@@ -41,17 +41,12 @@ public final class ReaccionAssembler implements Assembler<ReaccionDomain, Reacci
 
     @Override
     public List<ReaccionDomain> toDomainFromEntityList(List<ReaccionEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+		return entityList.stream().map(this::toDomainFromEntity).toList();
 
-    }
-
-    @Override
-    public List<ReaccionDomain> toDomainFromDTOList(List<ReaccionDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
     }
 
     @Override
     public List<ReaccionDTO> toDTOFromDomainList(List<ReaccionDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
+        return domainList.stream().map(this::toDTOFromDomain).toList();
     }
 }

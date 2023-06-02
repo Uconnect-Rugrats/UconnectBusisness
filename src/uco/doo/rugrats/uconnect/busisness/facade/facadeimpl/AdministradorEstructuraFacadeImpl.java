@@ -128,7 +128,7 @@ public final class AdministradorEstructuraFacadeImpl implements AdministradorEst
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

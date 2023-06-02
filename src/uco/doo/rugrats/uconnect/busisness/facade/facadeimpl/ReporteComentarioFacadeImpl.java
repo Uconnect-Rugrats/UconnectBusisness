@@ -78,7 +78,7 @@ public final class ReporteComentarioFacadeImpl implements ReporteComentarioFacad
 			daoFactory.initTransaction();
 			final ReporteComentarioDomain domainList = ReporteComentarioAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<ReporteComentarioDomain> lista = business.abrir(domainList);
+			final List<ReporteComentarioDomain> lista = business.abrir(domainList);
 
 			return ReporteComentarioAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -99,7 +99,7 @@ public final class ReporteComentarioFacadeImpl implements ReporteComentarioFacad
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

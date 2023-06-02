@@ -78,7 +78,7 @@ public final class ChatFacadeImpl implements ChatFacade {
 			daoFactory.initTransaction();
 			final ChatDomain domainList = ChatAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<ChatDomain> lista = business.consultar(domainList);
+			final List<ChatDomain> lista = business.consultar(domainList);
 
 			return ChatAssembler.getInstance().toDTOFromDomainList(lista);
 

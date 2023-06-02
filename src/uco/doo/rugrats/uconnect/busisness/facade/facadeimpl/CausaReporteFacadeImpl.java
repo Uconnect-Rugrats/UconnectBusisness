@@ -29,7 +29,7 @@ public final class CausaReporteFacadeImpl implements CausaReporteFacade {
 			daoFactory.initTransaction();
 			final CausaReporteDomain domainList = CausaReporteAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<CausaReporteDomain> lista = business.consultar(domainList);
+			final List<CausaReporteDomain> lista = business.consultar(domainList);
 
 			return CausaReporteAssembler.getInstance().toDTOFromDomainList(lista);
 

@@ -5,5 +5,5 @@ import uco.doo.rugrats.uconnect.dto.PaisDTO;
 import java.util.List;
 
 public interface PaisFacade {
-    List<PaisDTO> consultar(PaisDTO dto);
+	List<PaisDTO> consultar(PaisDTO dto);
 }

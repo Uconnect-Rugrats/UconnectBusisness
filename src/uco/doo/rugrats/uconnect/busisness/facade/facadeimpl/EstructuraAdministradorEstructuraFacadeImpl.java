@@ -58,7 +58,7 @@ public final class EstructuraAdministradorEstructuraFacadeImpl implements Estruc
 			final EstructuraAdministradorEstructuraDomain domainList = EstructuraAdministradorEstructuraAssembler
 					.getInstance().toDomainFromDTO(dto);
 
-			List<EstructuraAdministradorEstructuraDomain> lista = business.consultar(domainList);
+			final List<EstructuraAdministradorEstructuraDomain> lista = business.consultar(domainList);
 
 			return EstructuraAdministradorEstructuraAssembler.getInstance().toDTOFromDomainList(lista);
 

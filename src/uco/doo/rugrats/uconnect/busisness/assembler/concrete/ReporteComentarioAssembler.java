@@ -44,16 +44,11 @@ public final class ReporteComentarioAssembler implements Assembler<ReporteComent
 
     @Override
     public List<ReporteComentarioDomain> toDomainFromEntityList(List<ReporteComentarioEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+        return entityList.stream().map(this::toDomainFromEntity).toList();
 
-    }
-
-    @Override
-    public List<ReporteComentarioDomain> toDomainFromDTOList(List<ReporteComentarioDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
     }
 
     @Override
     public List<ReporteComentarioDTO> toDTOFromDomainList(List<ReporteComentarioDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
+		return domainList.stream().map(this::toDTOFromDomain).toList();    }
 }

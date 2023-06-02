@@ -8,82 +8,85 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public final class ReporteMensajeDomain {
-    private UUID identificador;
-    private MensajeDomain mensaje;
-    private ParticipanteGrupoDomain autor;
-    private CausaReporteDomain causa;
-    private LocalDateTime fechaAcusacion;
-    private EstadoDomain estado;
-    public static final ReporteMensajeDomain DEFAULT_OBJECT = new ReporteMensajeDomain();
-    private ReporteMensajeDomain() {
-        super();
-        setIdentificador(UtilUUID.getDefaultValue());
-        setMensaje(MensajeDomain.getDefaultObject());
-        setAutor(ParticipanteGrupoDomain.getDefaultObject());
-        setCausa(CausaReporteDomain.getDefaultObject());
-        setFechaAcusacion(UtilDate.getDefaultValue());
-        setEstado(EstadoDomain.getDefaultObject());
-    }
+	private UUID identificador;
+	private MensajeDomain mensaje;
+	private ParticipanteGrupoDomain autor;
+	private CausaReporteDomain causa;
+	private LocalDateTime fechaAcusacion;
+	private EstadoDomain estado;
+	public static final ReporteMensajeDomain DEFAULT_OBJECT = new ReporteMensajeDomain();
 
-    public ReporteMensajeDomain(final UUID identificador, final MensajeDomain mensaje, final ParticipanteGrupoDomain autor, final CausaReporteDomain causa, final LocalDateTime fechaAcusacion, final EstadoDomain estado) {
-        super();
-        setIdentificador(identificador);
-        setMensaje(mensaje);
-        setAutor(autor);
-        setCausa(causa);
-        setFechaAcusacion(fechaAcusacion);
-        setEstado(estado);
-    }
+	private ReporteMensajeDomain() {
+		super();
+		setIdentificador(UtilUUID.getDefaultValue());
+		setMensaje(MensajeDomain.getDefaultObject());
+		setAutor(ParticipanteGrupoDomain.getDefaultObject());
+		setCausa(CausaReporteDomain.getDefaultObject());
+		setFechaAcusacion(UtilDate.getDefaultValue());
+		setEstado(EstadoDomain.getDefaultObject());
+	}
 
-    private void setIdentificador(final UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-    }
+	public ReporteMensajeDomain(final UUID identificador, final MensajeDomain mensaje,
+			final ParticipanteGrupoDomain autor, final CausaReporteDomain causa, final LocalDateTime fechaAcusacion,
+			final EstadoDomain estado) {
+		super();
+		setIdentificador(identificador);
+		setMensaje(mensaje);
+		setAutor(autor);
+		setCausa(causa);
+		setFechaAcusacion(fechaAcusacion);
+		setEstado(estado);
+	}
 
-    private void setMensaje(final MensajeDomain mensaje) {
-        this.mensaje = UtilObject.getDefault(mensaje, MensajeDomain.getDefaultObject());
-    }
+	private void setIdentificador(final UUID identificador) {
+		this.identificador = UtilUUID.getDefault(identificador);
+	}
 
-    private void setAutor(final ParticipanteGrupoDomain autor) {
-        this.autor = UtilObject.getDefault(autor, ParticipanteGrupoDomain.getDefaultObject());
-    }
+	private void setMensaje(final MensajeDomain mensaje) {
+		this.mensaje = UtilObject.getDefault(mensaje, MensajeDomain.getDefaultObject());
+	}
 
-    private void setCausa(final CausaReporteDomain causa) {
-        this.causa = UtilObject.getDefault(causa, CausaReporteDomain.getDefaultObject());
-    }
+	private void setAutor(final ParticipanteGrupoDomain autor) {
+		this.autor = UtilObject.getDefault(autor, ParticipanteGrupoDomain.getDefaultObject());
+	}
 
-    private void setFechaAcusacion(final LocalDateTime fechaAcusacion) {
-        this.fechaAcusacion = UtilDate.getDefault(fechaAcusacion);
-    }
+	private void setCausa(final CausaReporteDomain causa) {
+		this.causa = UtilObject.getDefault(causa, CausaReporteDomain.getDefaultObject());
+	}
 
-    private void setEstado(final EstadoDomain estado) {
-        this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
-    }
+	private void setFechaAcusacion(final LocalDateTime fechaAcusacion) {
+		this.fechaAcusacion = UtilDate.getDefault(fechaAcusacion);
+	}
 
-    public UUID getIdentificador() {
-        return identificador;
-    }
+	private void setEstado(final EstadoDomain estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
+	}
 
-    public MensajeDomain getMensaje() {
-        return mensaje;
-    }
+	public UUID getIdentificador() {
+		return identificador;
+	}
 
-    public ParticipanteGrupoDomain getAutor() {
-        return autor;
-    }
+	public MensajeDomain getMensaje() {
+		return mensaje;
+	}
 
-    public CausaReporteDomain getCausa() {
-        return causa;
-    }
+	public ParticipanteGrupoDomain getAutor() {
+		return autor;
+	}
 
-    public LocalDateTime getFechaAcusacion() {
-        return fechaAcusacion;
-    }
+	public CausaReporteDomain getCausa() {
+		return causa;
+	}
 
-    public EstadoDomain getEstado() {
-        return estado;
-    }
+	public LocalDateTime getFechaAcusacion() {
+		return fechaAcusacion;
+	}
 
-    public static final ReporteMensajeDomain getDefaultObject(){
-        return DEFAULT_OBJECT;
-    }
+	public EstadoDomain getEstado() {
+		return estado;
+	}
+
+	public static final ReporteMensajeDomain getDefaultObject() {
+		return DEFAULT_OBJECT;
+	}
 }

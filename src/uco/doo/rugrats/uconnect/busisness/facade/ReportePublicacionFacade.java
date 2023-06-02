@@ -6,8 +6,11 @@ import uco.doo.rugrats.uconnect.dto.ReportePublicacionDTO;
 import java.util.List;
 
 public interface ReportePublicacionFacade {
-    void reportar(ReportePublicacionDTO dto);
-    void cambiarEstado(ReportePublicacionDTO dto);
-    List<ReportePublicacionDTO> abrir(ReportePublicacionDTO dto);
-    EstadoDTO obtenerEstadoReal();
+	void reportar(ReportePublicacionDTO dto);
+
+	void cambiarEstado(ReportePublicacionDTO dto);
+
+	List<ReportePublicacionDTO> abrir(ReportePublicacionDTO dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

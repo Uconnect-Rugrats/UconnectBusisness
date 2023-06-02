@@ -29,7 +29,7 @@ public final class TipoIdentificacionFacadeImpl implements TipoIdentificacionFac
 			daoFactory.initTransaction();
 			final TipoIdentificacionDomain domainList = TipoIdentificacionAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<TipoIdentificacionDomain> lista = business.consultar(domainList);
+			final List<TipoIdentificacionDomain> lista = business.consultar(domainList);
 
 			return TipoIdentificacionAssembler.getInstance().toDTOFromDomainList(lista);
 

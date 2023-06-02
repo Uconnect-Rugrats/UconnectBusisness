@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface RespuestaReporteMensajeFacade {
-    void revisar(RespuestaReporteMensajeDTO dto);
-    void cerrarRespuesta(RespuestaReporteMensajeDTO dto);
-    List<RespuestaReporteMensajeDTO> abrir(RespuestaReporteMensajeDTO dto);
-    void eliminar(UUID dto);
-    EstadoDTO obtenerEstadoReal();
+	void revisar(RespuestaReporteMensajeDTO dto);
+
+	void cerrarRespuesta(RespuestaReporteMensajeDTO dto);
+
+	List<RespuestaReporteMensajeDTO> abrir(RespuestaReporteMensajeDTO dto);
+
+	void eliminar(UUID dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

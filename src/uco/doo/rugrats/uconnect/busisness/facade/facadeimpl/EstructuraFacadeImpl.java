@@ -101,7 +101,7 @@ public final class EstructuraFacadeImpl implements EstructuraFacade {
 			daoFactory.initTransaction();
 			final EstructuraDomain domainList = EstructuraAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<EstructuraDomain> lista = business.consultar(domainList);
+			final List<EstructuraDomain> lista = business.consultar(domainList);
 
 			return EstructuraAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -144,7 +144,7 @@ public final class EstructuraFacadeImpl implements EstructuraFacade {
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

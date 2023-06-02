@@ -8,48 +8,51 @@ import uco.doo.rugrats.uconnect.entities.ChatEntity;
 import java.util.List;
 
 public final class ChatAssembler implements Assembler<ChatDomain, ChatDTO, ChatEntity> {
-    public static final ChatAssembler INSTANCE = new ChatAssembler();
-    public static ChatAssembler getInstance() { return INSTANCE; }
-    private ChatAssembler(){
-        super();
-    }
+	public static final ChatAssembler INSTANCE = new ChatAssembler();
 
-    @Override
-    public ChatDTO toDTOFromDomain(ChatDomain domain) {
-        return ChatDTO.create().setIdentificador(domain.getIdentificador()).setGrupo(GrupoAssembler.getInstance().toDTOFromDomain(domain.getGrupo()))
-                .setEstado(EstadoAssembler.getInstance().toDTOFromDomain(domain.getEstado()));
-    }
+	public static ChatAssembler getInstance() {
+		return INSTANCE;
+	}
 
-    @Override
-    public ChatDomain toDomainFromDTO(ChatDTO dto) {
-        return new ChatDomain(dto.getIdentificador(),GrupoAssembler.getInstance().toDomainFromDTO(dto.getGrupo()),
-                EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()));
-    }
+	private ChatAssembler() {
+		super();
+	}
 
-    @Override
-    public ChatEntity toEntityFromDomain(ChatDomain domain) {
-        return new ChatEntity(domain.getIdentificador(),GrupoAssembler.getInstance().toEntityFromDomain(domain.getGrupo()),
-                EstadoAssembler.getInstance().toEntityFromDomain(domain.getEstado()));
-    }
+	@Override
+	public ChatDTO toDTOFromDomain(ChatDomain domain) {
+		return ChatDTO.create().setIdentificador(domain.getIdentificador())
+				.setGrupo(GrupoAssembler.getInstance().toDTOFromDomain(domain.getGrupo()))
+				.setEstado(EstadoAssembler.getInstance().toDTOFromDomain(domain.getEstado()));
+	}
 
-    @Override
-    public ChatDomain toDomainFromEntity(ChatEntity entity) {
-        return new ChatDomain(entity.getIdentificador(),GrupoAssembler.getInstance().toDomainFromEntity(entity.getGrupo()),
-                EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
-    }
+	@Override
+	public ChatDomain toDomainFromDTO(ChatDTO dto) {
+		return new ChatDomain(dto.getIdentificador(), GrupoAssembler.getInstance().toDomainFromDTO(dto.getGrupo()),
+				EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()));
+	}
 
-    @Override
-    public List<ChatDomain> toDomainFromEntityList(List<ChatEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	@Override
+	public ChatEntity toEntityFromDomain(ChatDomain domain) {
+		return new ChatEntity(domain.getIdentificador(),
+				GrupoAssembler.getInstance().toEntityFromDomain(domain.getGrupo()),
+				EstadoAssembler.getInstance().toEntityFromDomain(domain.getEstado()));
+	}
 
-    }
+	@Override
+	public ChatDomain toDomainFromEntity(ChatEntity entity) {
+		return new ChatDomain(entity.getIdentificador(),
+				GrupoAssembler.getInstance().toDomainFromEntity(entity.getGrupo()),
+				EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+	}
 
-    @Override
-    public List<ChatDomain> toDomainFromDTOList(List<ChatDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
-    }
+	@Override
+	public List<ChatDomain> toDomainFromEntityList(List<ChatEntity> entityList) {
+		return entityList.stream().map(this::toDomainFromEntity).toList();
 
-    @Override
-    public List<ChatDTO> toDTOFromDomainList(List<ChatDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
+	}
+
+	@Override
+	public List<ChatDTO> toDTOFromDomainList(List<ChatDomain> domainList) {
+		return domainList.stream().map(this::toDTOFromDomain).toList();
+	}
 }

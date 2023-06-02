@@ -39,16 +39,11 @@ public final class OrganizacionAssembler implements Assembler<OrganizacionDomain
 
     @Override
     public List<OrganizacionDomain> toDomainFromEntityList(List<OrganizacionEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+        return entityList.stream().map(this::toDomainFromEntity).toList();
 
-    }
-
-    @Override
-    public List<OrganizacionDomain> toDomainFromDTOList(List<OrganizacionDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
     }
 
     @Override
     public List<OrganizacionDTO> toDTOFromDomainList(List<OrganizacionDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
+		return domainList.stream().map(this::toDTOFromDomain).toList();    }
 }

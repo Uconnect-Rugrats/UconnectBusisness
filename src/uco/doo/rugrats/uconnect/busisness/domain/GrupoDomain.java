@@ -7,61 +7,63 @@ import uco.doo.rugrats.uconnect.utils.UtilUUID;
 import java.util.UUID;
 
 public final class GrupoDomain {
-    private UUID identificador;
-    private EstructuraDomain estructura;
-    private String nombre;
-    private EstadoDomain estado;
+	private UUID identificador;
+	private EstructuraDomain estructura;
+	private String nombre;
+	private EstadoDomain estado;
 
-    public static final GrupoDomain DEFAULT_OBJECT = new GrupoDomain();
-    private GrupoDomain() {
-        super();
-        setIdentificador(UtilUUID.getDefaultValue());
-        setEstructura(EstructuraDomain.getDefaultObject());
-        setNombre(UtilText.getDefaultValue());
-        setEstado(EstadoDomain.getDefaultObject());
-    }
+	public static final GrupoDomain DEFAULT_OBJECT = new GrupoDomain();
 
-    public GrupoDomain(final UUID identificador, final EstructuraDomain estructura, final String nombre, final EstadoDomain estado) {
-        super();
-        setIdentificador(identificador);
-        setEstructura(estructura);
-        setNombre(nombre);
-        setEstado(estado);
-    }
+	private GrupoDomain() {
+		super();
+		setIdentificador(UtilUUID.getDefaultValue());
+		setEstructura(EstructuraDomain.getDefaultObject());
+		setNombre(UtilText.getDefaultValue());
+		setEstado(EstadoDomain.getDefaultObject());
+	}
 
-    private void setIdentificador(final UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-    }
+	public GrupoDomain(final UUID identificador, final EstructuraDomain estructura, final String nombre,
+			final EstadoDomain estado) {
+		super();
+		setIdentificador(identificador);
+		setEstructura(estructura);
+		setNombre(nombre);
+		setEstado(estado);
+	}
 
-    private void setEstructura(final EstructuraDomain estructura) {
-        this.estructura = UtilObject.getDefault(estructura, EstructuraDomain.getDefaultObject());
-    }
+	private void setIdentificador(final UUID identificador) {
+		this.identificador = UtilUUID.getDefault(identificador);
+	}
 
-    private void setNombre(final String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-    }
+	private void setEstructura(final EstructuraDomain estructura) {
+		this.estructura = UtilObject.getDefault(estructura, EstructuraDomain.getDefaultObject());
+	}
 
-    private void setEstado(final EstadoDomain estado) {
-        this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
-    }
+	private void setNombre(final String nombre) {
+		this.nombre = UtilText.applyTrim(nombre);
+	}
 
-    public UUID getIdentificador() {
-        return identificador;
-    }
+	private void setEstado(final EstadoDomain estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
+	}
 
-    public EstructuraDomain getEstructura() {
-        return estructura;
-    }
+	public UUID getIdentificador() {
+		return identificador;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public EstructuraDomain getEstructura() {
+		return estructura;
+	}
 
-    public EstadoDomain getEstado() {
-        return estado;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public static GrupoDomain getDefaultObject(){
-        return DEFAULT_OBJECT;
-    }
+	public EstadoDomain getEstado() {
+		return estado;
+	}
+
+	public static GrupoDomain getDefaultObject() {
+		return DEFAULT_OBJECT;
+	}
 }

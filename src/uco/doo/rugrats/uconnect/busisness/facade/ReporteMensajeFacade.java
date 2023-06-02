@@ -6,9 +6,11 @@ import uco.doo.rugrats.uconnect.dto.ReporteMensajeDTO;
 import java.util.List;
 
 public interface ReporteMensajeFacade {
-    void reportar(ReporteMensajeDTO dto);
-    void cambiarEstado(ReporteMensajeDTO dto);
+	void reportar(ReporteMensajeDTO dto);
 
-    List<ReporteMensajeDTO> abrir(ReporteMensajeDTO dto);
-    EstadoDTO obtenerEstadoReal();
+	void cambiarEstado(ReporteMensajeDTO dto);
+
+	List<ReporteMensajeDTO> abrir(ReporteMensajeDTO dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

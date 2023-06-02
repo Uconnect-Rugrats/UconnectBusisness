@@ -6,53 +6,50 @@ import uco.doo.rugrats.uconnect.utils.UtilUUID;
 import java.util.UUID;
 
 public final class TipoOrganizacionDomain {
-    private UUID identificador;
-    private String nombre;
-    private String descripcion;
+	private UUID identificador;
+	private String nombre;
+	private String descripcion;
 
-    public static final TipoOrganizacionDomain DEFAULT_OBJECT = new TipoOrganizacionDomain();
-    private TipoOrganizacionDomain() {
-        setIdentificador(UtilUUID.getDefaultValue());
-        setNombre(UtilText.getDefaultValue());
-        setDescripcion(UtilText.getDefaultValue());
-    }
+	public static final TipoOrganizacionDomain DEFAULT_OBJECT = new TipoOrganizacionDomain();
 
-    public TipoOrganizacionDomain(UUID identificador, String nombre, String descripcion) {
-        setIdentificador(identificador);
-        setNombre(nombre);
-        setDescripcion(descripcion);
-    }
+	private TipoOrganizacionDomain() {
+		setIdentificador(UtilUUID.getDefaultValue());
+		setNombre(UtilText.getDefaultValue());
+		setDescripcion(UtilText.getDefaultValue());
+	}
 
-    public UUID getIdentificador() {
-        return identificador;
-    }
+	public TipoOrganizacionDomain(UUID identificador, String nombre, String descripcion) {
+		setIdentificador(identificador);
+		setNombre(nombre);
+		setDescripcion(descripcion);
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public UUID getIdentificador() {
+		return identificador;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
+	public String getDescripcion() {
+		return descripcion;
+	}
 
+	private void setIdentificador(final UUID identificador) {
+		this.identificador = UtilUUID.getDefault(identificador);
+	}
 
-    private void setIdentificador(final UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-    }
+	private void setNombre(final String nombre) {
+		this.nombre = UtilText.applyTrim(nombre);
+	}
 
-    private void setNombre(final String nombre) {
-        this.nombre = UtilText.applyTrim(nombre);
-    }
+	private void setDescripcion(final String descripcion) {
+		this.descripcion = UtilText.applyTrim(descripcion);
+	}
 
-    private void setDescripcion(final String descripcion) {
-        this.descripcion = UtilText.applyTrim(descripcion);
-    }
-
-
-    public static TipoOrganizacionDomain getDefaultObject() {
-        return DEFAULT_OBJECT;
-    }
+	public static TipoOrganizacionDomain getDefaultObject() {
+		return DEFAULT_OBJECT;
+	}
 
 }
-

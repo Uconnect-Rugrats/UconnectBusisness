@@ -59,7 +59,7 @@ public final class OrganizacionAdministradorOrganizacionFacadeImpl
 			final OrganizacionAdministradorOrganizacionDomain domainList = OrganizacionAdministradorOrganizacionAssembler
 					.getInstance().toDomainFromDTO(dto);
 
-			List<OrganizacionAdministradorOrganizacionDomain> lista = business.consultar(domainList);
+			final List<OrganizacionAdministradorOrganizacionDomain> lista = business.consultar(domainList);
 
 			return OrganizacionAdministradorOrganizacionAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -104,7 +104,7 @@ public final class OrganizacionAdministradorOrganizacionFacadeImpl
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

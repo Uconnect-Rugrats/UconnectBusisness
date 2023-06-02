@@ -8,83 +8,86 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public final class ReaccionDomain {
-    private UUID identificador;
-    private PublicacionDomain publicacion;
-    private ParticipanteGrupoDomain autor;
-    private LocalDateTime fechaReaccion;
-    private TipoReaccionDomain tipo;
-    private EstadoDomain estado;
+	private UUID identificador;
+	private PublicacionDomain publicacion;
+	private ParticipanteGrupoDomain autor;
+	private LocalDateTime fechaReaccion;
+	private TipoReaccionDomain tipo;
+	private EstadoDomain estado;
 
-    public static final ReaccionDomain DEFAULT_OBJECT = new ReaccionDomain();
-    private ReaccionDomain() {
-        super();
-        setIdentificador(UtilUUID.getDefaultValue());
-        setPublicacion(PublicacionDomain.getDefaultObject());
-        setAutor(ParticipanteGrupoDomain.getDefaultObject());
-        setFechaReaccion(UtilDate.getDefaultValue());
-        setTipo(TipoReaccionDomain.getDefaultObject());
-        setEstado(EstadoDomain.getDefaultObject());
-    }
+	public static final ReaccionDomain DEFAULT_OBJECT = new ReaccionDomain();
 
-    public ReaccionDomain(final UUID identificador, final PublicacionDomain publicacion, final ParticipanteGrupoDomain autor, final LocalDateTime fechaReaccion, final TipoReaccionDomain tipo, final EstadoDomain estado) {
-        super();
-        setIdentificador(identificador);
-        setPublicacion(publicacion);
-        setAutor(autor);
-        setFechaReaccion(fechaReaccion);
-        setTipo(tipo);
-        setEstado(estado);
-    }
+	private ReaccionDomain() {
+		super();
+		setIdentificador(UtilUUID.getDefaultValue());
+		setPublicacion(PublicacionDomain.getDefaultObject());
+		setAutor(ParticipanteGrupoDomain.getDefaultObject());
+		setFechaReaccion(UtilDate.getDefaultValue());
+		setTipo(TipoReaccionDomain.getDefaultObject());
+		setEstado(EstadoDomain.getDefaultObject());
+	}
 
-    private void setIdentificador(final UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-    }
+	public ReaccionDomain(final UUID identificador, final PublicacionDomain publicacion,
+			final ParticipanteGrupoDomain autor, final LocalDateTime fechaReaccion, final TipoReaccionDomain tipo,
+			final EstadoDomain estado) {
+		super();
+		setIdentificador(identificador);
+		setPublicacion(publicacion);
+		setAutor(autor);
+		setFechaReaccion(fechaReaccion);
+		setTipo(tipo);
+		setEstado(estado);
+	}
 
-    private void setPublicacion(final PublicacionDomain publicacion) {
-        this.publicacion = UtilObject.getDefault(publicacion,  PublicacionDomain.getDefaultObject());
-    }
+	private void setIdentificador(final UUID identificador) {
+		this.identificador = UtilUUID.getDefault(identificador);
+	}
 
-    private void setAutor(final ParticipanteGrupoDomain autor) {
-        this.autor = UtilObject.getDefault(autor, ParticipanteGrupoDomain.getDefaultObject());
-    }
+	private void setPublicacion(final PublicacionDomain publicacion) {
+		this.publicacion = UtilObject.getDefault(publicacion, PublicacionDomain.getDefaultObject());
+	}
 
-    private void setFechaReaccion(final LocalDateTime fechaReaccion) {
-        this.fechaReaccion = UtilDate.getDefault(fechaReaccion);
-    }
+	private void setAutor(final ParticipanteGrupoDomain autor) {
+		this.autor = UtilObject.getDefault(autor, ParticipanteGrupoDomain.getDefaultObject());
+	}
 
-    private void setTipo(final TipoReaccionDomain tipo) {
-        this.tipo = UtilObject.getDefault(tipo, TipoReaccionDomain.getDefaultObject());
-    }
+	private void setFechaReaccion(final LocalDateTime fechaReaccion) {
+		this.fechaReaccion = UtilDate.getDefault(fechaReaccion);
+	}
 
-    private void setEstado(final EstadoDomain estado) {
-        this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
-    }
+	private void setTipo(final TipoReaccionDomain tipo) {
+		this.tipo = UtilObject.getDefault(tipo, TipoReaccionDomain.getDefaultObject());
+	}
 
-    public UUID getIdentificador() {
-        return identificador;
-    }
+	private void setEstado(final EstadoDomain estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
+	}
 
-    public PublicacionDomain getPublicacion() {
-        return publicacion;
-    }
+	public UUID getIdentificador() {
+		return identificador;
+	}
 
-    public ParticipanteGrupoDomain getAutor() {
-        return autor;
-    }
+	public PublicacionDomain getPublicacion() {
+		return publicacion;
+	}
 
-    public LocalDateTime getFechaReaccion() {
-        return fechaReaccion;
-    }
+	public ParticipanteGrupoDomain getAutor() {
+		return autor;
+	}
 
-    public TipoReaccionDomain getTipo() {
-        return tipo;
-    }
+	public LocalDateTime getFechaReaccion() {
+		return fechaReaccion;
+	}
 
-    public EstadoDomain getEstado() {
-        return estado;
-    }
+	public TipoReaccionDomain getTipo() {
+		return tipo;
+	}
 
-    public static final ReaccionDomain getDefaultObject(){
-        return DEFAULT_OBJECT;
-    }
+	public EstadoDomain getEstado() {
+		return estado;
+	}
+
+	public static final ReaccionDomain getDefaultObject() {
+		return DEFAULT_OBJECT;
+	}
 }

@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface AdministradorOrganizacionFacade {
-    void concederPermisos(AdministradorOrganizacionDTO dto);
-    void cambiarEstado(AdministradorOrganizacionDTO dto);
-    List<AdministradorOrganizacionDTO> consultar(AdministradorOrganizacionDTO dto);
-    void eliminar(UUID dto);
-    EstadoDTO obtenerEstadoReal();
+	void concederPermisos(AdministradorOrganizacionDTO dto);
+
+	void cambiarEstado(AdministradorOrganizacionDTO dto);
+
+	List<AdministradorOrganizacionDTO> consultar(AdministradorOrganizacionDTO dto);
+
+	void eliminar(UUID dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

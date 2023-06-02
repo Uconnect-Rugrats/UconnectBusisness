@@ -29,7 +29,7 @@ public final class TipoReaccionFacadeImpl implements TipoReaccionFacade {
 			daoFactory.initTransaction();
 			final TipoReaccionDomain domainList = TipoReaccionAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<TipoReaccionDomain> lista = business.consultar(domainList);
+			final List<TipoReaccionDomain> lista = business.consultar(domainList);
 
 			return TipoReaccionAssembler.getInstance().toDTOFromDomainList(lista);
 

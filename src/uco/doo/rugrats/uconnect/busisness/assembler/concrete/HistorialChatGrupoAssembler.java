@@ -7,50 +7,57 @@ import uco.doo.rugrats.uconnect.entities.HistorialChatGrupoEntity;
 
 import java.util.List;
 
-public final class HistorialChatGrupoAssembler implements Assembler<HistorialChatGrupoDomain, HistorialChatGrupoDTO, HistorialChatGrupoEntity> {
-    public static final HistorialChatGrupoAssembler INSTANCE = new HistorialChatGrupoAssembler();
-    public static HistorialChatGrupoAssembler getInstance() { return INSTANCE; }
-    private HistorialChatGrupoAssembler(){
-        super();
-    }
+public final class HistorialChatGrupoAssembler
+		implements Assembler<HistorialChatGrupoDomain, HistorialChatGrupoDTO, HistorialChatGrupoEntity> {
+	public static final HistorialChatGrupoAssembler INSTANCE = new HistorialChatGrupoAssembler();
 
-    @Override
-    public HistorialChatGrupoDTO toDTOFromDomain(HistorialChatGrupoDomain domain) {
-        return HistorialChatGrupoDTO.create().setIdentificador(domain.getIdentificador()).setChat(ChatAssembler.getInstance().toDTOFromDomain(domain.getChat()))
-                .setFechaIngreso(domain.getFechaIngreso()).setParticipante(ParticipanteGrupoAssembler.getInstance().toDTOFromDomain(domain.getParticipante()));
-    }
+	public static HistorialChatGrupoAssembler getInstance() {
+		return INSTANCE;
+	}
 
-    @Override
-    public HistorialChatGrupoDomain toDomainFromDTO(HistorialChatGrupoDTO dto) {
-        return new HistorialChatGrupoDomain(dto.getIdentificador(),ChatAssembler.getInstance().toDomainFromDTO(dto.getChat()),
-                ParticipanteGrupoAssembler.getInstance().toDomainFromDTO(dto.getParticipante()), dto.getFechaIngreso());
-    }
+	private HistorialChatGrupoAssembler() {
+		super();
+	}
 
-    @Override
-    public HistorialChatGrupoEntity toEntityFromDomain(HistorialChatGrupoDomain domain) {
-        return new HistorialChatGrupoEntity(domain.getIdentificador(),ChatAssembler.getInstance().toEntityFromDomain(domain.getChat()),
-                ParticipanteGrupoAssembler.getInstance().toEntityFromDomain(domain.getParticipante()),domain.getFechaIngreso() );
-    }
+	@Override
+	public HistorialChatGrupoDTO toDTOFromDomain(HistorialChatGrupoDomain domain) {
+		return HistorialChatGrupoDTO.create().setIdentificador(domain.getIdentificador())
+				.setChat(ChatAssembler.getInstance().toDTOFromDomain(domain.getChat()))
+				.setFechaIngreso(domain.getFechaIngreso())
+				.setParticipante(ParticipanteGrupoAssembler.getInstance().toDTOFromDomain(domain.getParticipante()));
+	}
 
-    @Override
-    public HistorialChatGrupoDomain toDomainFromEntity(HistorialChatGrupoEntity entity) {
-        return new HistorialChatGrupoDomain(entity.getIdentificador(),ChatAssembler.getInstance().toDomainFromEntity(entity.getChat()),
-                ParticipanteGrupoAssembler.getInstance().toDomainFromEntity(entity.getParticipante()),entity.getFechaIngreso() );
-    }
+	@Override
+	public HistorialChatGrupoDomain toDomainFromDTO(HistorialChatGrupoDTO dto) {
+		return new HistorialChatGrupoDomain(dto.getIdentificador(),
+				ChatAssembler.getInstance().toDomainFromDTO(dto.getChat()),
+				ParticipanteGrupoAssembler.getInstance().toDomainFromDTO(dto.getParticipante()), dto.getFechaIngreso());
+	}
 
-    @Override
-    public List<HistorialChatGrupoDomain> toDomainFromEntityList(List<HistorialChatGrupoEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+	@Override
+	public HistorialChatGrupoEntity toEntityFromDomain(HistorialChatGrupoDomain domain) {
+		return new HistorialChatGrupoEntity(domain.getIdentificador(),
+				ChatAssembler.getInstance().toEntityFromDomain(domain.getChat()),
+				ParticipanteGrupoAssembler.getInstance().toEntityFromDomain(domain.getParticipante()),
+				domain.getFechaIngreso());
+	}
 
-    }
+	@Override
+	public HistorialChatGrupoDomain toDomainFromEntity(HistorialChatGrupoEntity entity) {
+		return new HistorialChatGrupoDomain(entity.getIdentificador(),
+				ChatAssembler.getInstance().toDomainFromEntity(entity.getChat()),
+				ParticipanteGrupoAssembler.getInstance().toDomainFromEntity(entity.getParticipante()),
+				entity.getFechaIngreso());
+	}
 
-    @Override
-    public List<HistorialChatGrupoDomain> toDomainFromDTOList(List<HistorialChatGrupoDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
-    }
+	@Override
+	public List<HistorialChatGrupoDomain> toDomainFromEntityList(List<HistorialChatGrupoEntity> entityList) {
+		return entityList.stream().map(this::toDomainFromEntity).toList();
 
-    @Override
-    public List<HistorialChatGrupoDTO> toDTOFromDomainList(List<HistorialChatGrupoDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
-    }
+	}
+
+	@Override
+	public List<HistorialChatGrupoDTO> toDTOFromDomainList(List<HistorialChatGrupoDomain> domainList) {
+		return domainList.stream().map(this::toDTOFromDomain).toList();
+	}
 }

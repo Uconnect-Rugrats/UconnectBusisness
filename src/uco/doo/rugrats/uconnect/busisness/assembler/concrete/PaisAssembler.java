@@ -36,16 +36,10 @@ public final class PaisAssembler implements Assembler<PaisDomain, PaisDTO, PaisE
 
     @Override
     public List<PaisDomain> toDomainFromEntityList(List<PaisEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+        return entityList.stream().map(this::toDomainFromEntity).toList();
 
     }
-
-    @Override
-    public List<PaisDomain> toDomainFromDTOList(List<PaisDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
-    }
-
     @Override
     public List<PaisDTO> toDTOFromDomainList(List<PaisDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
+		return domainList.stream().map(this::toDTOFromDomain).toList();    }
 }

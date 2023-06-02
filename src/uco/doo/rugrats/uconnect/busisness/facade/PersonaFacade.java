@@ -6,9 +6,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface PersonaFacade {
-    void registrar(PersonaDTO dto);
-    void editar(PersonaDTO dto);
-    void cambiarEstado(PersonaDTO dto);
-    List<PersonaDTO> consultar(PersonaDTO dto);
-    void eliminar(UUID dto);
+	void registrar(PersonaDTO dto);
+
+	void editar(PersonaDTO dto);
+
+	void cambiarEstado(PersonaDTO dto);
+
+	List<PersonaDTO> consultar(PersonaDTO dto);
+
+	void eliminar(UUID dto);
 }

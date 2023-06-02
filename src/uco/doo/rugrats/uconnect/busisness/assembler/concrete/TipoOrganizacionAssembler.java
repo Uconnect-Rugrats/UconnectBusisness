@@ -35,15 +35,10 @@ public final class TipoOrganizacionAssembler implements Assembler<TipoOrganizaci
 
     @Override
     public List<TipoOrganizacionDomain> toDomainFromEntityList(List<TipoOrganizacionEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
-    }
-
-    @Override
-    public List<TipoOrganizacionDomain> toDomainFromDTOList(List<TipoOrganizacionDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
+        return entityList.stream().map(this::toDomainFromEntity).toList();
     }
 
     @Override
     public List<TipoOrganizacionDTO> toDTOFromDomainList(List<TipoOrganizacionDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
+		return domainList.stream().map(this::toDTOFromDomain).toList();    }
 }

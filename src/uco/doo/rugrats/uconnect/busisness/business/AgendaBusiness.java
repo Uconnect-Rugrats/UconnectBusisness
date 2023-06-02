@@ -6,13 +6,18 @@ import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import java.util.List;
 import java.util.UUID;
 
-
 public interface AgendaBusiness {
-    void crear(AgendaDomain domain);
-    void modificarFechaFinalizacion(AgendaDomain domain);
-    void cambiarEstado(AgendaDomain domain);
-    List<AgendaDomain> consultar(AgendaDomain domain);
-    AgendaDomain abrir(AgendaDomain domain);
-    void eliminar(UUID domain);
-    EstadoDomain obtenerEstadoReal();
+	void crear(AgendaDomain domain);
+
+	void modificarFechaFinalizacion(AgendaDomain domain);
+
+	void cambiarEstado(AgendaDomain domain);
+
+	List<AgendaDomain> consultar(AgendaDomain domain);
+
+	AgendaDomain abrir(AgendaDomain domain);
+
+	void eliminar(UUID domain);
+
+	EstadoDomain obtenerEstadoReal();
 }

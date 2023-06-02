@@ -41,16 +41,10 @@ public final class ParticipanteGrupoAssembler implements Assembler<ParticipanteG
 
     @Override
     public List<ParticipanteGrupoDomain> toDomainFromEntityList(List<ParticipanteGrupoEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+        return entityList.stream().map(this::toDomainFromEntity).toList();
 
     }
-
-    @Override
-    public List<ParticipanteGrupoDomain> toDomainFromDTOList(List<ParticipanteGrupoDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
-    }
-
     @Override
     public List<ParticipanteGrupoDTO> toDTOFromDomainList(List<ParticipanteGrupoDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();    }
+		return domainList.stream().map(this::toDTOFromDomain).toList();    }
 }

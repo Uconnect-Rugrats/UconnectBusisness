@@ -78,7 +78,7 @@ public final class MensajeFacadeImpl implements MensajeFacade {
 			daoFactory.initTransaction();
 			final MensajeDomain domainList = MensajeAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<MensajeDomain> lista = business.cargar(domainList);
+			final List<MensajeDomain> lista = business.cargar(domainList);
 
 			return MensajeAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -121,7 +121,7 @@ public final class MensajeFacadeImpl implements MensajeFacade {
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

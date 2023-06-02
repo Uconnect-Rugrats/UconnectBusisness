@@ -35,17 +35,12 @@ public final class AdministradorOrganizacionAssembler implements Assembler<Admin
 
     @Override
     public List<AdministradorOrganizacionDomain> toDomainFromEntityList(List<AdministradorOrganizacionEntity> entityList) {
-        return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+		return entityList.stream().map(this::toDomainFromEntity).toList();
 
-    }
-
-    @Override
-    public List<AdministradorOrganizacionDomain> toDomainFromDTOList(List<AdministradorOrganizacionDTO> dtoList) {
-        return dtoList.stream().map(dto -> toDomainFromDTO(dto)).toList();
     }
 
     @Override
     public List<AdministradorOrganizacionDTO> toDTOFromDomainList(List<AdministradorOrganizacionDomain> domainList) {
-        return domainList.stream().map(domain -> toDTOFromDomain(domain)).toList();
+        return domainList.stream().map(this::toDTOFromDomain).toList();
     }
 }

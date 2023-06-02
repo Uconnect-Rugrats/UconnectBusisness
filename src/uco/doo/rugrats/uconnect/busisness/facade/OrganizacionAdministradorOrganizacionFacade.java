@@ -7,8 +7,11 @@ import java.util.List;
 import java.util.UUID;
 
 public interface OrganizacionAdministradorOrganizacionFacade {
-    void asignarOrganizacion(OrganizacionAdministradorOrganizacionDTO dto);
-    List<OrganizacionAdministradorOrganizacionDTO> consultar(OrganizacionAdministradorOrganizacionDTO dto);
-    void eliminar(UUID dto);
-    EstadoDTO obtenerEstadoReal();
+	void asignarOrganizacion(OrganizacionAdministradorOrganizacionDTO dto);
+
+	List<OrganizacionAdministradorOrganizacionDTO> consultar(OrganizacionAdministradorOrganizacionDTO dto);
+
+	void eliminar(UUID dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

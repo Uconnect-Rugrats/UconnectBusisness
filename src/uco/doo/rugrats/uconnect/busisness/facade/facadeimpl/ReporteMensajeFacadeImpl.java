@@ -77,7 +77,7 @@ public final class ReporteMensajeFacadeImpl implements ReporteMensajeFacade {
 			daoFactory.initTransaction();
 			final ReporteMensajeDomain domainList = ReporteMensajeAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<ReporteMensajeDomain> lista = business.abrir(domainList);
+			final List<ReporteMensajeDomain> lista = business.abrir(domainList);
 
 			return ReporteMensajeAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -98,7 +98,7 @@ public final class ReporteMensajeFacadeImpl implements ReporteMensajeFacade {
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 
@@ -107,8 +107,8 @@ public final class ReporteMensajeFacadeImpl implements ReporteMensajeFacade {
 			throw exception;
 		} catch (final Exception exception) {
 			daoFactory.rollbackTransaction();
-			var userMessage = UconnectBusinessMessages.Facade.ReporteMensajeFacadeImplMessages.USER_MESSAGE_STATE;
-			var technicalMessage = UconnectBusinessMessages.Facade.ReporteMensajeFacadeImplMessages.TECHNICAL_MESSAGE_STATE;
+			final var userMessage = UconnectBusinessMessages.Facade.ReporteMensajeFacadeImplMessages.USER_MESSAGE_STATE;
+			final var technicalMessage = UconnectBusinessMessages.Facade.ReporteMensajeFacadeImplMessages.TECHNICAL_MESSAGE_STATE;
 
 			throw UconnectBusisnessException.create(technicalMessage, userMessage, exception);
 		} finally {

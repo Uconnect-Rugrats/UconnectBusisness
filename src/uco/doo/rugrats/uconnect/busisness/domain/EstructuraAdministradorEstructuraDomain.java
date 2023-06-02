@@ -7,60 +7,63 @@ import java.util.UUID;
 
 public final class EstructuraAdministradorEstructuraDomain {
 
-    private UUID identificador;
-    private AdministradorEstructuraDomain administrador;
-    private EstructuraDomain estructura;
-    private EstadoDomain estado;
+	private UUID identificador;
+	private AdministradorEstructuraDomain administrador;
+	private EstructuraDomain estructura;
+	private EstadoDomain estado;
 
-    public static final EstructuraAdministradorEstructuraDomain DEFAULT_OBJECT = new EstructuraAdministradorEstructuraDomain();
-    private EstructuraAdministradorEstructuraDomain() {
-        setIdentificador(UtilUUID.getDefaultValue());
-        setAdministrador(AdministradorEstructuraDomain.getDefaultObject());
-        setEstructura(EstructuraDomain.getDefaultObject());
-        setEstado(EstadoDomain.getDefaultObject());
-    }
+	public static final EstructuraAdministradorEstructuraDomain DEFAULT_OBJECT = new EstructuraAdministradorEstructuraDomain();
 
-    public EstructuraAdministradorEstructuraDomain(final UUID identificador, final AdministradorEstructuraDomain administrador, final EstructuraDomain estructura, final EstadoDomain estado) {
-        super();
-        setIdentificador(identificador);
-        setAdministrador(administrador);
-        setEstructura(estructura);
-        setEstado(estado);
-    }
+	private EstructuraAdministradorEstructuraDomain() {
+		setIdentificador(UtilUUID.getDefaultValue());
+		setAdministrador(AdministradorEstructuraDomain.getDefaultObject());
+		setEstructura(EstructuraDomain.getDefaultObject());
+		setEstado(EstadoDomain.getDefaultObject());
+	}
 
-    private void setIdentificador(final UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-    }
+	public EstructuraAdministradorEstructuraDomain(final UUID identificador,
+			final AdministradorEstructuraDomain administrador, final EstructuraDomain estructura,
+			final EstadoDomain estado) {
+		super();
+		setIdentificador(identificador);
+		setAdministrador(administrador);
+		setEstructura(estructura);
+		setEstado(estado);
+	}
 
-    private void setAdministrador(final AdministradorEstructuraDomain administrador) {
-        this.administrador = UtilObject.getDefault(administrador, AdministradorEstructuraDomain.getDefaultObject());
-    }
+	private void setIdentificador(final UUID identificador) {
+		this.identificador = UtilUUID.getDefault(identificador);
+	}
 
-    private void setEstructura(final EstructuraDomain estructura) {
-        this.estructura = UtilObject.getDefault(estructura, EstructuraDomain.getDefaultObject());
-    }
+	private void setAdministrador(final AdministradorEstructuraDomain administrador) {
+		this.administrador = UtilObject.getDefault(administrador, AdministradorEstructuraDomain.getDefaultObject());
+	}
 
-    private void setEstado(final EstadoDomain estado) {
-        this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
-    }
+	private void setEstructura(final EstructuraDomain estructura) {
+		this.estructura = UtilObject.getDefault(estructura, EstructuraDomain.getDefaultObject());
+	}
 
-    public UUID getIdentificador() {
-        return identificador;
-    }
+	private void setEstado(final EstadoDomain estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
+	}
 
-    public AdministradorEstructuraDomain getAdministrador() {
-        return administrador;
-    }
+	public UUID getIdentificador() {
+		return identificador;
+	}
 
-    public EstructuraDomain getEstructura() {
-        return estructura;
-    }
+	public AdministradorEstructuraDomain getAdministrador() {
+		return administrador;
+	}
 
-    public EstadoDomain getEstado() {
-        return estado;
-    }
+	public EstructuraDomain getEstructura() {
+		return estructura;
+	}
 
-    public static EstructuraAdministradorEstructuraDomain getDefaultObject(){
-        return DEFAULT_OBJECT;
-    }
+	public EstadoDomain getEstado() {
+		return estado;
+	}
+
+	public static EstructuraAdministradorEstructuraDomain getDefaultObject() {
+		return DEFAULT_OBJECT;
+	}
 }

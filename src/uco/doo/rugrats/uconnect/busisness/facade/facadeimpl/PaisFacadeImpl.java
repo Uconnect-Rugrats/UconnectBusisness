@@ -29,7 +29,7 @@ public final class PaisFacadeImpl implements PaisFacade {
 			daoFactory.initTransaction();
 			final PaisDomain domainList = PaisAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<PaisDomain> lista = business.consultar(domainList);
+			final List<PaisDomain> lista = business.consultar(domainList);
 
 			return PaisAssembler.getInstance().toDTOFromDomainList(lista);
 

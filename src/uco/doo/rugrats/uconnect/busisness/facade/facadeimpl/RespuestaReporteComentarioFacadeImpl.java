@@ -83,7 +83,7 @@ public final class RespuestaReporteComentarioFacadeImpl implements RespuestaRepo
 			final RespuestaReporteComentarioDomain domainList = RespuestaReporteComentarioAssembler.getInstance()
 					.toDomainFromDTO(dto);
 
-			List<RespuestaReporteComentarioDomain> lista = business.abrir(domainList);
+			final List<RespuestaReporteComentarioDomain> lista = extracted(domainList);
 
 			return RespuestaReporteComentarioAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -99,6 +99,10 @@ public final class RespuestaReporteComentarioFacadeImpl implements RespuestaRepo
 		} finally {
 			daoFactory.closeConnection();
 		}
+	}
+
+	private List<RespuestaReporteComentarioDomain> extracted(final RespuestaReporteComentarioDomain domainList) {
+		return business.abrir(domainList);
 	}
 
 	@Override
@@ -128,7 +132,7 @@ public final class RespuestaReporteComentarioFacadeImpl implements RespuestaRepo
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

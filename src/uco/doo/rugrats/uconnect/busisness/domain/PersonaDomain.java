@@ -7,138 +7,148 @@ import uco.doo.rugrats.uconnect.utils.UtilUUID;
 import java.util.UUID;
 
 public final class PersonaDomain {
-    private UUID identificador;
-    private TipoIdentificacionDomain tipoIdentificacion;
-    private String numeroIdentificacion;
-    private String primerNombre;
-    private String segundoNombre;
-    private String primerApellido;
-    private String segundoApellido;
-    private String correo;
-    private PaisDomain paisTelefono;
-    private String numeroTelefono;
-    private EstadoDomain estado;
+	private UUID identificador;
+	private TipoIdentificacionDomain tipoIdentificacion;
+	private String numeroIdentificacion;
+	private String primerNombre;
+	private String segundoNombre;
+	private String primerApellido;
+	private String segundoApellido;
+	private String correo;
+	private PaisDomain paisTelefono;
+	private String numeroTelefono;
+	private EstadoDomain estado;
 
-    public static final PersonaDomain DEFAULT_OBJECT = new PersonaDomain();
-    private PersonaDomain(){
-        super();
-        setIdentificador(UtilUUID.getDefaultValue());
-        setTipoIdentificacion(TipoIdentificacionDomain.getDefaultObject());
-        setNumeroIdentificacion(UtilText.getDefaultNumeric());
-        setPrimerNombre(UtilText.getDefaultValue());
-        setSegundoNombre(UtilText.getDefaultValue());
-        setPrimerApellido(UtilText.getDefaultValue());
-        setSegundoApellido(UtilText.getDefaultValue());
-        setCorreo(UtilText.getDefaultEmailAdress());
-        setPaisTelefono(PaisDomain.getDefaultObject());
-        setNumeroTelefono(UtilText.getDefaultNumeric());
-        setEstado(EstadoDomain.getDefaultObject());
-    }
+	public static final PersonaDomain DEFAULT_OBJECT = new PersonaDomain();
 
-    public PersonaDomain(final UUID identificador, final TipoIdentificacionDomain tipoIdentificacion, final String numeroIdentificacion, final String primerNombre, final String segundoNombre, final String primerApellido, final String segundoApellido, final String correo, final PaisDomain paisTelefono, final String numeroTelefono, final EstadoDomain estado) {
-        super();
-        setIdentificador(identificador);
-        setTipoIdentificacion(tipoIdentificacion);
-        setNumeroIdentificacion(numeroIdentificacion);
-        setPrimerNombre(primerNombre);
-        setSegundoNombre(segundoNombre);
-        setPrimerApellido(primerApellido);
-        setSegundoApellido(segundoApellido);
-        setCorreo(correo);
-        setPaisTelefono(paisTelefono);
-        setNumeroTelefono(numeroTelefono);
-        setEstado(estado);
-    }
+	private PersonaDomain() {
+		super();
+		setIdentificador(UtilUUID.getDefaultValue());
+		setTipoIdentificacion(TipoIdentificacionDomain.getDefaultObject());
+		setNumeroIdentificacion(UtilText.getDefaultNumeric());
+		setPrimerNombre(UtilText.getDefaultValue());
+		setSegundoNombre(UtilText.getDefaultValue());
+		setPrimerApellido(UtilText.getDefaultValue());
+		setSegundoApellido(UtilText.getDefaultValue());
+		setCorreo(UtilText.getDefaultEmailAdress());
+		setPaisTelefono(PaisDomain.getDefaultObject());
+		setNumeroTelefono(UtilText.getDefaultNumeric());
+		setEstado(EstadoDomain.getDefaultObject());
+	}
 
-    private void setIdentificador(final UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-    }
+	public PersonaDomain(UUID identificador, TipoIdentificacionDomain tipoIdentificacion,
+			String numeroIdentificacion, String primerNombre, String segundoNombre,
+			String primerApellido, String segundoApellido, String correo,
+			PaisDomain paisTelefono, String numeroTelefono, EstadoDomain estado) {
+		super();
+		setIdentificador(identificador);
+		setTipoIdentificacion(tipoIdentificacion);
+		setNumeroIdentificacion(numeroIdentificacion);
+		setPrimerNombre(primerNombre);
+		setSegundoNombre(segundoNombre);
+		setPrimerApellido(primerApellido);
+		setSegundoApellido(segundoApellido);
+		setCorreo(correo);
+		setPaisTelefono(paisTelefono);
+		setNumeroTelefono(numeroTelefono);
+		setEstado(estado);
+	}
 
-    private void setTipoIdentificacion(final TipoIdentificacionDomain tipoIdentificacion) {
-        this.tipoIdentificacion = UtilObject.getDefault(tipoIdentificacion, TipoIdentificacionDomain.getDefaultObject());
-    }
+	private void setIdentificador(final UUID identificador) {
+		this.identificador = UtilUUID.getDefault(identificador);
+	}
 
-    private void setNumeroIdentificacion(final String numeroIdentificacion) {
-        this.numeroIdentificacion = UtilText.getUtilText().numericIsValid(UtilText.applyTrim(numeroIdentificacion)) ? UtilText.applyTrim(numeroIdentificacion) : UtilText.getDefaultNumeric();
-    }
+	private void setTipoIdentificacion(final TipoIdentificacionDomain tipoIdentificacion) {
+		this.tipoIdentificacion = UtilObject.getDefault(tipoIdentificacion,
+				TipoIdentificacionDomain.getDefaultObject());
+	}
 
-    private void setPrimerNombre(String primerNombre) {
-        this.primerNombre = UtilText.applyTrim(primerNombre);
-    }
+	private void setNumeroIdentificacion(final String numeroIdentificacion) {
+		this.numeroIdentificacion = UtilText.getUtilText().numericIsValid(UtilText.applyTrim(numeroIdentificacion))
+				? UtilText.applyTrim(numeroIdentificacion)
+				: UtilText.getDefaultNumeric();
+	}
 
-    private void setSegundoNombre(String segundoNombre) {
-        this.segundoNombre = UtilText.applyTrim(segundoNombre);
-    }
+	private void setPrimerNombre(String primerNombre) {
+		this.primerNombre = UtilText.applyTrim(primerNombre);
+	}
 
-    private void setPrimerApellido(String primerApellido) {
-        this.primerApellido = UtilText.applyTrim(primerApellido);
-    }
+	private void setSegundoNombre(String segundoNombre) {
+		this.segundoNombre = UtilText.applyTrim(segundoNombre);
+	}
 
-    private void setSegundoApellido(String segundoApellido) {
-        this.segundoApellido = UtilText.applyTrim(segundoApellido);
-    }
+	private void setPrimerApellido(String primerApellido) {
+		this.primerApellido = UtilText.applyTrim(primerApellido);
+	}
 
-    private void setCorreo(final String correo) {
-        this.correo = UtilText.getUtilText().emailIsvalid(UtilText.applyTrim(correo)) ? UtilText.applyTrim(correo) : UtilText.getDefaultEmailAdress();
-    }
+	private void setSegundoApellido(String segundoApellido) {
+		this.segundoApellido = UtilText.applyTrim(segundoApellido);
+	}
 
-    private void setPaisTelefono(final PaisDomain paisTelefono) {
-        this.paisTelefono = UtilObject.getDefault(paisTelefono, PaisDomain.getDefaultObject());
-    }
+	private void setCorreo(final String correo) {
+		this.correo = UtilText.getUtilText().emailIsvalid(UtilText.applyTrim(correo)) ? UtilText.applyTrim(correo)
+				: UtilText.getDefaultEmailAdress();
+	}
 
-    private void setNumeroTelefono(final String numeroTelefono) {
-        this.numeroTelefono = UtilText.getUtilText().numericIsValid(UtilText.applyTrim(numeroTelefono)) ? UtilText.applyTrim(numeroTelefono) : UtilText.getDefaultNumeric();
-    }
+	private void setPaisTelefono(final PaisDomain paisTelefono) {
+		this.paisTelefono = UtilObject.getDefault(paisTelefono, PaisDomain.getDefaultObject());
+	}
 
-    private void setEstado(final EstadoDomain estado) {
-        this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
-    }
+	private void setNumeroTelefono(final String numeroTelefono) {
+		this.numeroTelefono = UtilText.getUtilText().numericIsValid(UtilText.applyTrim(numeroTelefono))
+				? UtilText.applyTrim(numeroTelefono)
+				: UtilText.getDefaultNumeric();
+	}
 
-    public UUID getIdentificador() {
-        return identificador;
-    }
+	private void setEstado(final EstadoDomain estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
+	}
 
-    public TipoIdentificacionDomain getTipoIdentificacion() {
-        return tipoIdentificacion;
-    }
+	public UUID getIdentificador() {
+		return identificador;
+	}
 
-    public String getNumeroIdentificacion() {
-        return numeroIdentificacion;
-    }
+	public TipoIdentificacionDomain getTipoIdentificacion() {
+		return tipoIdentificacion;
+	}
 
-    public String getPrimerNombre() {
-        return primerNombre;
-    }
+	public String getNumeroIdentificacion() {
+		return numeroIdentificacion;
+	}
 
-    public String getSegundoNombre() {
-        return segundoNombre;
-    }
+	public String getPrimerNombre() {
+		return primerNombre;
+	}
 
-    public String getPrimerApellido() {
-        return primerApellido;
-    }
+	public String getSegundoNombre() {
+		return segundoNombre;
+	}
 
-    public String getSegundoApellido() {
-        return segundoApellido;
-    }
+	public String getPrimerApellido() {
+		return primerApellido;
+	}
 
-    public String getCorreo() {
-        return correo;
-    }
+	public String getSegundoApellido() {
+		return segundoApellido;
+	}
 
-    public PaisDomain getPaisTelefono() {
-        return paisTelefono;
-    }
+	public String getCorreo() {
+		return correo;
+	}
 
-    public String getNumeroTelefono() {
-        return numeroTelefono;
-    }
+	public PaisDomain getPaisTelefono() {
+		return paisTelefono;
+	}
 
-    public EstadoDomain getEstado() {
-        return estado;
-    }
+	public String getNumeroTelefono() {
+		return numeroTelefono;
+	}
 
-    public static PersonaDomain getDefaultObject(){
-        return DEFAULT_OBJECT;
-    }
+	public EstadoDomain getEstado() {
+		return estado;
+	}
+
+	public static PersonaDomain getDefaultObject() {
+		return DEFAULT_OBJECT;
+	}
 }

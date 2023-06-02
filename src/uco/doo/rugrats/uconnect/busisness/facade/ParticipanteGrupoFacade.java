@@ -7,8 +7,11 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ParticipanteGrupoFacade {
-    void asignarGrupo(ParticipanteGrupoDTO dto);
-    List<ParticipanteGrupoDTO> consultar(ParticipanteGrupoDTO dto);
-    void eliminar(UUID dto);
-    EstadoDTO obtenerEstadoReal();
+	void asignarGrupo(ParticipanteGrupoDTO dto);
+
+	List<ParticipanteGrupoDTO> consultar(ParticipanteGrupoDTO dto);
+
+	void eliminar(UUID dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

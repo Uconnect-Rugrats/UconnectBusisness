@@ -101,7 +101,7 @@ public final class GrupoFacadeImpl implements GrupoFacade {
 			daoFactory.initTransaction();
 			final GrupoDomain domainList = GrupoAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<GrupoDomain> lista = business.buscar(domainList);
+			final List<GrupoDomain> lista = business.buscar(domainList);
 
 			return GrupoAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -144,7 +144,7 @@ public final class GrupoFacadeImpl implements GrupoFacade {
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

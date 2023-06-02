@@ -56,7 +56,7 @@ public final class ParticipanteGrupoFacadeImpl implements ParticipanteGrupoFacad
 			daoFactory.initTransaction();
 			final ParticipanteGrupoDomain domainList = ParticipanteGrupoAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<ParticipanteGrupoDomain> lista = business.consultar(domainList);
+			final List<ParticipanteGrupoDomain> lista = business.consultar(domainList);
 
 			return ParticipanteGrupoAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -99,7 +99,7 @@ public final class ParticipanteGrupoFacadeImpl implements ParticipanteGrupoFacad
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

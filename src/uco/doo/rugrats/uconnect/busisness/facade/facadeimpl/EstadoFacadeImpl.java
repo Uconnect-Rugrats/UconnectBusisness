@@ -29,7 +29,7 @@ public final class EstadoFacadeImpl implements EstadoFacade {
 			daoFactory.initTransaction();
 			final EstadoDomain domainList = EstadoAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<EstadoDomain> lista = business.consultar(domainList);
+			final List<EstadoDomain> lista = business.consultar(domainList);
 
 			return EstadoAssembler.getInstance().toDTOFromDomainList(lista);
 

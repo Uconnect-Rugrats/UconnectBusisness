@@ -29,7 +29,7 @@ public final class TipoOrganizacionFacadeImpl implements TipoOrganizacionFacade 
 			daoFactory.initTransaction();
 			final TipoOrganizacionDomain domainList = TipoOrganizacionAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<TipoOrganizacionDomain> lista = business.consultar(domainList);
+			final List<TipoOrganizacionDomain> lista = business.consultar(domainList);
 
 			return TipoOrganizacionAssembler.getInstance().toDTOFromDomainList(lista);
 

@@ -78,7 +78,7 @@ public final class ParticipanteFacadeImpl implements ParticipanteFacade {
 			daoFactory.initTransaction();
 			final ParticipanteDomain domainList = ParticipanteAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<ParticipanteDomain> lista = business.consultar(domainList);
+			final List<ParticipanteDomain> lista = business.consultar(domainList);
 
 			return ParticipanteAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -121,7 +121,7 @@ public final class ParticipanteFacadeImpl implements ParticipanteFacade {
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

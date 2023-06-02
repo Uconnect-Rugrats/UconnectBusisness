@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ParticipanteBusiness {
-    void registrar(ParticipanteDomain domain);
-    void cambiarEstado(ParticipanteDomain domain);
-    List<ParticipanteDomain> consultar(ParticipanteDomain domain);
-    void eliminar(UUID domain);
-    EstadoDomain obtenerEstadoReal();
+	void registrar(ParticipanteDomain domain);
+
+	void cambiarEstado(ParticipanteDomain domain);
+
+	List<ParticipanteDomain> consultar(ParticipanteDomain domain);
+
+	void eliminar(UUID domain);
+
+	EstadoDomain obtenerEstadoReal();
 }

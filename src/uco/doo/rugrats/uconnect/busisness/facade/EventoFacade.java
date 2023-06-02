@@ -7,10 +7,15 @@ import java.util.List;
 import java.util.UUID;
 
 public interface EventoFacade {
-    void crear(EventoDTO dto);
-    void editar(EventoDTO dto);
-    void cambiarEstado(EventoDTO dto);
-    List<EventoDTO> abrir(EventoDTO dto);
-    void eliminar(UUID dto);
-    EstadoDTO obtenerEstadoReal();
+	void crear(EventoDTO dto);
+
+	void editar(EventoDTO dto);
+
+	void cambiarEstado(EventoDTO dto);
+
+	List<EventoDTO> abrir(EventoDTO dto);
+
+	void eliminar(UUID dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

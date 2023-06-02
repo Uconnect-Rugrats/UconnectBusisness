@@ -8,83 +8,86 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public final class HistorialLecturaDomain {
-    private UUID identificador;
-    private GrupoDomain grupo;
-    private ParticipanteGrupoDomain lector;
-    private LocalDateTime fechaLectura;
-    private MensajeDomain mensaje;
-    private EstadoDomain estado;
+	private UUID identificador;
+	private GrupoDomain grupo;
+	private ParticipanteGrupoDomain lector;
+	private LocalDateTime fechaLectura;
+	private MensajeDomain mensaje;
+	private EstadoDomain estado;
 
-    public static final HistorialLecturaDomain DEFAULT_OBJECT = new HistorialLecturaDomain();
-    private HistorialLecturaDomain() {
-        super();
-        setIdentificador(UtilUUID.getDefaultValue());
-        setGrupo(GrupoDomain.getDefaultObject());
-        setLector(ParticipanteGrupoDomain.getDefaultObject());
-        setFechaLectura(UtilDate.getDefaultValue());
-        setMensaje(MensajeDomain.getDefaultObject());
-        setEstado(EstadoDomain.getDefaultObject());
-    }
+	public static final HistorialLecturaDomain DEFAULT_OBJECT = new HistorialLecturaDomain();
 
-    public HistorialLecturaDomain(final UUID identificador, final GrupoDomain grupo, final ParticipanteGrupoDomain lector, final LocalDateTime fechaLectura, final MensajeDomain mensaje, final EstadoDomain estado) {
-        super();
-        setIdentificador(identificador);
-        setGrupo(grupo);
-        setLector(lector);
-        setFechaLectura(fechaLectura);
-        setMensaje(mensaje);
-        setEstado(estado);
-    }
+	private HistorialLecturaDomain() {
+		super();
+		setIdentificador(UtilUUID.getDefaultValue());
+		setGrupo(GrupoDomain.getDefaultObject());
+		setLector(ParticipanteGrupoDomain.getDefaultObject());
+		setFechaLectura(UtilDate.getDefaultValue());
+		setMensaje(MensajeDomain.getDefaultObject());
+		setEstado(EstadoDomain.getDefaultObject());
+	}
 
-    private void setIdentificador(final UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-    }
+	public HistorialLecturaDomain(final UUID identificador, final GrupoDomain grupo,
+			final ParticipanteGrupoDomain lector, final LocalDateTime fechaLectura, final MensajeDomain mensaje,
+			final EstadoDomain estado) {
+		super();
+		setIdentificador(identificador);
+		setGrupo(grupo);
+		setLector(lector);
+		setFechaLectura(fechaLectura);
+		setMensaje(mensaje);
+		setEstado(estado);
+	}
 
-    private void setGrupo(final GrupoDomain grupo) {
-        this.grupo = UtilObject.getDefault(grupo, GrupoDomain.getDefaultObject());
-    }
+	private void setIdentificador(final UUID identificador) {
+		this.identificador = UtilUUID.getDefault(identificador);
+	}
 
-    private void setLector(final ParticipanteGrupoDomain lector) {
-        this.lector = UtilObject.getDefault(lector, ParticipanteGrupoDomain.getDefaultObject());
-    }
+	private void setGrupo(final GrupoDomain grupo) {
+		this.grupo = UtilObject.getDefault(grupo, GrupoDomain.getDefaultObject());
+	}
 
-    private void setFechaLectura(final LocalDateTime fechaLectura) {
-        this.fechaLectura = UtilDate.getDefault(fechaLectura);
-    }
+	private void setLector(final ParticipanteGrupoDomain lector) {
+		this.lector = UtilObject.getDefault(lector, ParticipanteGrupoDomain.getDefaultObject());
+	}
 
-    private void setMensaje(final MensajeDomain mensaje) {
-        this.mensaje = UtilObject.getDefault(mensaje, MensajeDomain.getDefaultObject());
-    }
+	private void setFechaLectura(final LocalDateTime fechaLectura) {
+		this.fechaLectura = UtilDate.getDefault(fechaLectura);
+	}
 
-    private void setEstado(final EstadoDomain estado) {
-        this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
-    }
+	private void setMensaje(final MensajeDomain mensaje) {
+		this.mensaje = UtilObject.getDefault(mensaje, MensajeDomain.getDefaultObject());
+	}
 
-    public UUID getIdentificador() {
-        return identificador;
-    }
+	private void setEstado(final EstadoDomain estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
+	}
 
-    public GrupoDomain getGrupo() {
-        return grupo;
-    }
+	public UUID getIdentificador() {
+		return identificador;
+	}
 
-    public ParticipanteGrupoDomain getLector() {
-        return lector;
-    }
+	public GrupoDomain getGrupo() {
+		return grupo;
+	}
 
-    public LocalDateTime getFechaLectura() {
-        return fechaLectura;
-    }
+	public ParticipanteGrupoDomain getLector() {
+		return lector;
+	}
 
-    public MensajeDomain getMensaje() {
-        return mensaje;
-    }
+	public LocalDateTime getFechaLectura() {
+		return fechaLectura;
+	}
 
-    public EstadoDomain getEstado() {
-        return estado;
-    }
+	public MensajeDomain getMensaje() {
+		return mensaje;
+	}
 
-    public static HistorialLecturaDomain getDefaultObject(){
-        return DEFAULT_OBJECT;
-    }
+	public EstadoDomain getEstado() {
+		return estado;
+	}
+
+	public static HistorialLecturaDomain getDefaultObject() {
+		return DEFAULT_OBJECT;
+	}
 }

@@ -7,10 +7,15 @@ import java.util.List;
 import java.util.UUID;
 
 public interface PublicacionFacade {
-    void publicar(PublicacionDTO dto);
-    void cambiarEstado(PublicacionDTO dto);
-    List<PublicacionDTO> listar(PublicacionDTO dto);
-    PublicacionDTO abrir(PublicacionDTO dto);
-    void eliminar(UUID dto);
-    EstadoDTO obtenerEstadoReal();
+	void publicar(PublicacionDTO dto);
+
+	void cambiarEstado(PublicacionDTO dto);
+
+	List<PublicacionDTO> listar(PublicacionDTO dto);
+
+	PublicacionDTO abrir(PublicacionDTO dto);
+
+	void eliminar(UUID dto);
+
+	EstadoDTO obtenerEstadoReal();
 }

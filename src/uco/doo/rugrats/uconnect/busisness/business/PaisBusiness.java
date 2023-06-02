@@ -5,5 +5,5 @@ import uco.doo.rugrats.uconnect.busisness.domain.PaisDomain;
 import java.util.List;
 
 public interface PaisBusiness {
-    List<PaisDomain> consultar(PaisDomain domain);
+	List<PaisDomain> consultar(PaisDomain domain);
 }

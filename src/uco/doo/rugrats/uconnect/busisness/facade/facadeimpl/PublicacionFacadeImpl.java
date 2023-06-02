@@ -78,7 +78,7 @@ public final class PublicacionFacadeImpl implements PublicacionFacade {
 			daoFactory.initTransaction();
 			final PublicacionDomain domainList = PublicacionAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<PublicacionDomain> lista = business.listar(domainList);
+			final List<PublicacionDomain> lista = business.listar(domainList);
 
 			return PublicacionAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -99,7 +99,7 @@ public final class PublicacionFacadeImpl implements PublicacionFacade {
 	public PublicacionDTO abrir(PublicacionDTO dto) {
 		try {
 			daoFactory.initTransaction();
-			PublicacionDomain publicacionDomain = PublicacionAssembler.getInstance().toDomainFromDTO(dto);
+			final PublicacionDomain publicacionDomain = PublicacionAssembler.getInstance().toDomainFromDTO(dto);
 			daoFactory.commitTransaction();
 			return PublicacionAssembler.getInstance().toDTOFromDomain(business.abrir(publicacionDomain));
 
@@ -142,7 +142,7 @@ public final class PublicacionFacadeImpl implements PublicacionFacade {
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

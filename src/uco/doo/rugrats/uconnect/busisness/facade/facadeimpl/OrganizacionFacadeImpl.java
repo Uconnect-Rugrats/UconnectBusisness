@@ -99,7 +99,7 @@ public final class OrganizacionFacadeImpl implements OrganizacionFacade {
 			daoFactory.initTransaction();
 			final OrganizacionDomain domainList = OrganizacionAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<OrganizacionDomain> lista = business.consultar(domainList);
+			final List<OrganizacionDomain> lista = business.consultar(domainList);
 
 			return OrganizacionAssembler.getInstance().toDTOFromDomainList(lista);
 

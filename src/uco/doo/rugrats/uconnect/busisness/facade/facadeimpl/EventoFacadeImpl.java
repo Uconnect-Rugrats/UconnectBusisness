@@ -101,7 +101,7 @@ public final class EventoFacadeImpl implements EventoFacade {
 			daoFactory.initTransaction();
 			final EventoDomain domainList = EventoAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<EventoDomain> lista = business.abrir(domainList);
+			final List<EventoDomain> lista = business.abrir(domainList);
 
 			return EventoAssembler.getInstance().toDTOFromDomainList(lista);
 

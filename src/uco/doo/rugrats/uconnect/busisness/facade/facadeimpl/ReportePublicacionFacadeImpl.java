@@ -79,7 +79,7 @@ public final class ReportePublicacionFacadeImpl implements ReportePublicacionFac
 			daoFactory.initTransaction();
 			final ReportePublicacionDomain domainList = ReportePublicacionAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<ReportePublicacionDomain> lista = business.abrir(domainList);
+			final List<ReportePublicacionDomain> lista = business.abrir(domainList);
 
 			return ReportePublicacionAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -100,7 +100,7 @@ public final class ReportePublicacionFacadeImpl implements ReportePublicacionFac
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

@@ -56,7 +56,7 @@ public final class HistorialChatGrupoFacadeImpl implements HistorialChatGrupoFac
 			daoFactory.initTransaction();
 			final HistorialChatGrupoDomain domainList = HistorialChatGrupoAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<HistorialChatGrupoDomain> lista = business.listar(domainList);
+			final List<HistorialChatGrupoDomain> lista = business.listar(domainList);
 
 			return HistorialChatGrupoAssembler.getInstance().toDTOFromDomainList(lista);
 
@@ -99,7 +99,7 @@ public final class HistorialChatGrupoFacadeImpl implements HistorialChatGrupoFac
 	public EstadoDTO obtenerEstadoReal() {
 		try {
 			daoFactory.initTransaction();
-			EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
+			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
 			daoFactory.commitTransaction();
 			return dto;
 

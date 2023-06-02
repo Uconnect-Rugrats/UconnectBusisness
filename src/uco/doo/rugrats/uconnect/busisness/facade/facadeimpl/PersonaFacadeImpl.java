@@ -99,7 +99,7 @@ public final class PersonaFacadeImpl implements PersonaFacade {
 			daoFactory.initTransaction();
 			final PersonaDomain domainList = PersonaAssembler.getInstance().toDomainFromDTO(dto);
 
-			List<PersonaDomain> lista = business.consultar(domainList);
+			final List<PersonaDomain> lista = business.consultar(domainList);
 
 			return PersonaAssembler.getInstance().toDTOFromDomainList(lista);
 

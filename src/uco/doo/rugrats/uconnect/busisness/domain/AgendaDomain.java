@@ -8,72 +8,74 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public final class AgendaDomain {
-    private UUID identificador;
-    private GrupoDomain grupo;
-    private LocalDateTime fechaInicio;
-    private LocalDateTime fechaFin;
-    private EstadoDomain estado;
+	private UUID identificador;
+	private GrupoDomain grupo;
+	private LocalDateTime fechaInicio;
+	private LocalDateTime fechaFin;
+	private EstadoDomain estado;
 
-    public static final AgendaDomain DEFAULT_OBJECT = new AgendaDomain();
-    private AgendaDomain() {
-        super();
-        setIdentificador(UtilUUID.getDefaultValue());
-        setGrupo(GrupoDomain.getDefaultObject());
-        setFechaInicio(UtilDate.getDefaultValue());
-        setFechaFin(UtilDate.getDefaultValue());
-        setEstado(EstadoDomain.getDefaultObject());
-    }
+	public static final AgendaDomain DEFAULT_OBJECT = new AgendaDomain();
 
-    public AgendaDomain(final UUID identificador, final GrupoDomain grupo, final LocalDateTime fechaInicio, final LocalDateTime fechaFin, final EstadoDomain estado) {
-        super();
-        setIdentificador(identificador);
-        setGrupo(grupo);
-        setFechaInicio(fechaInicio);
-        setFechaFin(fechaFin);
-        setEstado(estado);
-    }
+	private AgendaDomain() {
+		super();
+		setIdentificador(UtilUUID.getDefaultValue());
+		setGrupo(GrupoDomain.getDefaultObject());
+		setFechaInicio(UtilDate.getDefaultValue());
+		setFechaFin(UtilDate.getDefaultValue());
+		setEstado(EstadoDomain.getDefaultObject());
+	}
 
-    private void setIdentificador(final UUID identificador) {
-        this.identificador = UtilUUID.getDefault(identificador);
-    }
+	public AgendaDomain(final UUID identificador, final GrupoDomain grupo, final LocalDateTime fechaInicio,
+			final LocalDateTime fechaFin, final EstadoDomain estado) {
+		super();
+		setIdentificador(identificador);
+		setGrupo(grupo);
+		setFechaInicio(fechaInicio);
+		setFechaFin(fechaFin);
+		setEstado(estado);
+	}
 
-    private void setGrupo(final GrupoDomain grupo) {
-        this.grupo = UtilObject.getDefault(grupo, GrupoDomain.getDefaultObject());
-    }
+	private void setIdentificador(final UUID identificador) {
+		this.identificador = UtilUUID.getDefault(identificador);
+	}
 
-    private void setFechaInicio(final LocalDateTime fechaInicio) {
-        this.fechaInicio = UtilDate.getDefault(fechaInicio);
-    }
+	private void setGrupo(final GrupoDomain grupo) {
+		this.grupo = UtilObject.getDefault(grupo, GrupoDomain.getDefaultObject());
+	}
 
-    private void setFechaFin(final LocalDateTime fechaFin) {
-        this.fechaFin = UtilDate.getDefault(fechaFin);
-    }
+	private void setFechaInicio(final LocalDateTime fechaInicio) {
+		this.fechaInicio = UtilDate.getDefault(fechaInicio);
+	}
 
-    private void setEstado(final EstadoDomain estado) {
-        this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
-    }
+	private void setFechaFin(final LocalDateTime fechaFin) {
+		this.fechaFin = UtilDate.getDefault(fechaFin);
+	}
 
-    public UUID getIdentificador() {
-        return identificador;
-    }
+	private void setEstado(final EstadoDomain estado) {
+		this.estado = UtilObject.getDefault(estado, EstadoDomain.getDefaultObject());
+	}
 
-    public GrupoDomain getGrupo() {
-        return grupo;
-    }
+	public UUID getIdentificador() {
+		return identificador;
+	}
 
-    public LocalDateTime getFechaInicio() {
-        return fechaInicio;
-    }
+	public GrupoDomain getGrupo() {
+		return grupo;
+	}
 
-    public LocalDateTime getFechaFin() {
-        return fechaFin;
-    }
+	public LocalDateTime getFechaInicio() {
+		return fechaInicio;
+	}
 
-    public EstadoDomain getEstado() {
-        return estado;
-    }
+	public LocalDateTime getFechaFin() {
+		return fechaFin;
+	}
 
-    public static AgendaDomain getDefaultObject(){
-        return DEFAULT_OBJECT;
-    }
+	public EstadoDomain getEstado() {
+		return estado;
+	}
+
+	public static AgendaDomain getDefaultObject() {
+		return DEFAULT_OBJECT;
+	}
 }
