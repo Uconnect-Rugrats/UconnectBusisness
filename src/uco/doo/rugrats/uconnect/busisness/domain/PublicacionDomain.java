@@ -28,9 +28,9 @@ public final class PublicacionDomain {
 		setEstado(EstadoDomain.getDefaultObject());
 	}
 
-	public PublicacionDomain(final UUID identificador, final GrupoDomain grupo, final ParticipanteGrupoDomain autor,
-			final LocalDateTime fechaPublicacion, final String titulo, final String contenido,
-			final EstadoDomain estado) {
+	public PublicacionDomain( UUID identificador, ParticipanteGrupoDomain autor,
+			LocalDateTime fechaPublicacion, String titulo, String contenido,
+			EstadoDomain estado) {
 		super();
 		setIdentificador(identificador);
 		setAutor(autor);
