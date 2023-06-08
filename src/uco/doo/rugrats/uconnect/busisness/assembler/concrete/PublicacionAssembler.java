@@ -24,14 +24,14 @@ public final class PublicacionAssembler implements Assembler<PublicacionDomain, 
 				.setTitulo(domain.getTitulo())
 				.setAutor(ParticipanteGrupoAssembler.getInstance().toDTOFromDomain(domain.getAutor()))
 				.setFechaPublicacion(domain.getFechaPublicacion())
-				.setEstado(EstadoAssembler.getInstance().toDTOFromDomain(domain.getEstado()));
+				.setEstado(EstadoAssembler.getInstance().toDTOFromDomain(domain.getEstado())).setEstaEstadoRealActivo(domain.isEstaEstadoRealActivo());
 	}
 
 	@Override
 	public PublicacionDomain toDomainFromDTO(PublicacionDTO dto) {
 		return new PublicacionDomain(dto.getIdentificador(),
 				ParticipanteGrupoAssembler.getInstance().toDomainFromDTO(dto.getAutor()), dto.getFechaPublicacion(),
-				dto.getTitulo(), dto.getContenido(), EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()));
+				dto.getTitulo(), dto.getContenido(), EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()),dto.isEstaEstadoRealActivo());
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public final class PublicacionAssembler implements Assembler<PublicacionDomain, 
 		return new PublicacionEntity(domain.getIdentificador(),
 				ParticipanteGrupoAssembler.getInstance().toEntityFromDomain(domain.getAutor()),
 				domain.getFechaPublicacion(), domain.getTitulo(), domain.getContenido(),
-				EstadoAssembler.getInstance().toEntityFromDomain(domain.getEstado()));
+				EstadoAssembler.getInstance().toEntityFromDomain(domain.getEstado()),domain.isEstaEstadoRealActivo());
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public final class PublicacionAssembler implements Assembler<PublicacionDomain, 
 		return new PublicacionDomain(entity.getIdentificador(),
 				ParticipanteGrupoAssembler.getInstance().toDomainFromEntity(entity.getAutor()),
 				entity.getFechaPublicacion(), entity.getTitulo(), entity.getContenido(),
-				EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+				EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()),entity.isEstaEstadoRealActivo());
 	}
 
 	@Override

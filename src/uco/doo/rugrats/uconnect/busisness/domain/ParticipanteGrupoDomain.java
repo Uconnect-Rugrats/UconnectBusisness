@@ -12,6 +12,7 @@ public final class ParticipanteGrupoDomain {
 	private GrupoDomain grupo;
 	private Boolean puedePublicar;
 	private EstadoDomain estado;
+	private boolean estaEstadoRealActivo;
 
 	public static final ParticipanteGrupoDomain DEFAULT_OBJECT = new ParticipanteGrupoDomain();
 
@@ -21,16 +22,18 @@ public final class ParticipanteGrupoDomain {
 		setPuedePublicar(UtilBoolean.getDefaultValue());
 		setGrupo(GrupoDomain.getDefaultObject());
 		setEstado(EstadoDomain.getDefaultObject());
+		setEstaEstadoRealActivo(UtilBoolean.getDefaultValue());
 	}
 
 	public ParticipanteGrupoDomain(final UUID identificador, final ParticipanteDomain participante,
-			final Boolean puedePublicar, final GrupoDomain grupo, final EstadoDomain estado) {
+			final Boolean puedePublicar, final GrupoDomain grupo, final EstadoDomain estado,final boolean estaEstadoRealActivo) {
 		super();
 		setIdentificador(identificador);
 		setParticipante(participante);
 		setPuedePublicar(puedePublicar);
 		setGrupo(grupo);
-		setEstado(estado);
+		setEstado(estado); 
+		setEstaEstadoRealActivo(estaEstadoRealActivo);
 	}
 
 	private void setPuedePublicar(final Boolean puedePublicar) {
@@ -75,5 +78,13 @@ public final class ParticipanteGrupoDomain {
 
 	public static ParticipanteGrupoDomain getDefaultObject() {
 		return DEFAULT_OBJECT;
+	}
+
+	public boolean isEstaEstadoRealActivo() {
+		return estaEstadoRealActivo;
+	}
+
+	private void setEstaEstadoRealActivo(boolean estaEstadoRealActivo) {
+		this.estaEstadoRealActivo = estaEstadoRealActivo;
 	}
 }

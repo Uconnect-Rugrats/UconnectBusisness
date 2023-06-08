@@ -31,7 +31,7 @@ public final class ComentarioBusinessImpl implements ComentarioBusiness {
 			result = daoFactory.getComentarioDAO().read(entityTmp);
 		}while(!result.isEmpty());
 		
-		final var domainToCreate = new ComentarioDomain(identificador, domain.getPublicacion(), domain.getComentarioPadre(), domain.getFechaPublicacion(), domain.getAutor(), domain.getContenido(), domain.getEstado(), domain.isTienePadre());
+		final var domainToCreate = new ComentarioDomain(identificador, domain.getPublicacion(), domain.getComentarioPadre(), domain.getFechaPublicacion(), domain.getAutor(), domain.getContenido(), domain.getEstado(), domain.isTienePadre(),domain.isEstaEstadoRealActivo());
 		final ComentarioEntity entity = ComentarioAssembler.getInstance().toEntityFromDomain(domainToCreate);
 		daoFactory.getComentarioDAO().create(entity);	
     }

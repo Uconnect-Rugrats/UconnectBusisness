@@ -14,16 +14,17 @@ public final class EstructuraDomain {
 	private String nombre;
 	private EstadoDomain estado;
 	private boolean tienePadre;
+	private boolean estaEstadoRealActivo;
 	private static final String UUID_PADRE = "";
 
 	private static final EstructuraDomain PADRE = new EstructuraDomain(UtilUUID.generateUUIDFromString(UUID_PADRE),
 			OrganizacionDomain.getDefaultObject(), null, UtilText.getDefaultValue(), EstadoDomain.getDefaultObject(),
-			UtilBoolean.getDefaultValue());
+			UtilBoolean.getDefaultValue(),UtilBoolean.getDefaultValue());
 	public static final EstructuraDomain DEFAULT_OBJECT = new EstructuraDomain();
 
 	public EstructuraDomain(final UUID identificador, final OrganizacionDomain organizacion,
 			final EstructuraDomain estructuraPadre, final String nombre, final EstadoDomain estado,
-			boolean tienePadre) {
+			boolean tienePadre,boolean estaEstadoRealActivo) {
 		super();
 		setIdentificador(identificador);
 		setOrganizacion(organizacion);
@@ -31,6 +32,7 @@ public final class EstructuraDomain {
 		setNombre(nombre);
 		setEstado(estado);
 		setTienePadre(tienePadre);
+		setEstaEstadoRealActivo(estaEstadoRealActivo);
 	}
 
 	private EstructuraDomain() {
@@ -41,6 +43,7 @@ public final class EstructuraDomain {
 		setNombre(UtilText.getDefaultValue());
 		setEstado(EstadoDomain.getDefaultObject());
 		setTienePadre(UtilBoolean.getDefaultValue());
+		setEstaEstadoRealActivo(UtilBoolean.getDefaultValue());
 	}
 
 	public final boolean isTienePadre() {
@@ -97,5 +100,13 @@ public final class EstructuraDomain {
 
 	public static EstructuraDomain getDefaultObject() {
 		return DEFAULT_OBJECT;
+	}
+
+	public boolean isEstaEstadoRealActivo() {
+		return estaEstadoRealActivo;
+	}
+
+	private void setEstaEstadoRealActivo(boolean estaEstadoRealActivo) {
+		this.estaEstadoRealActivo = estaEstadoRealActivo;
 	}
 }

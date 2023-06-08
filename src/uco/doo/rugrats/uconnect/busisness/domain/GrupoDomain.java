@@ -1,5 +1,6 @@
 package uco.doo.rugrats.uconnect.busisness.domain;
 
+import uco.doo.rugrats.uconnect.utils.UtilBoolean;
 import uco.doo.rugrats.uconnect.utils.UtilObject;
 import uco.doo.rugrats.uconnect.utils.UtilText;
 import uco.doo.rugrats.uconnect.utils.UtilUUID;
@@ -11,7 +12,7 @@ public final class GrupoDomain {
 	private EstructuraDomain estructura;
 	private String nombre;
 	private EstadoDomain estado;
-
+	private boolean estaEstadoRealActivo;
 	public static final GrupoDomain DEFAULT_OBJECT = new GrupoDomain();
 
 	private GrupoDomain() {
@@ -20,15 +21,17 @@ public final class GrupoDomain {
 		setEstructura(EstructuraDomain.getDefaultObject());
 		setNombre(UtilText.getDefaultValue());
 		setEstado(EstadoDomain.getDefaultObject());
+		setEstaEstadoRealActivo(UtilBoolean.getDefaultValue());
 	}
 
 	public GrupoDomain(final UUID identificador, final EstructuraDomain estructura, final String nombre,
-			final EstadoDomain estado) {
+			final EstadoDomain estado,final boolean estaEstadoRealActivo) {
 		super();
 		setIdentificador(identificador);
 		setEstructura(estructura);
 		setNombre(nombre);
 		setEstado(estado);
+		setEstaEstadoRealActivo(estaEstadoRealActivo);
 	}
 
 	private void setIdentificador(final UUID identificador) {
@@ -65,5 +68,13 @@ public final class GrupoDomain {
 
 	public static GrupoDomain getDefaultObject() {
 		return DEFAULT_OBJECT;
+	}
+
+	public boolean isEstaEstadoRealActivo() {
+		return estaEstadoRealActivo;
+	}
+
+	private void setEstaEstadoRealActivo(boolean estaEstadoRealActivo) {
+		this.estaEstadoRealActivo = estaEstadoRealActivo;
 	}
 }

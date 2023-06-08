@@ -17,25 +17,25 @@ public final class ParticipanteAssembler implements Assembler<ParticipanteDomain
     @Override
     public ParticipanteDTO toDTOFromDomain(ParticipanteDomain domain) {
         return ParticipanteDTO.create().setIdentificador(domain.getIdentificador()).setEstado(EstadoAssembler.getInstance().toDTOFromDomain(domain.getEstado()))
-                .setPersona(PersonaAssembler.getInstance().toDTOFromDomain(domain.getPersona()));
+                .setPersona(PersonaAssembler.getInstance().toDTOFromDomain(domain.getPersona())).setEstaEstadoRealActivo(domain.isEstaEstadoRealActivo());
     }
 
     @Override
     public ParticipanteDomain toDomainFromDTO(ParticipanteDTO dto) {
         return new ParticipanteDomain(dto.getIdentificador(),PersonaAssembler.getInstance().toDomainFromDTO(dto.getPersona()),
-                EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()));
+                EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()),dto.isEstaEstadoRealActivo());
     }
 
     @Override
     public ParticipanteEntity toEntityFromDomain(ParticipanteDomain domain) {
         return new ParticipanteEntity(domain.getIdentificador(),PersonaAssembler.getInstance().toEntityFromDomain(domain.getPersona()),
-                EstadoAssembler.getInstance().toEntityFromDomain(domain.getEstado()));
+                EstadoAssembler.getInstance().toEntityFromDomain(domain.getEstado()),domain.isEstaEstadoRealActivo());
     }
 
     @Override
     public ParticipanteDomain toDomainFromEntity(ParticipanteEntity entity) {
         return new ParticipanteDomain(entity.getIdentificador(),PersonaAssembler.getInstance().toDomainFromEntity(entity.getPersona()),
-                EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+                EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()),entity.isEstaEstadoRealActivo());
     }
 
     @Override

@@ -28,7 +28,7 @@ public final class EstructuraAssembler implements Assembler<EstructuraDomain, Es
 				.setEstado(EstadoAssembler.getInstance().toDTOFromDomain(domain.getEstado()))
 				.setNombre(domain.getNombre())
 				.setOrganizacion(OrganizacionAssembler.getInstance().toDTOFromDomain(domain.getOrganizacion()))
-				.setTienePadre(domain.isTienePadre());
+				.setTienePadre(domain.isTienePadre()).setEstaEstadoRealActivo(domain.isEstaEstadoRealActivo());
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public final class EstructuraAssembler implements Assembler<EstructuraDomain, Es
 				!UtilObject.isNull(dto.getEstructuraPadre())
 						? EstructuraAssembler.getInstance().toDomainFromDTO(dto.getEstructuraPadre())
 						: null,
-				dto.getNombre(), EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()), dto.isTienePadre());
+				dto.getNombre(), EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()), dto.isTienePadre(),dto.isEstaEstadoRealActivo());
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public final class EstructuraAssembler implements Assembler<EstructuraDomain, Es
 						? EstructuraAssembler.getInstance().toEntityFromDomain(domain.getEstructuraPadre())
 						: null,
 				domain.getNombre(), EstadoAssembler.INSTANCE.toEntityFromDomain(domain.getEstado()),
-				domain.isTienePadre());
+				domain.isTienePadre(),domain.isEstaEstadoRealActivo());
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public final class EstructuraAssembler implements Assembler<EstructuraDomain, Es
 						? EstructuraAssembler.getInstance().toDomainFromEntity(entity.getEstructuraPadre())
 						: null,
 				entity.getNombre(), EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()),
-				entity.isTienePadre());
+				entity.isTienePadre(),entity.isEstaEstadoRealActivo());
 	}
 
 	@Override

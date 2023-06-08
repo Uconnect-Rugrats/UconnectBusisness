@@ -29,7 +29,7 @@ public final class ReaccionBusinessImpl implements ReaccionBusiness {
 			result = daoFactory.getReaccionDAO().read(entityTmp);
 		}while(!result.isEmpty());
 		
-		final var domainToCreate = new ReaccionDomain(identificador, domain.getPublicacion(), domain.getAutor(), domain.getFechaReaccion(), domain.getTipo(), domain.getEstado());
+		final var domainToCreate = new ReaccionDomain(identificador, domain.getPublicacion(), domain.getAutor(), domain.getFechaReaccion(), domain.getTipo(), domain.getEstado(),domain.isEstaEstadoRealActivo());
 		final ReaccionEntity entity = ReaccionAssembler.getInstance().toEntityFromDomain(domainToCreate);
 		daoFactory.getReaccionDAO().create(entity);	
     }

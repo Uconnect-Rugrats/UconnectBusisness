@@ -18,25 +18,25 @@ public final class ParticipanteGrupoAssembler implements Assembler<ParticipanteG
     public ParticipanteGrupoDTO toDTOFromDomain(ParticipanteGrupoDomain domain) {
         return ParticipanteGrupoDTO.create().setIdentificador(domain.getIdentificador()).setParticipante(ParticipanteAssembler.getInstance().toDTOFromDomain(domain.getParticipante()))
                 .setGrupo(GrupoAssembler.getInstance().toDTOFromDomain(domain.getGrupo())).setPuedePublicar(domain.getPuedePublicar())
-                .setEstado(EstadoAssembler.getInstance().toDTOFromDomain(domain.getEstado()));
+                .setEstado(EstadoAssembler.getInstance().toDTOFromDomain(domain.getEstado())).setEstaEstadoRealActivo(domain.isEstaEstadoRealActivo());
     }
 
     @Override
     public ParticipanteGrupoDomain toDomainFromDTO(ParticipanteGrupoDTO dto) {
         return new ParticipanteGrupoDomain(dto.getIdentificador(),ParticipanteAssembler.getInstance().toDomainFromDTO(dto.getParticipante()),dto.getPuedePublicar(),
-                GrupoAssembler.getInstance().toDomainFromDTO(dto.getGrupo()), EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()));
+                GrupoAssembler.getInstance().toDomainFromDTO(dto.getGrupo()), EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()),dto.isEstaEstadoRealActivo());
     }
 
     @Override
     public ParticipanteGrupoEntity toEntityFromDomain(ParticipanteGrupoDomain domain) {
         return new ParticipanteGrupoEntity(domain.getIdentificador(),ParticipanteAssembler.getInstance().toEntityFromDomain(domain.getParticipante()), domain.getPuedePublicar(),
-                GrupoAssembler.getInstance().toEntityFromDomain(domain.getGrupo()), EstadoAssembler.getInstance().toEntityFromDomain(domain.getEstado()));
+                GrupoAssembler.getInstance().toEntityFromDomain(domain.getGrupo()), EstadoAssembler.getInstance().toEntityFromDomain(domain.getEstado()),domain.isEstaEstadoRealActivo());
     }
 
     @Override
     public ParticipanteGrupoDomain toDomainFromEntity(ParticipanteGrupoEntity entity) {
         return new ParticipanteGrupoDomain(entity.getIdentificador(),ParticipanteAssembler.getInstance().toDomainFromEntity(entity.getParticipante()), entity.getPuedePublicar(),
-                GrupoAssembler.getInstance().toDomainFromEntity(entity.getGrupo()), EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()));
+                GrupoAssembler.getInstance().toDomainFromEntity(entity.getGrupo()), EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()),entity.isEstaEstadoRealActivo());
     }
 
     @Override

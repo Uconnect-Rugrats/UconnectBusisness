@@ -18,12 +18,13 @@ public final class ComentarioDomain {
 	private String contenido;
 	private EstadoDomain estado;
 	private boolean tienePadre;
+	private boolean estaEstadoRealActivo;
 	private static final String UUID_PADRE = "";
 
 	private static final ComentarioDomain PADRE = new ComentarioDomain(UtilUUID.generateUUIDFromString(UUID_PADRE),
 			PublicacionDomain.getDefaultObject(), null, UtilDate.getDefaultValue(),
 			ParticipanteGrupoDomain.getDefaultObject(), UtilText.getDefaultValue(), EstadoDomain.getDefaultObject(),
-			UtilBoolean.getDefaultValue());
+			UtilBoolean.getDefaultValue(),UtilBoolean.getDefaultValue());
 
 	public static final ComentarioDomain DEFAULT_OBJECT = new ComentarioDomain();
 
@@ -36,11 +37,12 @@ public final class ComentarioDomain {
 		setContenido(UtilText.getDefaultValue());
 		setEstado(EstadoDomain.getDefaultObject());
 		setTienePadre(UtilBoolean.getDefaultValue());
+		setEstaEstadoRealActivo(UtilBoolean.getDefaultValue());
 	}
 
 	public ComentarioDomain(UUID identificador, PublicacionDomain publicacion, ComentarioDomain comentarioPadre,
 			LocalDateTime fechaPublicacion, ParticipanteGrupoDomain autor, String contenido, EstadoDomain estado,
-			boolean tienePadre) {
+			boolean tienePadre,boolean estaEstadoRealActivo) {
 		setIdentificador(identificador);
 		setPublicacion(publicacion);
 		setComentarioPadre(comentarioPadre);
@@ -49,6 +51,7 @@ public final class ComentarioDomain {
 		setContenido(contenido);
 		setEstado(estado);
 		setTienePadre(tienePadre);
+		setEstaEstadoRealActivo(estaEstadoRealActivo);
 	}
 
 	public final boolean isTienePadre() {
@@ -121,5 +124,13 @@ public final class ComentarioDomain {
 
 	public static final ComentarioDomain getDefaultObject() {
 		return DEFAULT_OBJECT;
+	}
+
+	public boolean isEstaEstadoRealActivo() {
+		return estaEstadoRealActivo;
+	}
+
+	private void setEstaEstadoRealActivo(boolean estaEstadoRealActivo) {
+		this.estaEstadoRealActivo = estaEstadoRealActivo;
 	}
 }

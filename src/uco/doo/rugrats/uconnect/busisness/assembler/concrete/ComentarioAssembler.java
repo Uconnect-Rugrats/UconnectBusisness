@@ -29,7 +29,7 @@ public final class ComentarioAssembler implements Assembler<ComentarioDomain, Co
 				.setContenido(domain.getContenido()).setFechaPublicacion(domain.getFechaPublicacion())
 				.setPublicacion(PublicacionAssembler.getInstance().toDTOFromDomain(domain.getPublicacion()))
 				.setEstado(EstadoAssembler.getInstance().toDTOFromDomain(domain.getEstado()))
-				.setTienePadre(domain.isTienePadre());
+				.setTienePadre(domain.isTienePadre()).setEstaEstadoRealActivo(domain.isEstaEstadoRealActivo());
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public final class ComentarioAssembler implements Assembler<ComentarioDomain, Co
 						? ComentarioAssembler.getInstance().toDomainFromDTO(dto.getComentarioPadre())
 						: null,
 				dto.getFechaPublicacion(), ParticipanteGrupoAssembler.getInstance().toDomainFromDTO(dto.getAutor()),
-				dto.getContenido(), EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()), dto.isTienePadre());
+				dto.getContenido(), EstadoAssembler.getInstance().toDomainFromDTO(dto.getEstado()), dto.isTienePadre(),dto.isEstaEstadoRealActivo());
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public final class ComentarioAssembler implements Assembler<ComentarioDomain, Co
 						: null,
 				domain.getFechaPublicacion(),
 				ParticipanteGrupoAssembler.getInstance().toEntityFromDomain(domain.getAutor()), domain.getContenido(),
-				EstadoAssembler.getInstance().toEntityFromDomain(domain.getEstado()), domain.isTienePadre());
+				EstadoAssembler.getInstance().toEntityFromDomain(domain.getEstado()), domain.isTienePadre(),domain.isEstaEstadoRealActivo());
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public final class ComentarioAssembler implements Assembler<ComentarioDomain, Co
 						: null,
 				entity.getFechaComentario(),
 				ParticipanteGrupoAssembler.getInstance().toDomainFromEntity(entity.getAutor()), entity.getContenido(),
-				EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()), entity.isTienePadre());
+				EstadoAssembler.getInstance().toDomainFromEntity(entity.getEstado()), entity.isTienePadre(),entity.isEstaEstadoRealActivo());
 	}
 
 	@Override

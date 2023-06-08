@@ -1,5 +1,6 @@
 package uco.doo.rugrats.uconnect.busisness.domain;
 
+import uco.doo.rugrats.uconnect.utils.UtilBoolean;
 import uco.doo.rugrats.uconnect.utils.UtilDate;
 import uco.doo.rugrats.uconnect.utils.UtilObject;
 import uco.doo.rugrats.uconnect.utils.UtilUUID;
@@ -14,6 +15,7 @@ public final class ReaccionDomain {
 	private LocalDateTime fechaReaccion;
 	private TipoReaccionDomain tipo;
 	private EstadoDomain estado;
+	private boolean estaEstadoRealActivo;
 
 	public static final ReaccionDomain DEFAULT_OBJECT = new ReaccionDomain();
 
@@ -25,11 +27,12 @@ public final class ReaccionDomain {
 		setFechaReaccion(UtilDate.getDefaultValue());
 		setTipo(TipoReaccionDomain.getDefaultObject());
 		setEstado(EstadoDomain.getDefaultObject());
+		setEstaEstadoRealActivo(UtilBoolean.getDefaultValue());
 	}
 
 	public ReaccionDomain(final UUID identificador, final PublicacionDomain publicacion,
 			final ParticipanteGrupoDomain autor, final LocalDateTime fechaReaccion, final TipoReaccionDomain tipo,
-			final EstadoDomain estado) {
+			final EstadoDomain estado, boolean estaEstadoRealActivo) {
 		super();
 		setIdentificador(identificador);
 		setPublicacion(publicacion);
@@ -37,6 +40,7 @@ public final class ReaccionDomain {
 		setFechaReaccion(fechaReaccion);
 		setTipo(tipo);
 		setEstado(estado);
+		setEstaEstadoRealActivo(estaEstadoRealActivo);
 	}
 
 	private void setIdentificador(final UUID identificador) {
@@ -89,5 +93,13 @@ public final class ReaccionDomain {
 
 	public static final ReaccionDomain getDefaultObject() {
 		return DEFAULT_OBJECT;
+	}
+
+	public boolean isEstaEstadoRealActivo() {
+		return estaEstadoRealActivo;
+	}
+
+	private void setEstaEstadoRealActivo(boolean estaEstadoRealActivo) {
+		this.estaEstadoRealActivo = estaEstadoRealActivo;
 	}
 }
