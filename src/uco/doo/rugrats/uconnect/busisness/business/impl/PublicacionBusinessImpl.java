@@ -2,7 +2,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.PublicacionAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.PublicacionBusiness;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.PublicacionDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.PublicacionEntity;
@@ -47,8 +46,4 @@ public final class PublicacionBusinessImpl implements PublicacionBusiness {
         daoFactory.getPublicacionDAO().delete(domain);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 }

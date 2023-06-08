@@ -2,7 +2,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.ReporteMensajeAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.ReporteMensajeBusiness;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.ReporteMensajeDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.ReporteMensajeEntity;
@@ -36,8 +35,4 @@ public final class ReporteMensajeBusinessImpl implements ReporteMensajeBusiness 
 		return ReporteMensajeAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 }

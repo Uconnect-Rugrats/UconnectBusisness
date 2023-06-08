@@ -2,7 +2,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.HistorialLecturaAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.HistorialLecturaBusiness;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.HistorialLecturaDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.HistorialLecturaEntity;
@@ -35,8 +34,4 @@ public final class HistorialLecturaBusinessImpl implements HistorialLecturaBusin
 		return HistorialLecturaAssembler.getInstance().toDomainFromEntityList(resultEntityList);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 }

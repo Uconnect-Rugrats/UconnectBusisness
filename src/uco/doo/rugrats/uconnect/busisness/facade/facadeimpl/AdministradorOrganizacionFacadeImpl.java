@@ -1,7 +1,6 @@
 package uco.doo.rugrats.uconnect.busisness.facade.facadeimpl;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.AdministradorOrganizacionAssembler;
-import uco.doo.rugrats.uconnect.busisness.assembler.concrete.EstadoAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.AdministradorOrganizacionBusiness;
 import uco.doo.rugrats.uconnect.busisness.business.impl.AdministradorOrganizacionBusinessImpl;
 import uco.doo.rugrats.uconnect.busisness.domain.AdministradorOrganizacionDomain;
@@ -11,7 +10,6 @@ import uco.doo.rugrats.uconnect.crosscutting.exception.UconnectException;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.data.dao.factory.Factory;
 import uco.doo.rugrats.uconnect.dto.AdministradorOrganizacionDTO;
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.utils.messages.UconnectBusinessMessages;
 
 import java.util.List;
@@ -20,7 +18,7 @@ import java.util.UUID;
 public final class AdministradorOrganizacionFacadeImpl implements AdministradorOrganizacionFacade {
 	private final DAOFactory daoFactory;
 	private final AdministradorOrganizacionBusiness business;
-
+	
 	public AdministradorOrganizacionFacadeImpl() {
 		daoFactory = DAOFactory.getFactory(Factory.POSTGRESQL);
 		business = new AdministradorOrganizacionBusinessImpl(daoFactory);
@@ -124,25 +122,5 @@ public final class AdministradorOrganizacionFacadeImpl implements AdministradorO
 		}
 	}
 
-	@Override
-	public EstadoDTO obtenerEstadoReal() {
-		try {
-			daoFactory.initTransaction();
-			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
-			daoFactory.commitTransaction();
-			return dto;
-
-		} catch (final UconnectException exception) {
-			daoFactory.rollbackTransaction();
-			throw exception;
-		} catch (final Exception exception) {
-			daoFactory.rollbackTransaction();
-			throw UconnectBusisnessException.create(
-					UconnectBusinessMessages.Facade.AdministradorOrganizacionFacadeImplMessages.TECHNICAL_MESSAGE_STATE,
-					UconnectBusinessMessages.Facade.AdministradorOrganizacionFacadeImplMessages.USER_MESSAGE_STATE,
-					exception);
-		} finally {
-			daoFactory.closeConnection();
-		}
-	}
+	
 }

@@ -1,8 +1,6 @@
 package uco.doo.rugrats.uconnect.busisness.business;
 
 import uco.doo.rugrats.uconnect.busisness.domain.AgendaDomain;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -18,6 +16,4 @@ public interface AgendaBusiness {
 	AgendaDomain abrir(AgendaDomain domain);
 
 	void eliminar(UUID domain);
-
-	EstadoDomain obtenerEstadoReal();
 }

@@ -1,7 +1,6 @@
 package uco.doo.rugrats.uconnect.busisness.facade.facadeimpl;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.ChatAssembler;
-import uco.doo.rugrats.uconnect.busisness.assembler.concrete.EstadoAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.ChatBusiness;
 import uco.doo.rugrats.uconnect.busisness.business.impl.ChatBusinessImpl;
 import uco.doo.rugrats.uconnect.busisness.domain.ChatDomain;
@@ -11,7 +10,6 @@ import uco.doo.rugrats.uconnect.crosscutting.exception.UconnectException;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.data.dao.factory.Factory;
 import uco.doo.rugrats.uconnect.dto.ChatDTO;
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.utils.messages.UconnectBusinessMessages;
 
 import java.util.List;
@@ -117,24 +115,4 @@ public final class ChatFacadeImpl implements ChatFacade {
 		}
 	}
 
-	@Override
-	public EstadoDTO obtenerEstadoReal() {
-		try {
-			daoFactory.initTransaction();
-
-			daoFactory.commitTransaction();
-			return EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
-
-		} catch (final UconnectException exception) {
-			daoFactory.rollbackTransaction();
-			throw exception;
-		} catch (final Exception exception) {
-			daoFactory.rollbackTransaction();
-			throw UconnectBusisnessException.create(
-					UconnectBusinessMessages.Facade.ChatFacadeImplMessages.TECHNICAL_MESSAGE_STATE,
-					UconnectBusinessMessages.Facade.ChatFacadeImplMessages.USER_MESSAGE_STATE, exception);
-		} finally {
-			daoFactory.closeConnection();
-		}
-	}
 }

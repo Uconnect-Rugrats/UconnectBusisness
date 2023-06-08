@@ -2,7 +2,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.ReaccionAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.ReaccionBusiness;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.ReaccionDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.ReaccionEntity;
@@ -48,10 +47,6 @@ public final class ReaccionBusinessImpl implements ReaccionBusiness {
         daoFactory.getReaccionDAO().delete(domain);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 
 	@Override
 	public void cambiarReaccion(ReaccionDomain domain) {

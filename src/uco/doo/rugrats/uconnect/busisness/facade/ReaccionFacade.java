@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.facade;
 
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.dto.ReaccionDTO;
 
 import java.util.List;
@@ -14,6 +13,4 @@ public interface ReaccionFacade {
 	void cambiarReaccion(ReaccionDTO dto);
 
 	void eliminar(UUID dto);
-
-	EstadoDTO obtenerEstadoReal();
 }

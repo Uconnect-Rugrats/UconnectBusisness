@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.facade.facadeimpl;
 
-import uco.doo.rugrats.uconnect.busisness.assembler.concrete.EstadoAssembler;
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.ReporteMensajeAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.ReporteMensajeBusiness;
 import uco.doo.rugrats.uconnect.busisness.business.impl.ReporteMensajeBusinessImpl;
@@ -10,7 +9,6 @@ import uco.doo.rugrats.uconnect.crosscutting.exception.UconnectBusisnessExceptio
 import uco.doo.rugrats.uconnect.crosscutting.exception.UconnectException;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.data.dao.factory.Factory;
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.dto.ReporteMensajeDTO;
 import uco.doo.rugrats.uconnect.utils.messages.UconnectBusinessMessages;
 
@@ -94,25 +92,4 @@ public final class ReporteMensajeFacadeImpl implements ReporteMensajeFacade {
 		}
 	}
 
-	@Override
-	public EstadoDTO obtenerEstadoReal() {
-		try {
-			daoFactory.initTransaction();
-			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
-			daoFactory.commitTransaction();
-			return dto;
-
-		} catch (final UconnectException exception) {
-			daoFactory.rollbackTransaction();
-			throw exception;
-		} catch (final Exception exception) {
-			daoFactory.rollbackTransaction();
-			final var userMessage = UconnectBusinessMessages.Facade.ReporteMensajeFacadeImplMessages.USER_MESSAGE_STATE;
-			final var technicalMessage = UconnectBusinessMessages.Facade.ReporteMensajeFacadeImplMessages.TECHNICAL_MESSAGE_STATE;
-
-			throw UconnectBusisnessException.create(technicalMessage, userMessage, exception);
-		} finally {
-			daoFactory.closeConnection();
-		}
-	}
 }

@@ -2,8 +2,6 @@ package uco.doo.rugrats.uconnect.busisness.facade;
 
 import uco.doo.rugrats.uconnect.busisness.domain.AgendaDomain;
 import uco.doo.rugrats.uconnect.dto.AgendaDTO;
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -20,5 +18,4 @@ public interface AgendaFacade {
 
 	void eliminar(UUID dto);
 
-	EstadoDTO obtenerEstadoReal();
 }

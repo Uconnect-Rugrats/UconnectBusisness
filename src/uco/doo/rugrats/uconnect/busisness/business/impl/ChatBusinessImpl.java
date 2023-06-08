@@ -3,7 +3,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.ChatAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.ChatBusiness;
 import uco.doo.rugrats.uconnect.busisness.domain.ChatDomain;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.ChatEntity;
 
@@ -42,8 +41,4 @@ public final class ChatBusinessImpl implements ChatBusiness {
         daoFactory.getChatDAO().delete(domain);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 }

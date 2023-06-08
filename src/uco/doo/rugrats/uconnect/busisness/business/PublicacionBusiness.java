@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.business;
 
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.PublicacionDomain;
 
 import java.util.List;
@@ -17,5 +16,4 @@ public interface PublicacionBusiness {
 
 	void eliminar(UUID domain);
 
-	EstadoDomain obtenerEstadoReal();
 }

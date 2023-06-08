@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.facade.facadeimpl;
 
-import uco.doo.rugrats.uconnect.busisness.assembler.concrete.EstadoAssembler;
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.RespuestaReporteComentarioAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.RespuestaReporteComentarioBusiness;
 import uco.doo.rugrats.uconnect.busisness.business.impl.RespuestaReporteComentarioBusinessImpl;
@@ -10,7 +9,6 @@ import uco.doo.rugrats.uconnect.crosscutting.exception.UconnectBusisnessExceptio
 import uco.doo.rugrats.uconnect.crosscutting.exception.UconnectException;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.data.dao.factory.Factory;
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.dto.RespuestaReporteComentarioDTO;
 import uco.doo.rugrats.uconnect.utils.messages.UconnectBusinessMessages;
 
@@ -128,25 +126,4 @@ public final class RespuestaReporteComentarioFacadeImpl implements RespuestaRepo
 		}
 	}
 
-	@Override
-	public EstadoDTO obtenerEstadoReal() {
-		try {
-			daoFactory.initTransaction();
-			final EstadoDTO dto = EstadoAssembler.getInstance().toDTOFromDomain(business.obtenerEstadoReal());
-			daoFactory.commitTransaction();
-			return dto;
-
-		} catch (final UconnectException exception) {
-			daoFactory.rollbackTransaction();
-			throw exception;
-		} catch (final Exception exception) {
-			daoFactory.rollbackTransaction();
-			throw UconnectBusisnessException.create(
-					UconnectBusinessMessages.Facade.RespuestaReporteComentarioFacadeImplMessages.TECHNICAL_MESSAGE_STATE,
-					UconnectBusinessMessages.Facade.RespuestaReporteComentarioFacadeImplMessages.USER_MESSAGE_STATE,
-					exception);
-		} finally {
-			daoFactory.closeConnection();
-		}
-	}
 }

@@ -3,7 +3,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.ComentarioAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.ComentarioBusiness;
 import uco.doo.rugrats.uconnect.busisness.domain.ComentarioDomain;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.ComentarioEntity;
 import uco.doo.rugrats.uconnect.utils.UtilUUID;
@@ -59,8 +58,4 @@ public final class ComentarioBusinessImpl implements ComentarioBusiness {
         daoFactory.getComentarioDAO().delete(domain);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 }

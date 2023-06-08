@@ -2,7 +2,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.GrupoAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.GrupoBusiness;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.GrupoDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.GrupoEntity;
@@ -48,8 +47,4 @@ public final class GrupoBusinessImpl implements GrupoBusiness {
         daoFactory.getGrupoDAO().delete(domain);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 }

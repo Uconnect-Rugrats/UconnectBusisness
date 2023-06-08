@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.facade;
 
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.dto.HistorialChatGrupoDTO;
 
 import java.util.List;
@@ -13,5 +12,4 @@ public interface HistorialChatGrupoFacade {
 
 	void eliminar(UUID dto);
 
-	EstadoDTO obtenerEstadoReal();
 }

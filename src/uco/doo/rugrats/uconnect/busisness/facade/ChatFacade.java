@@ -1,8 +1,6 @@
 package uco.doo.rugrats.uconnect.busisness.facade;
 
 import uco.doo.rugrats.uconnect.dto.ChatDTO;
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -15,5 +13,4 @@ public interface ChatFacade {
 
 	void eliminar(UUID dto);
 
-	EstadoDTO obtenerEstadoReal();
 }

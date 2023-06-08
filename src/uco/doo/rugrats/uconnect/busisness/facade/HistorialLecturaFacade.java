@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.facade;
 
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.dto.HistorialLecturaDTO;
 
 import java.util.List;
@@ -12,5 +11,4 @@ public interface HistorialLecturaFacade {
 
 	List<HistorialLecturaDTO> mostrarInformacionMensaje(HistorialLecturaDTO dto);
 
-	EstadoDTO obtenerEstadoReal();
 }

@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.facade;
 
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.dto.ParticipanteDTO;
 
 import java.util.List;
@@ -15,5 +14,4 @@ public interface ParticipanteFacade {
 
 	void eliminar(UUID dto);
 
-	EstadoDTO obtenerEstadoReal();
 }

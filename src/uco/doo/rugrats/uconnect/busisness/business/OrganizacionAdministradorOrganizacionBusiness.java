@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.business;
 
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.OrganizacionAdministradorOrganizacionDomain;
 
 import java.util.List;
@@ -13,5 +12,4 @@ public interface OrganizacionAdministradorOrganizacionBusiness {
 
 	void eliminar(UUID domain);
 
-	EstadoDomain obtenerEstadoReal();
 }

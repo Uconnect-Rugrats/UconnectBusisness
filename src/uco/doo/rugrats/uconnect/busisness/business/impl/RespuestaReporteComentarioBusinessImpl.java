@@ -2,7 +2,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.RespuestaReporteComentarioAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.RespuestaReporteComentarioBusiness;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.RespuestaReporteComentarioDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.RespuestaReporteComentarioEntity;
@@ -42,8 +41,4 @@ public final class RespuestaReporteComentarioBusinessImpl implements RespuestaRe
         daoFactory.getRespuestaReporteComentarioDAO().delete(domain);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 }

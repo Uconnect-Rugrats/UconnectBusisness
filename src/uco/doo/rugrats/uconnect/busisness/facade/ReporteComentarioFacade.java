@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.facade;
 
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.dto.ReporteComentarioDTO;
 
 import java.util.List;
@@ -12,5 +11,4 @@ public interface ReporteComentarioFacade {
 
 	List<ReporteComentarioDTO> abrir(ReporteComentarioDTO dto);
 
-	EstadoDTO obtenerEstadoReal();
 }

@@ -2,7 +2,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.ParticipanteAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.ParticipanteBusiness;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.ParticipanteDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.ParticipanteEntity;
@@ -42,8 +41,4 @@ public final class ParticipanteBusinessImpl implements ParticipanteBusiness {
         daoFactory.getParticipanteDAO().delete(domain);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 }

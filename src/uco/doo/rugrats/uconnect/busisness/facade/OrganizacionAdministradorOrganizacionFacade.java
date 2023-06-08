@@ -1,6 +1,5 @@
 package uco.doo.rugrats.uconnect.busisness.facade;
 
-import uco.doo.rugrats.uconnect.dto.EstadoDTO;
 import uco.doo.rugrats.uconnect.dto.OrganizacionAdministradorOrganizacionDTO;
 
 import java.util.List;
@@ -13,5 +12,4 @@ public interface OrganizacionAdministradorOrganizacionFacade {
 
 	void eliminar(UUID dto);
 
-	EstadoDTO obtenerEstadoReal();
 }

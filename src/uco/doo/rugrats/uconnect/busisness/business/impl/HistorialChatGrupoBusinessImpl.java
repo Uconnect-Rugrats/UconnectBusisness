@@ -2,7 +2,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.HistorialChatGrupoAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.HistorialChatGrupoBusiness;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.busisness.domain.HistorialChatGrupoDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.HistorialChatGrupoEntity;
@@ -36,8 +35,4 @@ public final class HistorialChatGrupoBusinessImpl implements HistorialChatGrupoB
         daoFactory.getHistorialChatGrupoDAO().delete(domain);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 }

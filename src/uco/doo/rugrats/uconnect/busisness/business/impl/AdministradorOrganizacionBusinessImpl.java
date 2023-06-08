@@ -4,7 +4,6 @@ package uco.doo.rugrats.uconnect.busisness.business.impl;
 import uco.doo.rugrats.uconnect.busisness.assembler.concrete.AdministradorOrganizacionAssembler;
 import uco.doo.rugrats.uconnect.busisness.business.AdministradorOrganizacionBusiness;
 import uco.doo.rugrats.uconnect.busisness.domain.AdministradorOrganizacionDomain;
-import uco.doo.rugrats.uconnect.busisness.domain.EstadoDomain;
 import uco.doo.rugrats.uconnect.data.dao.factory.DAOFactory;
 import uco.doo.rugrats.uconnect.entities.AdministradorOrganizacionEntity;
 
@@ -44,8 +43,4 @@ public final class AdministradorOrganizacionBusinessImpl implements Administrado
         daoFactory.getAdministradorOrganizacionDAO().delete(domain);
     }
 
-    @Override
-    public EstadoDomain obtenerEstadoReal() {
-        return null;
-    }
 }
